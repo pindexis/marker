@@ -1,0 +1,71 @@
+#!/usr/bin/env python
+from __future__ import print_function
+import sys
+import argparse
+import os
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..'))
+from marker import core
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Marker: a tool to quickly bookmark and retreive commands")
+    subparsers = parser.add_subparsers(title="commands", dest="subparser_name")
+
+    parser_mark = subparsers.add_parser("mark", help="mark a command")
+    parser_mark.add_argument("--command", type=str, help="Command to mark")
+    parser_mark.add_argument("--alias", type=str, help="an alias of the command")
+    parser_mark.set_defaults(func=cmd_mark)
+
+    parser_get = subparsers.add_parser("get", help="get marker commands that match a given search string")
+    parser_get.add_argument("--search", type=str, help="Search string")  
+    parser_get.add_argument("--non-interactive", dest="non_interactive", help="do not display", action="store_true")
+    parser_get.add_argument("--stdout", type=str, help="Where to store result(defaut to stdout)")
+    parser_get.set_defaults(non_interactive=False)
+    parser_get.set_defaults(func=cmd_get)
+
+    parser_get = subparsers.add_parser("remove", help="remove a marked command given an optionnal prefix")
+    parser_get.add_argument("--search", type=str, help="Search string")
+    parser_get.set_defaults(func=cmd_remove)
+
+    args = parser.parse_args()
+    return args.func(args)
+
+
+def cmd_mark(args):
+    core.mark_command(args.command, None)
+
+
+def cmd_get(args):
+    if not args.non_interactive:
+        output = core.get_selected_command_or_input(args.search)
+    else:
+        commands = core.get_matched_commands(args.search)
+        if not commands:
+            output = ""
+        elif len(commands)>1 :
+            output = "\n".join(commands)
+        else:
+            output = commands[0]
+    if args.stdout:
+        with open(args.stdout,'w+') as save_file:
+            # the newline character is to make sure 'wc -l' executes correctly
+            if output:
+                output+="\n"
+            save_file.write(output)
+    else:
+        print(output)
+
+
+def cmd_remove(args):
+    core.remove_command(args.search)
+
+
+def marker_sourced():
+    if os.getenv('MARKER_DATA_HOME'):
+        return True
+    return False
+
+if __name__ == "__main__":
+    if not marker_sourced():
+        print("Please source marker file in your shell's")
+        sys.exit(1)
+    parse_arguments()

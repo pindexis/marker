@@ -1,0 +1,10 @@
+CTRL_C = 3         # Ctrl-c
+ENTER = 13         # Enter
+CTRL_U = 21        # Ctrl+u
+ESC = 27           # Escape
+BACKSPACE =  127   # Backspace
+TAB = 9            # Tab
+RIGHT = -1     	   # FAKE CODE to abstract away the fact that a multibyte string is needed to represent arrow keys 
+DOWN = -2          # same
+UP = -3			   # same
+LEFT = -4          # same

@@ -1,0 +1,2 @@
+"\C-@":"\C-e \C-u`rl_marker \C-y`\e\C-e\C-x\C-r\el"
+"\C-k":"\C-e \C-umarker mark --command='\C-y'\C-j\C-y"
