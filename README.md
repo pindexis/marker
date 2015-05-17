@@ -1,6 +1,6 @@
 # marker
 Do you heavily use Ctrl+R(search through history) to search for commands that you frequently use?  
-Marker let you easily bookmark these commands and quickly retreive them without going through Shell Aliasing/Many Ctrl-R.
+Marker let you easily bookmark these commands and quickly retrieve them without going through Shell Aliasing/Many Ctrl-R.
 It offers the following features:
 - A UI selector that let you easily select desired command if more than one command is matched
 - Fuzzy matching (rather than Ctrl-R exact match)
@@ -24,4 +24,4 @@ Simplicity is key, Two keyboard shortcuts let you take most of Marker:
 - `./install.py`
 
 ## License
-[MIT](LICENSE.md)
+[MIT](LICENSE)
