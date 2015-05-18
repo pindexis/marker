@@ -1,6 +1,6 @@
 # marker
 Do you heavily use Ctrl+R(search through history) to search for commands that you frequently use?  
-Marker let you easily bookmark these commands and quickly retrieve them without going through Shell Aliasing/Many Ctrl-R.
+Marker let you easily bookmark these commands and quickly retrieve them without going through Shell Aliases/Functions/Multiple Ctrl-R...
 It offers the following features:
 - A UI selector that let you easily select desired command if more than one command is matched.
 - Fuzzy matching (rather than Ctrl-R exact match).
