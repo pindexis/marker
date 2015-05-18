@@ -141,7 +141,7 @@ class Display():
     '''Command line user interface'''
 
     def __init__(self):
-        self.columns = self._get_terminal_columns()
+        pass
 
     def _get_terminal_columns(self):
         ''' get the number of terminal columns, used to determine spanned lines of a mark(required for cursor placement) '''
@@ -168,8 +168,9 @@ class Display():
         ui.flush()
 
     def _construct_output(self, state):
+        columns = self._get_terminal_columns()
         def number_of_rows(line):
-            return int(math.ceil(float(len(line))/self._get_terminal_columns()))
+            return int(math.ceil(float(len(line))/columns))
         displayed_lines = []
         # Number of terminal rows spanned by the output, used to determine how many lines we need to go up(to place the cursor after the prompt) after displaying the output
         num_rows = 0
