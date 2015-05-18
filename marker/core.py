@@ -169,16 +169,20 @@ class Display():
 
     def _construct_output(self, state):
         def number_of_rows(line):
-            return int(math.ceil(float(len(line))/self.columns))
+            return int(math.ceil(float(len(line))/self._get_terminal_columns()))
         displayed_lines = []
         # Number of terminal rows spanned by the output, used to determine how many lines we need to go up(to place the cursor after the prompt) after displaying the output
         num_rows = 0
         prompt_line = 'search for: ' + state.input
         displayed_lines.append(prompt_line)
         num_rows += number_of_rows(prompt_line)
-        if state.get_matches():
-            for index, m in enumerate(state.get_matches()):
-                fm = str(m)
+        matches = state.get_matches()
+        if matches:
+            # display lines from Max(0,selected_command_index - 10) to Max(10,SelectedCommandIndex)
+            selected_command_index = matches.index(state.get_selected_match())
+            matches_to_display = matches[max(0, selected_command_index - 10 + 1):max(10, selected_command_index + 1)]
+            for index, m in enumerate(matches_to_display):
+                fm = ' '+str(m)
                 num_rows += number_of_rows(fm)
                 # Formatting text(make searched word bold)
                 for w in state.input.split(' '):
@@ -316,3 +320,4 @@ class Mark(object):
 
     def equals(self, mark):
         return self.cmd == mark.cmd and self.alias == mark.alias
+
