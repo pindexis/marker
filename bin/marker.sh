@@ -22,8 +22,8 @@ if [ -n "$ZSH_VERSION" ]; then
         search="$BUFFER"
         zle kill-whole-line
         $(markergn "$search")
-        num_lines=$(cat $MARKER_DATA_HOME/pipe.txt | wc -l)
-        if [[ num_lines -ne 1 ]]; then
+        num_lines=$(cat ${MARKER_DATA_HOME}/pipe.txt | wc -l)
+        if [[ "$num_lines" -ne 1 ]]; then
             # there are more than one result that matches the typed string
             # Marker will then be executed in interactive mode             
             BUFFER="markerg \"$search\""
@@ -31,36 +31,55 @@ if [ -n "$ZSH_VERSION" ]; then
         fi
     }
     zle -N _marker-get
-    bindkey '\e1' _marker-get 
+    bindkey '\etmp1' _marker-get 
 
     function _marker-set {
-        BUFFER="$(<$MARKER_DATA_HOME/pipe.txt)"
+        BUFFER="$(<${MARKER_DATA_HOME}/pipe.txt)"
         zle end-of-line
     }
     zle -N _marker-set
-    bindkey '\e2' _marker-set 
+    bindkey '\etmp2' _marker-set 
     # C-space is set to execute two keyboard shortcuts, to run statements in two commandline prompts(execute->Enter->execute)
-    bindkey -s '\C-@' '\e1\e2'
+    bindkey -s '\C-@' '\etmp1\etmp2'
 
     function _mkm {
         export TMP_MARKER="$BUFFER"
         # Escape single quotes (keeping the string written by the user intact)
         # Unfortunaetly, this is not possible in Bash(single quotes will be stripped) 
-        TMP_MARKER=$(echo $TMP_MARKER | sed "s/'/'\"'\"'/g")
-        BUFFER="marker mark --command='$TMP_MARKER'"
+        TMP_MARKER=$(echo "$TMP_MARKER" | sed "s/'/'\"'\"'/g")
+        BUFFER="marker mark --command='${TMP_MARKER}'"
         zle accept-line
     }
     zle -N _mkm
-    bindkey '\e3' _mkm
+    bindkey '\etmp3' _mkm
 
     function _mks {
         BUFFER="$TMP_MARKER"
         zle end-of-line
     }
     zle -N _mks 
-    bindkey '\e4' _mks
+    bindkey '\etmp4' _mks
 
-    bindkey -s '\C-k' '\e3\e4'
+    bindkey -s '\C-k' '\etmp3\etmp4'
+    # Command Template, the purpose is this function is to move to the next placeholder '%' whenever the user presses on \C-t
+    function _move_cursor_to_next_placeholder {
+	# index of the first '%', starting from 1. 0 if not found
+        placeholder_offset=$(echo "$BUFFER" | awk 'END{print index($0,"%")}')
+        if [[ "$placeholder_offset" -gt 0 ]]; then
+            zle beginning-of-line
+	    # substract 1 from the offset, to make the offset 0 based
+            placeholder_offset=$(expr "$placeholder_offset" - 1)
+            while [[ "$placeholder_offset" -gt 0 ]]
+            do
+                zle forward-char
+                placeholder_offset=$(expr "$placeholder_offset" - 1)
+            done
+	    # delete the placeholder
+            zle delete-char
+        fi
+    }
+    zle -N _move_cursor_to_next_placeholder
+    bindkey '\C-t' _move_cursor_to_next_placeholder
 else
     # Assume the shell use readline
 
@@ -81,14 +100,38 @@ else
     function rl_marker(){
         args="$@"
         markergn "$args"
-        num_lines=$(cat $MARKER_DATA_HOME/pipe.txt | wc -l)
+        num_lines=$(cat ${MARKER_DATA_HOME}/pipe.txt | wc -l)
         if [[ num_lines -ne 1 ]]; then 
             # none or more than one result matched the typed string
             # Marker will then be executed in interactive mode            
-            echo '"\el":" markerg \"'$args'\"\C-j$(<$MARKER_DATA_HOME/pipe.txt)\e\C-e\"'>$MARKER_DATA_HOME/tmp_readline.rc
+            echo '"\etmp":" markerg \"'"$args"'\"\C-j$(<${MARKER_DATA_HOME}/pipe.txt)\e\C-e\"'>${MARKER_DATA_HOME}/tmp_readline.rc
         else
             # One result match the user input, Substitute the current written string with the returned one
-            echo '"\el":"$(<$MARKER_DATA_HOME/pipe.txt)\e\C-e"'>$MARKER_DATA_HOME/tmp_readline.rc;
+            echo '"\etmp":"$(<${MARKER_DATA_HOME}/pipe.txt)\e\C-e"'>${MARKER_DATA_HOME}/tmp_readline.rc;
         fi
     }
+    # Command Template, the purpose is this function is to move to the next placeholder '%' whenever the user presses on \C-t
+    function rl_template_next(){
+        args="$@"
+        # remove that space added(so C-y works correctly for empty cocmmands)
+        readline_command="\C-y\C-e\C-?"
+        # index of the first '%', starting from 1. 0 if not found
+        placeholder_offset=$(echo "$args" | awk 'END{print index($0,"%")}')
+        if [[ "$placeholder_offset" -gt 0 ]]; then
+            # move to the beggining of string
+            readline_command="${readline_command}\C-a"
+            # substract 1 from the offset, to make the offset 0 based
+            placeholder_offset=$(expr $placeholder_offset - 1)
+            while [[ "$placeholder_offset" -gt 0 ]]
+            do
+                readline_command="${readline_command}\C-f"
+                placeholder_offset=$(expr "$placeholder_offset" - 1)
+            done
+            # delete the placeholder
+            readline_command="${readline_command}\C-d"
+        fi
+        # save the readline command in a temporary file(the caller readline command will reload bindings and execute the \etmp command)
+        echo '"\etmp":"'"$readline_command"'"'>${MARKER_DATA_HOME}/tmp_readline.rc
+    }
 fi
+
