@@ -9,7 +9,7 @@ It offers the following features:
 
 ## Usage
 Simplicity is key, Three keyboard shortcuts let you take most of Marker:
-- `Ctrl+k`: Mark the current written string in the command line prompt.
+- `Ctrl+k`: Mark the current written string in the command line.
 - `Ctrl+Space`: search for commands that match the current written string.
 - `Ctrl+t`: place the cursor at the next placeholder, identified by the '%' character
 - `marker remove`: remove a bookmark
