@@ -18,9 +18,9 @@ Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 
 ## Requirements
 - python (2.7+ or 3.0+)
-- Bash or Zshell.
+- Bash or Zshell (didn't tested on other shells).
 - if you're using Bash, Readline should be in Emacs mode(It is by default)
-- Linux Or OSX (Windows not supported)
+- Linux Or OSX
 
 ## Installation
 - `cd /usr/local` or wherever you want to install Marker
