@@ -40,7 +40,7 @@ Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 You can take a look at `bin/marker.sh` for more details. Most magic happens there.
 
 ### Limitation with Bash (and shells that use Readline):
-Bash uses an external library(Readline) to process the user input in the command-line(including keyboard bindings). This separation make it hard to script and extend the command-line when certain keys are pressed. For example, It's not possible to invoke shell functions intuitively when a user press a keyboard shortcut and manipulate the command-line from those functions(in contrast with zshell where the input processor zle is integrated within the shell).  
+Bash uses an external library(Readline) to process the user input in the command-line(including keyboard bindings). This separation makes it hard to script and extend the command-line when certain keys are pressed. For example, It's not possible to invoke shell functions intuitively when a user press a keyboard shortcut and manipulate the command-line from those functions(in contrast with zshell where the input processor zle is integrated within the shell).  
 
 A couple of hacks were made to make Marker work with Bash, notably triggering shell-expand-line to evaluate a shell function with the current written string as an argument. This shell function will then executes some logic and dynamically bind a certain sequence of characters to a temporary keyboard shortcut which will be executed finally by the original shortcut(ie `ctrl-Space`)(`bin/marker.sh` contains more details).  
 
