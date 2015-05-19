@@ -7,10 +7,13 @@ It offers the following features:
 - Aliases: `listen port` can magically be transformed into `sudo netstat -nlp | grep`.
 - Command templates: Marker let you bookmark commands with place-holders and easily place the cursor at those place-holders.
 
+[![ScreenShot](https://cloud.githubusercontent.com/assets/2557967/7701147/3078969c-fe1c-11e4-9837-a2e586fbe07e.png)](http://youtu.be/JuBY9sbzjdU)
+
 ## Usage
-Simplicity is key, Two keyboard shortcuts let you take most of Marker:
+Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 - `Ctrl+k`: Mark the current written string in the command line prompt.
 - `Ctrl+Space`: search for commands that match the current written string.
+- `Ctrl+t`: place the cursor at the next placeholder, identified by the '%' character
 - `marker remove`: remove a bookmark
 
 ## Requirements
