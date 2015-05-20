@@ -15,7 +15,6 @@ def get_shell():
 
 
 def mkdir(path):
-    print("creating directory:", path)
     if not os.path.exists(path):
         os.makedirs(path)
 
@@ -40,6 +39,8 @@ def generate_readline_rc(user_dir, install_dir):
 
 
 def show_post_installation_message(user_dir):
+    print("Marker installed successfully")
+    print("\n")
     sourced_file = '%s/marker.sh' % user_dir
     source_msg = "[[ -s %s ]] && source %s" % (sourced_file, sourced_file)
 
@@ -48,27 +49,27 @@ def show_post_installation_message(user_dir):
     else:
         rcfile = '.%src' % get_shell()
 
-    print("\nThe following line has to be added to your ~/%s:" % rcfile)
-    print('\n\t' + source_msg)
+    print("\nPlease add he following line has to to your ~/%s:" % rcfile)
+    print('\n' + source_msg)
 
     if get_shell() == 'bash':
         readline_source_msg = '$include %s/marker.rc' % user_dir
-        print("\nAdditionnaly, The following line has to be added to ~/.inputrc (create the file if it does not exist)")
-        print('\n\t' + readline_source_msg)
+        print("\nAdditionnaly, add the following line to your ~/.inputrc (create the file if it does not exist)")
+        print('\n' + readline_source_msg)
     print('\n')
-    do_it_for_me = None
-    while(True):
-        do_it_for_me = raw_input("Do it for me(y/n):")
-        if do_it_for_me=='y' or do_it_for_me=='n':
-            break
-    if do_it_for_me == 'y':
-        with open(os.path.join(os.path.expanduser("~"), rcfile), 'a+') as f:
-            f.write(source_msg)
-        if get_shell() == 'bash':
-            with open(os.path.join(os.path.expanduser("~"), '.inputrc'), 'a+') as f:
-                f.write(readline_source_msg)
-        print("Marker installed successfully")
-    print("\nPlease restart the terminal.")
+    # do_it_for_me = None
+    # while(True):
+    #     do_it_for_me = raw_input("Do it for me(y/n):")
+    #     if do_it_for_me=='y' or do_it_for_me=='n':
+    #         break
+    # if do_it_for_me == 'y':
+    #     with open(os.path.join(os.path.expanduser("~"), rcfile), 'a+') as f:
+    #         f.write('\n' + source_msg)
+    #     if get_shell() == 'bash':
+    #         with open(os.path.join(os.path.expanduser("~"), '.inputrc'), 'a+') as f:
+    #             f.write('\n' + readline_source_msg)
+    #     print("Marker installed successfully")
+    print("\nPlease restart the terminal after doing that.")
 
 
 def verify_requirements():
@@ -84,7 +85,6 @@ def verify_requirements():
 def main():
     verify_requirements()
     print("---------------------------------------")
-    print("Installing Marker")
     user_dir = os.path.join(os.path.expanduser("~"), '.local', 'share','marker')
     install_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
 
