@@ -179,7 +179,7 @@ class Display():
         num_rows += number_of_rows(prompt_line)
         matches = state.get_matches()
         if matches:
-            # display lines from Max(0,selected_command_index - 10) to Max(10,SelectedCommandIndex)
+            # display commands from Max(0,selected_command_index - 10 +1 ) to Max(10,SelectedCommandIndex + 1)
             selected_command_index = matches.index(state.get_selected_match())
             matches_to_display = matches[max(0, selected_command_index - 10 + 1):max(10, selected_command_index + 1)]
             for index, m in enumerate(matches_to_display):
