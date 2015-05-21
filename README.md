@@ -11,7 +11,7 @@ It offers the following features:
 Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 - `Ctrl-k`: Mark the current written string in the command line.
 - `Ctrl-Space`: search for commands that match the current written string.
-- `Ctrl-t`: place the cursor at the next placeholder, identified by the '%' character
+- `Ctrl-t`: place the cursor at the next placeholder, identified by the '%%' word
 - `marker remove`: remove a bookmark
 
 [![ScreenShot](https://cloud.githubusercontent.com/assets/2557967/7701147/3078969c-fe1c-11e4-9837-a2e586fbe07e.png)](http://youtu.be/JuBY9sbzjdU)
