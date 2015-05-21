@@ -98,9 +98,15 @@ def main():
         generate_readline_rc(user_dir, install_dir))   
     # only overwrite the file if it doesn't already exist(can useful when updating the tool)
     if not os.path.isfile(os.path.join(user_dir, 'marks.txt')):
+        # shipped with samples
+        sample_commands = ('tar cvzf %%.tar.gz %%##tar ' +
+            '\ntar xvzf %%.tar.gz %%##untar '+
+            '\ngrep -irn "%%" *##grep recursive'+
+            '\nawk "!(\$0 in array) { array[\$0]; print }" %%##remove duplicates'+
+            '\ndu -ch  | grep -P "total\$"##directory size')
         write_to_file(os.path.join(
             user_dir, 'marks.txt'),
-            "") 
+            sample_commands) 
     
     show_post_installation_message(user_dir)
     print("---------------------------------------")
