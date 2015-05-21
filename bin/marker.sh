@@ -47,7 +47,8 @@ if [[ -n "$ZSH_VERSION" ]]; then
     zle -N _marker-set
     bindkey '\etmp2' _marker-set 
     # C-space is set to execute two keyboard shortcuts, to run statements in two commandline prompts(execute->Enter->execute)
-    bindkey -s $marker_key_get '\etmp1\etmp2'
+    # automatically place the cursor at the first placeholder if it does exist 
+    bindkey -s $marker_key_get '\etmp1\etmp2'$marker_key_next_placeholder
 
     function _mkm {
         export TMP_MARKER="$BUFFER"
