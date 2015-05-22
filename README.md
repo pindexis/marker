@@ -1,5 +1,5 @@
 # marker
-![command-template](https://cloud.githubusercontent.com/assets/2557967/7770230/184f4d8a-0084-11e5-8e03-2402cbe634aa.gif)
+
 Do you heavily use Ctrl+R(search through history) to search for commands that you frequently use?  
 Marker lets you easily bookmark these commands and quickly retrieve them without going through Shell Aliases/Functions/Multiple Ctrl-R...  
 It offers the following features:
@@ -7,6 +7,8 @@ It offers the following features:
 - Fuzzy matching (rather than Ctrl-R exact match).
 - Aliases: `listen port` can magically be transformed into `sudo netstat -nlp | grep`.
 - Command templates: Marker lets you bookmark commands with place-holders and easily place the cursor at those place-holders.
+
+![command-template](https://cloud.githubusercontent.com/assets/2557967/7770230/184f4d8a-0084-11e5-8e03-2402cbe634aa.gif)
 
 ## Usage
 Simplicity is key, Three keyboard shortcuts let you take most of Marker:
