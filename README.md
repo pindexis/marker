@@ -26,10 +26,9 @@ Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 - Linux Or OSX
 
 ## Installation
-- `cd /usr/local` or wherever you want to install Marker
-- `git clone git@github.com:pindexis/marker.git`
-- `cd marker`
-- `./install.py`
+- `mkdir ~/.marker && cd ~/.marker` or go wherever you want to install Marker
+- `git clone git@github.com:pindexis/marker.git .`
+- `./install.py` and follow instructions
 
 ## How It Works:
   Marker is a composed of shell script, and a python tool:  
