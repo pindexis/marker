@@ -27,7 +27,7 @@ Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 
 ## Installation
 - `mkdir ~/.marker && cd ~/.marker` or go wherever you want to install Marker
-- `git clone git@github.com:pindexis/marker.git .`
+- `git clone https://github.com/pindexis/marker .`
 - `./install.py` and follow instructions
 
 ## How It Works:
