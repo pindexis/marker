@@ -7,19 +7,25 @@ from . import keys
 from . import ui
 from . import readchar
 
+from sys import version_info
+if version_info[0] == 2:
+    keyboard_input = raw_input
+else:
+    keyboard_input = input
+
 
 def mark_command(command, alias):
     ''' Adding a new Mark '''
     command = command.strip()
     if not command:
-        command = raw_input("Command:")
+        command = keyboard_input("Command:")
     else:
         print("command: %s" % command)
     if not command:
         print ("command field is required")
         return
     if not alias:
-        alias = raw_input("Alias?:")
+        alias = keyboard_input("Alias?:")
     else:
         print("alias: %s" % alias)
     if '##' in command or '##' in alias:
