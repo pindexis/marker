@@ -32,12 +32,6 @@ def generate_marker_sh(user_dir, install_dir):
             )
 
 
-def generate_readline_rc(user_dir, install_dir):
-    return ("$include %s/bin/marker.rc" % install_dir +
-            "\n$include %s/tmp_readline.rc" % user_dir
-            )
-
-
 def show_post_installation_message(user_dir):
     print("Marker installed successfully")
     print("\n")
@@ -51,11 +45,6 @@ def show_post_installation_message(user_dir):
 
     print("\nPlease add he following line has to to your ~/%s:" % rcfile)
     print('\n' + source_msg)
-
-    if get_shell() == 'bash':
-        readline_source_msg = '$include %s/marker.rc' % user_dir
-        print("\nAdditionnaly, add the following line to your ~/.inputrc (create the file if it does not exist)")
-        print('\n' + readline_source_msg)
     print('\n')
     # do_it_for_me = None
     # while(True):
@@ -93,9 +82,6 @@ def main():
     write_to_file(
         os.path.join(user_dir, 'marker.sh'),
         generate_marker_sh(user_dir, install_dir))
-    write_to_file(
-        os.path.join(user_dir, 'marker.rc'),
-        generate_readline_rc(user_dir, install_dir))   
     # only overwrite the file if it doesn't already exist(can useful when updating the tool)
     if not os.path.isfile(os.path.join(user_dir, 'marks.txt')):
         # shipped with samples
