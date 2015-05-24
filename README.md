@@ -21,7 +21,7 @@ Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 
 ## Requirements
 - python (2.7+ or 3.0+)
-- Bash or Zshell.
+- Bash-4.0+ or Zshell.
 - Linux Or OSX
 
 ## Installation

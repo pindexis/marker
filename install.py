@@ -6,6 +6,8 @@ import platform
 import shutil
 import sys
 import marker
+import subprocess
+import re
 
 SUPPORTED_SHELLS = ('bash', 'zsh')
 
@@ -54,7 +56,21 @@ def verify_requirements():
     if not get_shell() in SUPPORTED_SHELLS:
         print("Your SHELL %s is not supported" % get_shell(), file=sys.stderr)
         sys.exit(1)
-    
+    if get_shell() == "bash":
+        version_text = subprocess.Popen("bash --version | head -1", shell=True, stdout=subprocess.PIPE).stdout.read()
+        m = re.search('version (\d)', version_text)
+        if m:
+            version = int(m.group(1))
+            print(version_text)
+            if version < 4:
+                print("your Bash version is too old: %s" % version_text)
+                print("Marker requires Bash 4.0+")
+                sys.exit(1)
+        else:
+            print("Couldn't extract bash version, please report the issue")
+            print("Installation failed")
+            sys.exit(1)
+
     if sys.version_info[0] == 2 and sys.version_info[1] < 6:
         print("Python v2.6+ or v3.0+ required.", file=sys.stderr)
         sys.exit(1)
