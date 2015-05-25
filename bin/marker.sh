@@ -26,7 +26,7 @@ if [[ -n "$ZSH_VERSION" ]]; then
     # Due to stdin related problems when running interactive commands(require user input) from a widget(from inside shell functions)
     # I've adopted the approach of running interactive commands like normal shell commands, by setting the commandline content to marker command, then simulating the press of Enter
     # I couldn't get that working using a single function(run statements in two different command-line prompts)
-    # That's why I'm using the pattern of defining two functions(ie _marker_get and _marker_set), bind them to two unimportant shortcuts
+    # That's why I'm using the pattern of defining two functions(ie _marker_get_1 and _marker_get_2), bind them to two unimportant shortcuts
     # Then define a third binding using the main shortcut(ie C-space) where I trigger the created shortcuts
     # This will make it possible to control more than one single command-line prompt
     function _marker_get_1 {
