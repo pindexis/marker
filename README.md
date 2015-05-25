@@ -7,6 +7,7 @@ It offers the following features:
 - Fuzzy matching (rather than Ctrl-R exact match).
 - Aliases: `listen port` can magically be transformed into `sudo netstat -nlp | grep`.
 - Command templates: Marker lets you bookmark commands with place-holders and easily place the cursor at those place-holders.
+- Portability acroos supported shells: you can use bookmarked commands in both Bash and Zshell
 
 ![command-template](https://cloud.githubusercontent.com/assets/2557967/7770230/184f4d8a-0084-11e5-8e03-2402cbe634aa.gif)
 
