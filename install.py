@@ -49,7 +49,7 @@ def show_post_installation_message(config_dir_rel):
     print("\nPlease add he following line has to to your ~/%s:" % rcfile)
     print('\n' + source_msg)
     print('\n')
-    print("\nPlease restart the terminal after doing that.")
+    print("\nPlease restart the terminal after doing that(or re-source your *.rc).")
 
 
 def verify_requirements():
@@ -91,7 +91,7 @@ def main():
 
     # only overwrite the data file if it doesn't already exist(can useful when updating the tool)
     if not os.path.isfile(os.path.join(config_dir_abosulte_path, 'marks.txt')):
-        # shipped with samples
+        # Batteries included
         sample_commands = ('tar cvzf %%.tar.gz %%##tar ' +
             '\ntar xvzf %%.tar.gz %%##untar '+
             '\ngrep -irn "%%" *##grep recursive'+

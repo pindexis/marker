@@ -29,6 +29,9 @@ Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 - `git clone https://github.com/pindexis/marker .`
 - `./install.py` and follow instructions
 
+#####Note: 
+In OSX, it seems like Bash 3.x is the default shell which is not supported. you have to update it to 4.x or change your shell to zshell in order to use Marker.
+
 ## How It Works:
   Marker is a composed of shell script, and a python tool:  
   The shell code acts as a wrapper around that python tool, it's responsible for managing the user input in the command-line(adding/removing text, moving the cursor around etc...).  
