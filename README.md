@@ -29,7 +29,7 @@ In OSX, it seems like Bash 3.x is the default shell which is not supported. you 
 ## Installation
 - `mkdir ~/.marker && cd ~/.marker` or go wherever you want to install Marker
 - `git clone https://github.com/pindexis/marker .`
-- `./install.py` and follow instructions
+- `./install.py`
 
 ## How It Works:
   Marker is a composed of shell script, and a python tool:  
