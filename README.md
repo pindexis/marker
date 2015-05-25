@@ -14,7 +14,7 @@ It offers the following features:
 ## Usage
 Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 - `Ctrl-k`: Mark the current written string in the command line.
-- `Ctrl-g`: search for commands that match the current written string.
+- `Ctrl-space`: search for commands that match the current written string.
 - `Ctrl-t`: place the cursor at the next placeholder, identified by the '%%' word
 - `marker remove`: remove a bookmark
 
@@ -37,7 +37,7 @@ In OSX, it seems like Bash 3.x is the default shell which is not supported. you 
   The shell code acts as a wrapper around that python tool, it's responsible for managing the user input in the command-line(adding/removing text, moving the cursor around etc...).  
   The python utility in the other hand(called marker) contains the app logic. It manages the bookmarked data, do the matching, and present a UI selector if it's called in interactive mode. It doesn't depend on the Shell script, so it can be called separately as a command line utility(`marker --help`)
   
-  The communication between the shell script and the python commandline tool is done via a temporary file. For example, here's how things work when Ctrl+g is pressed:
+  The communication between the shell script and the python commandline tool is done via a temporary file. For example, here's how things work when Ctrl+space is pressed:
   
   - A shell code executes, calling 'marker' tool in non-interactive mode(without displaying UI selector) passing as argument the written string in the commandline and a file path where the matched commands will be stored. The python tool will then determine the commands that match the given string and stores them in the file that was passed as an argument.
   - The shell script will then parse that file. if there is only one command there, It will replace the current string written on the command-line by that command. If there is more than one command returned, It calls the python tool again in Interactive mode, where a UI selector will be shown that allows the user to select the desired command. The user selected command will be stored in the file passed as an argument and displayed in the command-line. (The reason of this approach is to avoid creating a new command-line prompt when there is only one match, but rather work on current prompt).

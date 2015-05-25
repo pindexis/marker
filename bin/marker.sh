@@ -12,7 +12,7 @@ function markerg(){
 
 # default key bindings
 marker_key_mark="${MARKER_KEY_MARK:-\C-k}"
-marker_key_get="${MARKER_KEY_GET:-\C-g}"
+marker_key_get="${MARKER_KEY_GET:-\C-@}"
 marker_key_next_placeholder="${MARKER_KEY_NEXT_PLACEHOLDER:-\C-t}"
 
 if [[ -n "$ZSH_VERSION" ]]; then
@@ -27,7 +27,7 @@ if [[ -n "$ZSH_VERSION" ]]; then
     # I've adopted the approach of running interactive commands like normal shell commands, by setting the commandline content to marker command, then simulating the press of Enter
     # I couldn't get that working using a single function(run statements in two different command-line prompts)
     # That's why I'm using the pattern of defining two functions(ie _marker_get and _marker_set), bind them to two unimportant shortcuts
-    # Then define a third binding using the main shortcut(ie C-g) where I trigger the created shortcuts
+    # Then define a third binding using the main shortcut(ie C-space) where I trigger the created shortcuts
     # This will make it possible to control more than one single command-line prompt
     function _marker_get_1 {
         line="$BUFFER"
