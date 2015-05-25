@@ -95,7 +95,7 @@ def main():
         sample_commands = ('tar cvzf %%.tar.gz %%##tar ' +
             '\ntar xvzf %%.tar.gz %%##untar '+
             '\ngrep -irn "%%" *##grep recursive'+
-            '\nawk '!($0 in array) { array[$0]; print }' %%##remove duplicates'+
+            '\nawk \'!($0 in array) { array[$0]; print }\' %%##remove duplicates'+
             '\ndu -ch  | grep -E "total\$"##directory size')
         write_to_file(os.path.join(
             config_dir_abosulte_path, 'marks.txt'),
