@@ -63,12 +63,12 @@ def verify_requirements():
             version = int(m.group(1))
             print(version_text)
             if version < 4:
-                print("your Bash version is too old: %s" % version_text)
-                print("Marker requires Bash 4.0+")
+                print("your Bash version is too old: %s" % version_text, file=sys.stderr)
+                print("Marker requires Bash 4.0+", file=sys.stderr)
                 sys.exit(1)
         else:
-            print("Couldn't extract bash version, please report the issue")
-            print("Installation failed")
+            print("Couldn't extract bash version, please report the issue", file=sys.stderr)
+            print("Installation failed", file=sys.stderr)
             sys.exit(1)
 
     if sys.version_info[0] == 2 and sys.version_info[1] < 6:
@@ -95,7 +95,7 @@ def main():
         sample_commands = ('tar cvzf %%.tar.gz %%##tar ' +
             '\ntar xvzf %%.tar.gz %%##untar '+
             '\ngrep -irn "%%" *##grep recursive'+
-            '\nawk "!(\$0 in array) { array[\$0]; print }" %%##remove duplicates'+
+            '\nawk '!($0 in array) { array[$0]; print }' %%##remove duplicates'+
             '\ndu -ch  | grep -E "total\$"##directory size')
         write_to_file(os.path.join(
             config_dir_abosulte_path, 'marks.txt'),
