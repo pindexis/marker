@@ -22,11 +22,11 @@ Simplicity is key, Three keyboard shortcuts let you take most of Marker:
 
 ## Requirements
 - python (2.7+ or 3.0+)
-- Bash-4.0+ or Zshell.
+- Bash-4.3+ or Zshell.
 - Linux Or OSX
 
 #####Note:
-In OSX, it seems like Bash 3.x is the default shell which is not supported. you have to [update your Bash to 4.x](http://apple.stackexchange.com/a/24635) or [change your shell to zshell](http://stackoverflow.com/a/1822126/1117720) in order to use Marker.
+In OSX, it seems like Bash 3.x is the default shell which is not supported. you have to [update your Bash to 4.3+](http://apple.stackexchange.com/a/24635) or [change your shell to zshell](http://stackoverflow.com/a/1822126/1117720) in order to use Marker.
 ## Installation
 - `mkdir ~/.marker && cd ~/.marker` or go wherever you want to install Marker
 - `git clone https://github.com/pindexis/marker .`
