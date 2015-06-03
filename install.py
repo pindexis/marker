@@ -58,13 +58,14 @@ def verify_requirements():
         sys.exit(1)
     if get_shell() == "bash":
         version_text = subprocess.Popen("bash --version | head -1", shell=True, stdout=subprocess.PIPE).stdout.read()
-        m = re.search('version (\d)', version_text)
+        m = re.search('(\d).(\d)', version_text)
         if m:
-            version = int(m.group(1))
+            major_version = int(m.group(1))
+            minor_version = int(m.group(2))
             print(version_text)
-            if version < 4:
+            if major_version < 4 or (major_version == 4 and minor_version < 3):
                 print("your Bash version is too old: %s" % version_text, file=sys.stderr)
-                print("Marker requires Bash 4.0+", file=sys.stderr)
+                print("Marker requires Bash 4.3+", file=sys.stderr)
                 sys.exit(1)
         else:
             print("Couldn't extract bash version, please report the issue", file=sys.stderr)
