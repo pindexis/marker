@@ -5,7 +5,7 @@ Marker lets you easily bookmark these commands and quickly retrieve them without
 It offers the following features:
 - A UI selector that lets you easily select the desired command if more than one command is matched.
 - Fuzzy matching (rather than Ctrl-R exact match).
-- Aliases: `listen port` can magically be transformed into `sudo netstat -nlp | grep`.
+- Aliases: `listen port` can be expanded into `sudo netstat -nlp | grep`.
 - Command templates: Marker lets you bookmark commands with place-holders and easily place the cursor at those place-holders.
 - Portability across supported shells: you can use bookmarked commands in both Bash and Zshell.
 
