@@ -53,8 +53,8 @@ if [[ -n "$ZSH_VERSION" ]]; then
     function _marker_mark_1 {
         export TMP_MARKER="$BUFFER"
         # Escape single quotes (keeping the string written by the user intact)
-        TMP_MARKER=$(echo "$TMP_MARKER" | sed "s/'/'\"'\"'/g")
-        BUFFER=" marker mark --command='${TMP_MARKER}'"
+        ESCAPED_COMMAND=$(echo "$TMP_MARKER" | sed "s/'/'\"'\"'/g")
+        BUFFER=" marker mark --command='${ESCAPED_COMMAND}'"
         zle accept-line
     }
     # Set the user written string back in the command-line
