@@ -5,7 +5,6 @@ import fcntl
 import os
 from . import keys
 
-
 def get_symbol():
     ''' Read a symbol, which can be a single byte character or a multibyte string'''
     ch = read_char()
@@ -16,7 +15,7 @@ def get_symbol():
         if ch == '':
             # ESC key pressed
             return keys.ESC
-        elif ch != '[':
+        elif ch != 'O' and ch != '[':
             return ord(ch)
         else:
             ch = read_char_no_blocking()
@@ -36,7 +35,7 @@ def read_char():
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
     try:
-        tty.setraw(fd)
+        tty.setraw(fd, termios.TCSADRAIN)
         ch = sys.stdin.read(1)
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
@@ -49,7 +48,7 @@ def read_char_no_blocking():
     old_settings = termios.tcgetattr(fd)
     old_flags = fcntl.fcntl(fd, fcntl.F_GETFL)
     try:
-        tty.setraw(fd)
+        tty.setraw(fd, termios.TCSADRAIN)
         fcntl.fcntl(fd, fcntl.F_SETFL, old_flags | os.O_NONBLOCK)
         return sys.stdin.read(1)
     except IOError as e:
