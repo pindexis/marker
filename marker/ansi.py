@@ -6,6 +6,7 @@ ERASE_SCREEN = "\x1b[J"
 ERASE_LINE = "\x1b[2K"
 FOREGROUND_BLACK = "\x1b[30m"
 BACKGROUND_WHITE = "\x1b[47m"
+FOREGROUND_GREY = "\x1b[32;1m"
 
 def _CURSOR_COLUMN(pos):
     return "\x1b["+str(pos)+"G"
@@ -31,6 +32,12 @@ def bold_text(text):
                 CLEAR_FORMATTING + BOLD)+
             CLEAR_FORMATTING)
 
+def grey_text(text):
+    return  (FOREGROUND_GREY + 
+            text.replace(
+                CLEAR_FORMATTING,
+                CLEAR_FORMATTING + FOREGROUND_GREY)+
+            CLEAR_FORMATTING)
 
 def move_cursor_line_beggining():
     sys.stdout.write(_CURSOR_COLUMN(0))

@@ -17,14 +17,15 @@ def parse_arguments():
 
     parser_get = subparsers.add_parser("get", help="get marker commands that match a given search string")
     parser_get.add_argument("--search", type=str, help="Search string")  
-    parser_get.add_argument("--non-interactive", dest="non_interactive", help="do not display", action="store_true")
     parser_get.add_argument("--stdout", type=str, help="Where to store result(defaut to stdout)")
-    parser_get.set_defaults(non_interactive=False)
     parser_get.set_defaults(func=cmd_get)
 
     parser_get = subparsers.add_parser("remove", help="remove a marked command given an optionnal prefix")
     parser_get.add_argument("--search", type=str, help="Search string")
     parser_get.set_defaults(func=cmd_remove)
+
+    parser_update = subparsers.add_parser("update", help="update tldr cache")
+    parser_update.set_defaults(func=cmd_update)
 
     args = parser.parse_args()
     return args.func(args)
@@ -35,16 +36,7 @@ def cmd_mark(args):
 
 
 def cmd_get(args):
-    if not args.non_interactive:
-        output = core.get_selected_command_or_input(args.search)
-    else:
-        commands = core.get_matched_commands(args.search)
-        if not commands:
-            output = ""
-        elif len(commands)>1 :
-            output = "\n".join(commands)
-        else:
-            output = commands[0]
+    output = core.get_selected_command_or_input(args.search)
     if args.stdout:
         with open(args.stdout,'w+') as save_file:
             # the newline character is to make sure 'wc -l' executes correctly
@@ -58,6 +50,8 @@ def cmd_get(args):
 def cmd_remove(args):
     core.remove_command(args.search)
 
+def cmd_update():
+    core.update_cache()
 
 def marker_sourced():
     if os.getenv('MARKER_DATA_HOME'):

@@ -1,0 +1,183 @@
+apt-cache policy {{package}}##Show whether a package is installed and up to date
+apt-cache search {{query}}##Search for a package in your current sources
+apt-cache show {{package}}##Show information about a package
+apt-get dist-upgrade##Upgrade installed packages (like "upgrade"), but remove obsolete packages and install additional packages to meet new dependencies
+apt-get install {{package}}##install a new package
+apt-get remove {{package}}##remove a package
+apt-get update##Synchronize list of packages and versions available. This should be run first, before running subsequent apt-get commands.
+apt-get upgrade##Upgrade installed packages to newest available versions
+aptitude full-upgrade##Upgrade installed packages (like `aptitude upgrade`) including removing obsolete packages and installing additional packages to meet new package dependencies.
+aptitude install {{package}}##install a new package
+aptitude remove {{package}}##remove a package
+aptitude search {{package}}##search for a package
+aptitude update##Synchronize list of packages and versions available. This should be run first, before running subsequent aptitude commands.
+aptitude upgrade##Upgrade installed packages to newest available versions
+base64 -d {{filename}}##Decode a file
+base64 {{filename}}##Encode a file
+dd if=/dev/urandom of={{random_file}} bs=100 count=1##Generating a file of 100 random bytes by using kernel random driver
+dd if=/dev/zero of={{file_1GB}} bs=1024 count=1000000##Benchmark the write performance of a disk
+dd if=/dev/{{source_drive}} of=/dev/{{dest_drive}} bs=4M conv=noerror##Clone a drive to another drive with 4MB block and ignore error
+dd if={{file.iso}} of=/dev/{{usb_drive}}##Make a bootable usb drive from an isohybrid file (such like archlinux-xxx.iso)
+dnf -y install {{package}}##Install a new package and assume yes to all questions
+dnf install {{package}}##Install a new package
+dnf remove {{package}}##Remove a package
+dnf update##Synchronize list of packages and versions available. This should be run first, before running subsequent dnf commands.
+dnf upgrade##Upgrade installed packages to newest available versions
+dpkg -L {{package_name}}##list package contents
+dpkg -i {{/path/to/file}}##install a package
+dpkg -l {{pattern}}##list installed packages
+dpkg -r {{package_name}}##remove a package
+du --max-depth=N##list the KB sizes of directories for N levels below the specified directory
+du -ah {{directory}}##get recursively, individual file/folder sizes in human readable form
+du -k {{file/directory}}##list file sizes of a directory and any subdirectories in KB
+du -sh {{file/directory}}##get a sum of the total size of a file/folder in human readable units
+echo "{{message}}" | wall##send a message
+emerge --resume --skipfirst##resume a failed updated, skipping the failing package
+emerge --sync##synchronize all packages
+emerge -Cav {{package-name}}##remove a package, with confirmation
+emerge -S {{keyword}}##search the package database for a keyword
+emerge -av {{package-name}}##install a new package, with confirmation
+emerge -avc##remove orphaned packages (that were installed only as dependencies)
+emerge -uDNav @world##update all packages, including dependencies
+findmnt -t {{ext4}}##Find filesystems in specific type
+findmnt LABEL={{BigStorage}}##Find filesystems with specific label
+findmnt {{/dev/sdb1}}##Search for a device
+findmnt {{/}}##Search for a mountpoint
+findmnt##List all mounted filesystems
+firewall-cmd --get-active-zones##View the available firewall zones
+firewall-cmd --list-all##View the rules which are currently applied
+firewall-cmd --permanent --zone={{public}} --add-service={{https}}##Permanently open the port for a service in the specified zone (like port `443` when in the `public` zone)
+firewall-cmd --permanent --zone={{public}} --remove-service={{http}}##Permanently close the port for a service in the specified zone (like port `80` when in the `public` zone)
+firewall-cmd --reload##Reload firewalld to force rule changes to take effect
+free -h##Display memory in human readable units
+free -s {{X}}##Continuous monitor memory (refresh every X seconds)
+free {{-b/-k/-m/-g}}##Display memory in Bytes/KB/MB/GB
+free##Display system memory
+head -c -{{size in kilobytes}} {{filename}}##Output everything but the last few bytes of a file
+head -c {{size in kilobytes}} {{filename}}##Output the first few bytes of a file
+head -n -{{count of lines}} {{filename}}##Output everything but the last few lines of a file
+head -n {{count of lines}} {{filename}}##Output the first few lines of a file
+hostname --fqdn##Show the FQDN (Fully Qualified Domain Name)
+hostname -I##Show all network addresses of the host
+hostname -i##Show the network address of the host name
+hostname {{new_hostname}}##Set current host name
+hostname##Show current host name
+iostat -Nh##Display disk statistics with disk names (including LVM) in human readable format
+iostat -c##Display CPU statistics
+iostat -h##Display disk statistics with disk IDs in human readable format
+iostat -xN##Display extended disk statistics with disk names
+ip a##List interfaces with detailed info
+ip addr add/del {{ip}}/{{mask}} dev {{interface}}##Add/Delete an ip address to an interface
+ip link set {{interface}} up/down##Make an interface up/down
+ip r##Display the routing table
+ip route add default via {{ip}} dev {{interface}}##Add an default route
+journalctl -b -1##Show all messages from last boot
+journalctl -b##Show all messages from this boot
+journalctl -f##Follow new messages (like `tail -f` for traditional syslog)
+journalctl -u {{unit}}##Show all messages by a specific unit
+journalctl _PID={{pid}}##Show all messages by a specific process
+journalctl {{/path/to/executable}}##Show all messages by a specific executable
+locate {{pattern}}##Look for pattern in the database. Note: the database is recomputed periodically (usually weekly or daily).
+lsb_release -a##Print all available information
+lsb_release -d##Print a description (usually the full name) of the operating system
+lsb_release -i -s##Print only the operating system name (ID), suppressing the field name
+lsb_release -rcs##Print the release number and codename of the distribution, suppressing the field names
+md5sum -c {{filename.md5}}##Read a file of MD5SUMs and verify all files have matching checksums
+md5sum {{directory/\*}}##Calculate the MD5 checksum for file(s) or files in a directory, one checksum per file
+md5sum {{filename1}} {{filename2}}##Calculate the MD5 checksum for file(s) or files in a directory, one checksum per file
+md5sum {{filename1}}##Calculate the MD5 checksum for file(s) or files in a directory, one checksum per file
+mdadm --create {{/path/to/raid_device_file}} --level {{ raid level }} --raid-devices {{ number of disks}} {{/path/to/disk_device_file}}##create array
+mdadm -D {{/path/to/raid_device_file}}##show RAID info
+mdadm -S {{/path/to/raid_device_file}}##stop array
+mdadm {{/path/to/raid_device_file}} -a {{/path/to/disk_device_file}}##add disk to array
+mdadm {{/path/to/raid_device_file}} -f {{/path/to/disk_device_file}}##mark disk as failed
+mdadm {{/path/to/raid_device_file}} -r {{/path/to/disk_device_file}}##remove disk
+netstat -a##List all ports
+netstat -c##List information continuously
+netstat -l##List all listening ports
+netstat -p##Display PID and program names
+netstat -t##List listening TCP ports
+pacman -Q##list installed packages and versions
+pacman -Qe##list only the explicitly installed packages and versions
+pacman -Rs package-name##remove a package and its dependencies
+pacman -S package-name##install a new package
+pacman -Ss icon theme##search the package database for a keyword
+pacman -Syyu##synchronize and update all packages
+sha1sum -c {{filename.sha1}}##Read a file of SHA1 sums and verify all files have matching checksums
+sha1sum {{directory/\*}}##Calculate the SHA1 checksum for file(s) or files in a directory, one checksum per file
+sha1sum {{filename1}} {{filename2}}##Calculate the SHA1 checksum for file(s) or files in a directory, one checksum per file
+sha1sum {{filename1}}##Calculate the SHA1 checksum for file(s) or files in a directory, one checksum per file
+sha224sum -c {{filename.sha224}}##Read a file of SHA224 sums and verify all files have matching checksums
+sha224sum {{directory/\*}}##Calculate the SHA224 checksum for file(s) or files in a directory, one checksum per file
+sha224sum {{filename1}} {{filename2}}##Calculate the SHA224 checksum for file(s) or files in a directory, one checksum per file
+sha224sum {{filename1}}##Calculate the SHA224 checksum for file(s) or files in a directory, one checksum per file
+sha256sum -c {{filename.sha256}}##Read a file of SHA256 sums and verify all files have matching checksums
+sha256sum {{directory/\*}}##Calculate the SHA256 checksum for file(s) or files in a directory, one checksum per file
+sha256sum {{filename1}} {{filename2}}##Calculate the SHA256 checksum for file(s) or files in a directory, one checksum per file
+sha256sum {{filename1}}##Calculate the SHA256 checksum for file(s) or files in a directory, one checksum per file
+sha384sum -c {{filename.sha384}}##Read a file of SHA384 sums and verify all files have matching checksums
+sha384sum {{directory/\*}}##Calculate the SHA384 checksum for file(s) or files in a directory, one checksum per file
+sha384sum {{filename1}} {{filename2}}##Calculate the SHA384 checksum for file(s) or files in a directory, one checksum per file
+sha384sum {{filename1}}##Calculate the SHA384 checksum for file(s) or files in a directory, one checksum per file
+sha512sum -c {{filename.sha512}}##Read a file of SHA512 sums and verify all files have matching checksums
+sha512sum {{directory/\*}}##Calculate the SHA512 checksum for file(s) or files in a directory, one checksum per file
+sha512sum {{filename1}} {{filename2}}##Calculate the SHA512 checksum for file(s) or files in a directory, one checksum per file
+sha512sum {{filename1}}##Calculate the SHA512 checksum for file(s) or files in a directory, one checksum per file
+shuf -i {{low}}-{{high}}##generate random numbers in range
+shuf -n {{n}} {{filename}}##only output the first n entries of the result
+shuf -o {{another_filename}} {{filename}}##write output to another file
+shuf {{filename}}##randomize the order of lines in a file and output the result
+shutdown -c##Cancel a pending shutdown/reboot operation
+shutdown -h 13:00##Shutdown at 1:00 pm (Uses 24h clock)
+shutdown -h now##Power off (halt) immediately
+shutdown -r +{{5}} &##Reboot in 5 minutes
+shutdown -r now##Reboot immediately
+ss -a {{-t/-u/-w/-x}}##Dump all TCP/UDP/RAW/UNIX sockets
+ss -p##Show process(es) that using socket
+ss -t 'dport >= :1024'##Filter sockets by address and/or port
+ss -t dst 1.2.3.4:80##Filter sockets by address and/or port
+ss -t state established '( dport = :ssh or sport = :ssh )'##Filter sockets by address and/or port
+ss -u src 127/8##Filter sockets by address and/or port
+ss -x "src /tmp/.X11-unix/*"##Filter sockets by address and/or port
+ss {{-4/-6}}##Only list IPv4 or IPv6 sockets
+ss {{state/exclude}} {{bucket/big/connected/synchronized/...}}##Filter TCP sockets by states, only/exclude
+strace -p {{pid}} -c##Count time, calls, and errors for each system call and report a summary on program exit.
+strace -p {{pid}} -e {{system call name}}##Trace a process and filter output by system call
+strace -p {{pid}}##Start tracing a specific process by its PID
+sudo deborphan | xargs sudo apt-get remove##example: list unneeded packages with deborphan and remove them with apt-get
+sudo updatedb##Recompute the database. You need to do it if you want to find recently added files.
+systemctl --failed##List failed units
+systemctl daemon-reload##Reload systemd, scanning for new or changed units
+systemctl enable/disable {{unit}}##Enable/Disable a unit to be started on bootup
+systemctl start/stop/restart {{unit}}##Start/Stop/Restart a service
+systemctl status {{unit}}##Show the status of a unit
+tcpflow -c -i {{eth0}} port {{80}}##Show all data on the given interface and port
+top -i##Start top ignoring any idle or zombie processes
+top -u {{user-name}}##Start top displaying only processes owned by given user
+top##Start top
+wall -t {{seconds}} {{file}}##send a message with timeout (default 300)
+wall {{file}}##send a message from a file
+watch -d {{df}}##monitor disk space and highlight the changes
+watch -n {{3}} "{{ps aux | grep node}}"##monitor "node" processes, refreshing every 3 seconds
+watch {{ls}}##monitor files in the current folder
+wpa_cli add_network {{number}}##add a network
+wpa_cli enable_network {{number}}##enable network
+wpa_cli save_config##save config
+wpa_cli scan##scan for available networks
+wpa_cli scan_results##scan for available networks
+wpa_cli set_network {{number}} psk {{passkey}}##configure the network, e.g. set SSID and passkey
+wpa_cli set_network {{number}} ssid {{SSID}}##configure the network, e.g. set SSID and passkey
+xsetwacom list##List all the available wacom devices. The device name is in the first column.
+xsetwacom set "{{device name}}" MapToOutput {{screen}}##Set Wacom area to specific screen. Get name of the screen with `xrandr`.
+xsetwacom set "{{device name}}" Mode "{{Relative|Absolute}}"##Set mode to relative (like a mouse) or absolute (like a pen) mode.
+xsetwacom set "{{device name}}" Rotate {{none|half|cw|ccw}}##Rotate the input (useful for tablet-PC when rotating screen) by 0|90|180|270 degrees from "natural" rotation.
+xsetwacom set "{{device name}}" TabletPCButton "on"##Set button to only work when the tip of the pen is touching the tablet.
+yum -y install {{package}}##Install a new package and assume yes to all questions (also works with update, great for automated updates)
+yum install {{package}}##Install a new package
+yum remove {{package}}##Remove a package
+yum update##Synchronize list of packages and versions available. This should be run first, before running subsequent yum commands.
+yum upgrade##Upgrade installed packages to newest available versions
+{{arguments_null_terminated}} | xargs -0 {{command}}##handling whitespace in arguments
+{{arguments}} | xargs {{command}}##main use
+{{somecommand}} | base64 -d##Decode from stdin
+{{somecommand}} | base64##Encode from stdin
