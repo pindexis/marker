@@ -2,14 +2,14 @@ import os
 import ansi
 import re
 import math
-
+import sys
 '''Command line user interface'''
 
-MAX_ROWS=20
 def _get_terminal_columns():
     ''' get the number of terminal columns, used to determine spanned lines of a mark(required for cursor placement) '''
     rows, columns = os.popen('stty size', 'r').read().split()
-    return int(columns)
+    # the -1 is to keep the command prompt displayed
+    return int(rows) - 1, int(columns)
 
 def erase():
     ''' the commandline cursor is always at the first line (Marker prompt)
@@ -22,16 +22,19 @@ def refresh(state):
     ''' Redraw the output, this function will be triggered on every user interaction(key pressed)'''
     erase()
     lines, num_rows = _construct_output(state)
-    for line in lines:
+    for line in lines[:-1]:
         print(line)
+    # new new line for the last result
+    if(lines):
+        sys.stdout.write(lines[-1])
     # go up
-    ansi.move_cursor_previous_lines(num_rows)
+    ansi.move_cursor_previous_lines(num_rows - 1)
     # palce the cursor at the end of first line
     ansi.move_cursor_horizental(len(lines[0])+1)
     ansi.flush()
 
 def _construct_output(state):
-    columns = _get_terminal_columns()
+    rows, columns = _get_terminal_columns()
     ansi_escape = re.compile(r'\x1b[^m]*m')
     def number_of_rows(line):
         line = ansi_escape.sub('', line)
@@ -46,7 +49,16 @@ def _construct_output(state):
     if matches:
         # display commands from Max(0,selected_command_index - 10 +1 ) to Max(10,SelectedCommandIndex + 1)
         selected_command_index = matches.index(state.get_selected_match())
-        matches_to_display = matches[max(0, selected_command_index - 10 + 1):max(10, selected_command_index + 1)]
+        num_results = 10
+        matches_to_display = []
+        while (True):
+            filtered_matches = matches[max(0, selected_command_index - num_results + 1):max(num_results, selected_command_index + 1)]
+            filtered_matches_rows = sum(number_of_rows(' ' + str(el)) for el in filtered_matches)
+            if rows - num_rows < filtered_matches_rows:
+                num_results -= 1
+            else:
+                matches_to_display = filtered_matches
+                break
         for index, m in enumerate(matches_to_display):
             fm = ' '+str(m)
             num_rows += number_of_rows(fm)

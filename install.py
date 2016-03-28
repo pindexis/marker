@@ -90,18 +90,6 @@ def main():
         os.path.join(config_dir_abosulte_path, 'marker.sh'),
         generate_marker_sh(config_dir_abosulte_path, install_dir))
 
-    # only overwrite the data file if it doesn't already exist(can useful when updating the tool)
-    if not os.path.isfile(os.path.join(config_dir_abosulte_path, 'marks.txt')):
-        # Batteries included
-        sample_commands = ('tar cvzf %%.tar.gz %%##tar ' +
-            '\ntar xvzf %%.tar.gz %%##untar '+
-            '\ngrep -irn "%%" *##grep recursive'+
-            '\nawk \'!($0 in array) { array[$0]; print }\' %%##remove duplicates'+
-            '\ndu -ch  | grep -E "total\$"##directory size')
-        write_to_file(os.path.join(
-            config_dir_abosulte_path, 'marks.txt'),
-            sample_commands) 
-    
     show_post_installation_message(config_dir_relative_path)
     print("---------------------------------------")
 

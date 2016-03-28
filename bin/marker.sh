@@ -57,7 +57,7 @@ if [[ -n "$ZSH_VERSION" ]]; then
         col=$(get_col_position)
 
         # extract the word under cursor
-        word=$(echo "${BUFFER[0,offset]}" | grep -oE '\w+$')
+        word=$(echo "${BUFFER[0,offset]}" | grep -oE '(\w| )+$')
         place_cursor_next_line
         
         run_marker "$word"
@@ -87,14 +87,15 @@ if [[ -n "$ZSH_VERSION" ]]; then
         BUFFER="$TMP_MARKER"
         zle end-of-line
     }
-    # move the cursor the next placeholder '%%'
+    # move the cursor the next placeholder 
     function _move_cursor_to_next_placeholder {
         match=$(echo "$BUFFER" | grep -ohP '{{.+?}}' | head -n 1)
         if [[ ! -z "$match" ]]; then
+            len=${#match}
             match=$(echo "$match" | sed 's/"/\\"/g')
             placeholder_offset=$(echo "$BUFFER" | python -c 'import sys;keyboard_input = raw_input if sys.version_info[0] == 2 else input; print(keyboard_input().index("'$match'"))')
             CURSOR="$placeholder_offset"
-            BUFFER="${BUFFER[1,$placeholder_offset]}${BUFFER[$placeholder_offset+1+${#match},-1]}"
+            BUFFER="${BUFFER[1,$placeholder_offset]}${BUFFER[$placeholder_offset+1+$len,-1]}"
         fi        
     }
 
@@ -113,13 +114,13 @@ elif [[ -n "$BASH" ]]; then
 
     # move the cursor the next placeholder '%%'
     function _move_cursor_to_next_placeholder {
-        # awk command returns the first index of the place-holder in a string(offset 1 based)
         match=$(echo "$READLINE_LINE" | grep -ohP '{{.+?}}' | head -n 1)
         if [[ ! -z "$match" ]]; then
+            len=${#match}
             match=$(echo "$match" | sed 's/"/\\"/g')
             placeholder_offset=$(echo "$READLINE_LINE" | python -c 'import sys;keyboard_input = raw_input if sys.version_info[0] == 2 else input; print(keyboard_input().index("'$match'"))')
             READLINE_POINT="$placeholder_offset"
-            READLINE_LINE="${READLINE_LINE:0:$placeholder_offset}${READLINE_LINE:$placeholder_offset+${#match}}"
+            READLINE_LINE="${READLINE_LINE:0:$placeholder_offset}${READLINE_LINE:$placeholder_offset+$len}"
         fi        
     }
 
@@ -131,7 +132,7 @@ elif [[ -n "$BASH" ]]; then
         READLINE_POINT=0
         col=$(get_col_position)
 
-        word=$(echo "${READLINE_LINE:0:offset}" | grep -oE '\w+$')
+        word=$(echo "${READLINE_LINE:0:offset}" | grep -oE '(\w| )+$')
 
         run_marker "$word"
 

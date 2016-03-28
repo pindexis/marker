@@ -15,6 +15,10 @@ def _CURSOR_COLUMN(pos):
 def _CURSOR_PREVIOUS_LINES(number):
     return "\x1b["+str(number)+"F"
 
+def get_formattings(text):
+    if CLEAR_FORMATTING in text:
+        return get_formattings(text[text.index(CLEAR_FORMATTING)+len(CLEAR_FORMATTING):])
+    return ''.join([s for s in [BOLD, FOREGROUND_GREY, FOREGROUND_BLACK, BACKGROUND_WHITE] if s in text])
 
 def select_text(text):
     return  (FOREGROUND_BLACK +
@@ -22,7 +26,8 @@ def select_text(text):
             text.replace(
                 CLEAR_FORMATTING,
                 CLEAR_FORMATTING + FOREGROUND_BLACK + BACKGROUND_WHITE)+
-            CLEAR_FORMATTING)
+            CLEAR_FORMATTING +
+            get_formattings(text))
 
 
 def bold_text(text):
@@ -30,14 +35,17 @@ def bold_text(text):
             text.replace(
                 CLEAR_FORMATTING,
                 CLEAR_FORMATTING + BOLD)+
-            CLEAR_FORMATTING)
+            CLEAR_FORMATTING +
+            get_formattings(text))
 
 def grey_text(text):
     return  (FOREGROUND_GREY + 
             text.replace(
                 CLEAR_FORMATTING,
                 CLEAR_FORMATTING + FOREGROUND_GREY)+
-            CLEAR_FORMATTING)
+                CLEAR_FORMATTING +
+                get_formattings(text))
+
 
 def move_cursor_line_beggining():
     sys.stdout.write(_CURSOR_COLUMN(0))

@@ -7,18 +7,29 @@ from . import command
 from . import renderer
 from .filter import filter_commands
 
-from sys import version_info
+from sys import version_info, platform
 
 if version_info[0] == 2:
     keyboard_input = raw_input
 else:
     keyboard_input = input
 
-# not worth a class for now
-config = {
-    'user_marks_path':os.path.join(os.getenv('MARKER_DATA_HOME'), 'user_commands.txt'),
-    'tldr_marks_path':os.path.join(os.getenv('MARKER_DATA_HOME'), 'tldr_commands.txt')
-}
+def get_os():
+    if platform == 'Darwin':
+        return 'osx'
+    elif platform.startswith('linux'):
+        return 'linux'
+    else:
+        # throw is better
+        return 'unknown'
+
+def get_user_marks_path():
+    return os.path.join(os.getenv('MARKER_DATA_HOME'), 'user_commands.txt')
+def get_tldr_os_marks_path():
+    return os.path.join(os.getenv('MARKER_HOME'), 'tldr', get_os()+'.txt')
+def get_tldr_common_marks_path():
+    return os.path.join(os.getenv('MARKER_HOME'), 'tldr', 'common.txt')
+
 
 def mark_command(cmd_string, alias):
     ''' Adding a new Mark '''
@@ -39,15 +50,15 @@ def mark_command(cmd_string, alias):
         # ## isn't allowed since it's used as seperator
         print ("command can't contain ##(it's used as command alias seperator)")
         return        
-    commands = command.load(config['user_marks_path'])
+    commands = command.load(get_user_marks_path())
     command.add(commands, command.Command(cmd_string, alias))
-    command.save(commands, config['user_marks_path'])
+    command.save(commands, get_user_marks_path())
 
 def get_selected_command_or_input(search):
     ''' Display an interactive UI interface where the user can type and select commands
         this function returns the selected command if there is matches or the written characters in the prompt line if no matches are present
     '''
-    commands = command.load(config['user_marks_path']) + command.load(config['tldr_marks_path'])
+    commands = command.load(get_user_marks_path()) + command.load(get_tldr_os_marks_path()) + command.load(get_tldr_common_marks_path())
     state = State(commands, search)
     # draw the screen (prompt + matchd marks)
     renderer.refresh(state)
@@ -62,13 +73,13 @@ def get_selected_command_or_input(search):
 
 def remove_command(search):
     ''' Remove a command interactively '''
-    commands = command.load(config['user_marks_path'])
+    commands = command.load(get_user_marks_path())
     state = State(commands, search)
     renderer.refresh(state)
     selected_mark = read_line(state)
     if selected_mark:
         command.remove(commands, selected_mark)
-        command.save(commands, config['user_marks_path'])
+        command.save(commands, get_user_marks_path())
     # clear the screen
     renderer.erase()
     return selected_mark

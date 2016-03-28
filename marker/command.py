@@ -2,8 +2,11 @@ import ansi
 
 def load(filePath):
     lines = []
-    with open(filePath, 'r') as f:
-        lines = [Command.deserialize(l.strip('\n').strip('\r')) for l in f.readlines() if l]
+    try:
+        with open(filePath, 'r') as f:
+            lines = [Command.deserialize(l.strip('\n').strip('\r')) for l in f.readlines() if l]
+    except:
+        pass
     return lines
 
 def save(commands, filePath):
