@@ -57,15 +57,16 @@ if [[ -n "$ZSH_VERSION" ]]; then
         col=$(get_col_position)
 
         # extract the word under cursor
-        word=$(echo "${BUFFER[0,offset]}" | grep -oE '(\w| )+$')
+        word=$(echo "${BUFFER[0,offset]}" | grep -oE '[^\|]+$')
         place_cursor_next_line
         
         run_marker "$word"
         
         # append the completion path to the user buffer
         word_length=${#word}
+
         result_length=${#result}
-        BUFFER=${BUFFER[1,$((offset-word_length))]}${result}${BUFFER[$((offset+word_length)),-1]}
+        BUFFER=${BUFFER[1,$((offset-word_length))]}${result}${BUFFER[$((offset+word_length+1)),-1]}
         let "offset = offset - word_length + result_length"
 
         # reset the absolute and relative cursor position, note that it's necessary to get row position after marker is run, because it may be changed during marker execution

@@ -117,10 +117,10 @@ cd -##Go to the previously chosen directory
 cd ..##Go up to the parent of the current directory
 cd {{/path/to/directory}}##Go to the given directory
 cd##Go to home directory of current user
-chgrp --reference={{path/to/reference_file}} {{path/to/file}}##Change the owner of a file/folder to match a reference file
-chgrp -R {{group}} {{path/to/folder}}##Recursively change the owner of a folder and its contents
-chgrp -h {{user}} {{path/to/symlink}}##Change the owner of a symbolic link
-chgrp {{group}} {{path/to/file}}##Change the owner of a file/folder
+chgrp --reference={{path/to/reference_file}} {{path/to/file}}##Change the owner group of a file/folder to match a reference file
+chgrp -R {{group}} {{path/to/folder}}##Recursively change the owner group of a folder and its contents
+chgrp -h {{user}} {{path/to/symlink}}##Change the owner group of a symbolic link
+chgrp {{group}} {{path/to/file}}##Change the owner group of a file/folder
 chmod a+rx {{file}}##Give (a)ll users rights to read and execute
 chmod g-x {{file}}##Remove executable rights from the (g)roup
 chmod o=g {{file}}##Give (o)thers (not in the file owner's group) the same rights as the group
