@@ -6,7 +6,7 @@ ERASE_SCREEN = "\x1b[J"
 ERASE_LINE = "\x1b[2K"
 FOREGROUND_BLACK = "\x1b[30m"
 BACKGROUND_WHITE = "\x1b[47m"
-FOREGROUND_GREY = "\x1b[32;1m"
+FOREGROUND_GREY = "\x1b[34m"
 
 def _CURSOR_COLUMN(pos):
     return "\x1b["+str(pos)+"G"

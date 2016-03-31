@@ -1,21 +1,24 @@
-prctl -P {{PID}}##examine process limits and permissions in machine parseable format
-prctl -n process.max-file-descriptor {{PID}}##Get specific limit for a running process
-prctl {{PID}}##examine process limits and permissions
-prstat -c -n 5 -s cpu 1##Print out a list of top 5 cpu using processes every second.
-prstat -m##report microstate process accounting information
-prstat -s rss##examine all processes and reports statistics sorted by memory usage
-prstat -t##report total usage summary for each user
-prstat##examine all processes and reports statistics sorted by CPU usage
-svcadm clear {{service_name}}##clear a service from maintenance state and command it to start
-svcadm disable {{service_name}}##disable service
-svcadm enable {{service_name}}##enable a service in the service database
-svcadm refresh {{service_name}}##command service to re-read configuration files
-svcadm restart {{service_name}}##restart a running service
-svccfg export {{servicename}} > {{smf.xml}}##export service configurations to file
-svccfg import {{smf.xml}}##import/update service configurations from file.
-svccfg validate {{smf.xml}}##validate configuration file
-svcs -L apache##show location of service log file
-svcs -vx##list services that are not running
-svcs apache##list information about a service
-svcs##list all running services
-tail $(svcs -L apache)##display end of a service log file
+devfsadm -C -v -n##Dry-run - output what would be changed but make no modifications:
+devfsadm -C -v##Cleanup any dangling /dev links and scan for new device:
+devfsadm -c disk##Scan for new disks:
+prctl -P {{PID}}##Examine process limits and permissions in machine parseable format:
+prctl -n process.max-file-descriptor {{PID}}##Get specific limit for a running process:
+prctl {{PID}}##Examine process limits and permissions:
+prstat -c -n 5 -s cpu 1##Print out a list of top 5 cpu using processes every second:
+prstat -m##Report microstate process accounting information:
+prstat -s rss##Examine all processes and reports statistics sorted by memory usage:
+prstat -t##Report total usage summary for each user:
+prstat##Examine all processes and reports statistics sorted by CPU usage:
+svcadm clear {{service_name}}##Clear a service from maintenance state and command it to start:
+svcadm disable {{service_name}}##Disable service:
+svcadm enable {{service_name}}##Enable a service in the service database:
+svcadm refresh {{service_name}}##Command service to re-read configuration files:
+svcadm restart {{service_name}}##Restart a running service:
+svccfg export {{servicename}} > {{smf.xml}}##Export service configurations to file:
+svccfg import {{smf.xml}}##Import/update service configurations from file:
+svccfg validate {{smf.xml}}##Validate configuration file:
+svcs -L apache##Show location of service log file:
+svcs -vx##List services that are not running:
+svcs apache##List information about a service:
+svcs##List all running services:
+tail $(svcs -L apache)##Display end of a service log file:

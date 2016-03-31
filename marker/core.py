@@ -38,7 +38,7 @@ def mark_command(cmd_string, alias):
     if not cmd_string:
         cmd_string = keyboard_input("Command:")
     else:
-        print("command: %s" % command)
+        print("command: %s" % cmd_string)
     if not cmd_string:
         print ("command field is required")
         return

@@ -38,7 +38,7 @@ def _construct_output(state):
     ansi_escape = re.compile(r'\x1b[^m]*m')
     def number_of_rows(line):
         line = ansi_escape.sub('', line)
-        return int(math.ceil(float(len(line))/columns))
+        return int(math.ceil(float(len(line.decode('utf-8')))/columns))
     displayed_lines = []
     # Number of terminal rows spanned by the output, used to determine how many lines we need to go up(to place the cursor after the prompt) after displaying the output
     num_rows = 0

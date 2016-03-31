@@ -23,7 +23,7 @@ chattr +i {{path}}##Make a file or folder immutable to changes and deletion, eve
 chattr -R +i {{folder}}##Recursively make an entire folder and contents immutable:
 chattr -i {{path}}##Make a file or folder mutable:
 chroot {{/path/to/new/root}} {{command}}##Run command as new root directory:
-chroot −−userspec={{user:group}}##Specify user and group (ID or name) to use:
+chroot --userspec={{user:group}}##Specify user and group (ID or name) to use:
 compose {{filename}}##Compose action can be used to compose any existing file or new  on default mailcap edit tool:
 dd if=/dev/urandom of={{random_file}} bs=100 count=1##Generate a file of 100 random bytes by using kernel random driver:
 dd if=/dev/zero of={{file_1GB}} bs=1024 count=1000000##Benchmark the write performance of a disk:
@@ -119,11 +119,11 @@ lsb_release -a##Print all available information:
 lsb_release -d##Print a description (usually the full name) of the operating system:
 lsb_release -i -s##Print only the operating system name (ID), suppressing the field name:
 lsb_release -rcs##Print the release number and codename of the distribution, suppressing the field names:
-lsblk −a##Also list empty devices:
-lsblk −b##Print the SIZE column in bytes rather than in a human-readable format:
-lsblk −f##Output info about filesystems:
-lsblk −i##Use ASCII characters for tree formatting:
-lsblk −t##Output info about block-device topology:
+lsblk -a##Also list empty devices:
+lsblk -b##Print the SIZE column in bytes rather than in a human-readable format:
+lsblk -f##Output info about filesystems:
+lsblk -i##Use ASCII characters for tree formatting:
+lsblk -t##Output info about block-device topology:
 lsblk##List all storage devices in a tree-like format:
 ltrace -c {{/path/to/program}}##Count library calls. Print a handy summary at the bottom:
 ltrace -e malloc+free-@libc.so* {{/path/to/program}}##Trace calls to malloc and free, omit those done by libc:
