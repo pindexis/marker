@@ -2,7 +2,8 @@
 
 ![marker](https://cloud.githubusercontent.com/assets/2557967/14209204/d99db934-f81a-11e5-910c-9d34ac155d18.gif)
 
-Marker is a command palette for the terminal. It let you bookmark commands (or commands templates) and easily retreive them with the help of a real-time fuzzy matcher.
+Marker is a command palette for the terminal. It lets you bookmark commands (or commands templates) and easily retreive them with the help of a real-time fuzzy matcher.
+
 It's also shipped with many commands common usage(Thanks to [tldr](https://github.com/tldr-pages/tldr)).
   
 ## Features:
@@ -12,8 +13,8 @@ It's also shipped with many commands common usage(Thanks to [tldr](https://githu
 - Portability across supported shells: you can use bookmarked commands in both Bash and Zshell.
 
 ## Usage
-- `Ctrl-k`: Mark the current written string in the command line.
-- `Ctrl-space`: search for commands that match the current written string.
+- `Ctrl-space`: search for commands that match the current written string in the command-line.
+- `Ctrl-k` (or `marker add`): Mark the current written string in the command line.
 - `Ctrl-t`: place the cursor at the next placeholder, identified by '{{anything}}'
 - `marker remove`: remove a bookmark
 
