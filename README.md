@@ -1,6 +1,6 @@
 # Marker
 
-![marker](https://cloud.githubusercontent.com/assets/2557967/14208545/f1319046-f817-11e5-883b-343ecfb7b502.gif)
+![marker](https://cloud.githubusercontent.com/assets/2557967/14209204/d99db934-f81a-11e5-910c-9d34ac155d18.gif)
 
 Marker is a command palette for the terminal. It let you bookmark commands (or commands templates) and easily retreive them with the help of a real-time fuzzy matcher.
 It's also shipped with many commands common usage(Thanks to tldr).
