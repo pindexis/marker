@@ -1,11 +1,13 @@
 # Marker
 
+![marker](https://cloud.githubusercontent.com/assets/2557967/14208545/f1319046-f817-11e5-883b-343ecfb7b502.gif)
+
 Marker is a command palette for the terminal. It let you bookmark commands (or commands templates) and easily retreive them with the help of a real-time fuzzy matcher.
 It's also shipped with many commands common usage(Thanks to tldr).
   
 ## Features:
 - A UI selector that lets you easily select the desired command if more than one command is matched.
-- Fuzzy matching (through commands and their descriptions)_
+- Fuzzy matching (through commands and their descriptions).
 - Command template: You can bookmark commands with place-holders and place the cursor at those place-holders using a keyboard shortcut.
 - Portability across supported shells: you can use bookmarked commands in both Bash and Zshell.
 
