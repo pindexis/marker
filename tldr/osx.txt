@@ -1,0 +1,134 @@
+airport -I##Show current wireless status information
+airport -s##Scan for available wireless networks
+airport sniff {{1}}##Sniff wireless traffic on channel 1
+archey --macports##Show system information, using MacPorts instead of Homebrew
+archey --nocolor##Show system information without colored output
+archey --offline##Show system information without IP address check
+archey##Show system information
+base64 -D -i {{base64_file}}##Decode a file
+base64 -i {{plain_file}}##Encode a file
+brew install {{formula}}##Install formula
+brew list {{[text]}}##List installed formulae [with matching name]
+brew search {{text}}##Search formula
+brew switch {{formula}} {{version}}##Switch version of formula
+brew update##Update brew
+brew upgrade {{[formula]}}##Get latest version of installed formula (passing no formula updates all installed formulae)
+caffeinate -s {{command}}##Prevent mac from sleeping until a command completes
+caffeinate -u -t 3600##Prevent mac from sleeping for 1 hour (3600 seconds)
+dd if=/dev/urandom of={{random_file}} bs=100 count=1##Generate a file of 100 random bytes by using kernel random driver
+dd if=/dev/zero of={{file_1GB}} bs=1024 count=1000000##Benchmark the write performance of a disk
+dd if=/dev/{{source_drive}} of=/dev/{{dest_drive}} bs=4m conv=noerror##Clone a drive to another drive with 4MB block and ignore error
+dd if={{file.iso}} of=/dev/{{usb_drive}}##Make a bootable usb drive from an isohybrid file (such like archlinux-xxx.iso)
+defaults delete {{application}}##Delete all defaults of an application
+defaults read -app {{application}} {{option}}##Read default values for an application option
+defaults read {{application}} {{option}}##Read system defaults for an application option
+defaults write com.apple.Dock expose-animation-duration -float 0.1##Speed up Mission Control animations
+defaults write {{application}} {{option}} {{-type}} {{value}}##Write the default value of an application option
+diskutil eject {{/dev/disk1}}##Eject a CD/DVD (unmount first)
+diskutil list##List all currently available disks, partitions and mounted volumes
+diskutil repairVolume {{/dev/diskX}}##Repair the file system data structures of a volume
+diskutil unmountDisk {{/dev/diskX}}##Unmount a volume
+ditto -V {{path/to/source}} {{path/to/destination}}##Print a line to the Terminal window for every file that’s being copied
+ditto -rsrc {{path/to/source}} {{path/to/destination}}##Copy a given file or folder, while retaining the original file permissions
+ditto {{path/to/source}} {{path/to/destination}}##Overwrite contents of destination folder with contents of source folder
+drutil burn -noverify -eject -iso9660##Burn a folder as an ISO9660 filesystem onto a DVD. Don't verify and eject when complete
+drutil eject##Eject a disk from the drive
+du -ah {{directory}}##Get recursively, individual file/folder sizes in human readable form
+du -k -depth=1 {{directory}}##List the KB sizes of directories for N levels below the specified directory
+du -k {{file/directory}}##List file sizes of a directory and any subdirectories in KB
+du -sh {{file/directory}}##Get a sum of the total size of a file/folder in human readable units
+echo {{base64_text}} | base64 -D##Decode from stdin
+echo {{plain_text}} | base64##Encode from stdin
+find . -type t -name "*.png" | pbcopy##Place the results of a command in the clipboard
+head -c {{number_in_bytes}} {{filename}}##Output the first few bytes of a file
+head -n {{count_of_lines}} {{filename}}##Output the first few lines of a file
+hostname {{new_hostname}}##Set current host name
+hostname##Show current host name
+locate {{pattern}}##Look for pattern in the database. Note: the database is recomputed periodically (usually weekly or daily)
+look -f {{prefix}} {{file}}##Look for lines ignoring case
+look {{prefix}} {{file}}##Look for lines which begins with the given prefix
+md5 -q {{filename}}##Output only the md5 checksum (no filename)
+md5 -s {{string}}##Print a checksum of the given string
+md5 {{filename1}} {{filename2}}##Calculate MD5 checksums for multiple files
+md5 {{filename}}##Calculate the MD5 checksum for a file
+mdfind -name {{file}}##Find a file by its name
+mdfind -onlyin {{directory}} {{query}}##Find a file containing a string, in a given directory
+mdfind {{query}}##Find a file by its content
+netstat -a##List all ports
+netstat -c##List information continuously
+netstat -l##List all listening ports
+netstat -p {PROTOCOL}##Display PID and program names for a specific port
+netstat -t##List listening TCP ports
+networksetup -getairportnetwork {{en0}}##Get currently connected Wi-Fi network name (Wi-Fi device usually en0 or en1)
+networksetup -getinfo {{"Wi-Fi"}}##Show network settings for a particular networking device
+networksetup -listallnetworkservices##List available network service providers (Ethernet, Wi-Fi, Bluetooth, etc)
+networksetup -setairportnetwork {{en0}} {{"Airport Network SSID"}} {{password}}##Connect to a particular Wi-Fi network
+nm -a {{file.o}}##List all symbols, even debugging symbols
+nm -g {{file.o}}##List global (extern) functions in a file (prefixed with T)
+nm -u {{file.o}}##List only undefined symbols in a file
+open -R /path/dir/{{file}}##Reveal a file in finder
+open .##Open the current directory in Finder
+open /Applications/{{Application.app}}##Run a graphical MacOSX application
+open {{*.ext}}##Open all the files of a given extension in the current directory with the associated application
+open {{file.ext}}##Open a file with the associated application
+pbcopy < {{file}}##Place the contents of a file in the clipboard
+pbpaste > {{file}}##Write the contents of the clipboard to a file
+pbpaste | grep foo##Use the contents of the clipboard as input to a command
+quicklook *.jpg -t -s 300 {{/existing//thumbnail/directory}}##Compute 300px wide PNG thumbnails of all JPEGs in the current directory and put them in a directory
+quicklook -p {{filename}} {{filename2}}##Display QuickLook for one or multiple files
+say -f {{filename.txt}}##Read a file aloud
+say -o {{filename.aiff}} {{"Here's to the Crazy Ones."}}##Create an audio file of the spoken text
+say -v ?##List the available voices
+say -v {{voice}} -r {{words_per_minute}} {{"I'm sorry Dave, I can't let you do that."}}##Say a phrase with a custom voice and speech rate
+say {{"I like to ride my bike."}}##Say a phrase aloud
+sed '/{{line_pattern}}/s/{{find}}/{{replace}}/'##Replace only on lines matching the line pattern
+sed 's/{{find}}/{{replace}}/' {{filename}}##Replace the first occurrence of a string in a file, and print the result
+sed -E 's/{{regex}}/{{replace}}/g' {{filename}}##Replace all occurrences of an extended regular expression in a file
+sed -e 's/{{find}}/{{replace}}/' -e 's/{{find}}/{{replace}}/' {{filename}}##Apply multiple find-replace expressions to a file
+sed -i '' 's/{{find}}/{{replace}}/g' {{filename}}##Replace all occurrences of a string in a file, overwriting the file (i.e. in-place)
+shutdown -h now##Power off (halt) immediately
+shutdown -r +{{5}}##Reboot in 5 minutes
+shutdown -r now##Reboot immediately
+shutdown -s now##Sleep immediately
+sudo /usr/libexec/locate.updatedb##Recompute the database. You need to do it if you want to find recently added files
+sudo airport -z##Disassociate from current airport network
+sudo route -t add {{dest_ip_address}}/24 {{gateway_address}}##Run in test mode (does not do anything, just print)
+sudo route add {{dest_ip_address}} {{gateway_address}}##Add a route to a destination through a gateway
+sudo route add {{subnet_ip_address}}/24 {{gateway_address}}##Add a route to a /24 subnet through a gateway
+sudo route delete {{dest_ip_address}}/24##Delete a specific route
+sudo route flush##Remove all routes
+sw_vers -buildVersion##Print OSX Build
+sw_vers -productVersion##Print OSX Version
+sysctl -a##Show all available variables and their values
+sysctl -n hw.model##Show Apple model identifier
+sysctl -n machdep.cpu.brand_string##Show CPU model
+sysctl -n machdep.cpu.feature##Show available CPU features (MMX, SSE, SSE2, SSE3, AES, etc)
+sysctl -w {{section.tunable}}={{value}}##Set a changeable kernel state variable
+system_profiler -xml > MyReport.spx##Display a full system profiler report which can be opened by System Profiler.app
+system_profiler SPHardwareDataType##Display a hardware overview (Model, CPU, Memory, Serial, etc)
+system_profiler SPHardwareDataType|grep "Serial Number (system)" |awk '{print $4}'##Print the system serial number
+systemsetup -liststartupdisks##List valid startup disks
+systemsetup -setremotelogin on##Enable remote login (SSH)
+systemsetup -setsleep off -setrestartpowerfailure on -setrestartfreeze on##Make the machine never sleep and automatically restart on power failure or kernel panic
+systemsetup -setstartupdisk {{path}}##Specify a new startup disk
+systemsetup -settimezone {{US/Pacific}} -setnetworktimeserver {{us.pool.ntp.org}} -setusingnetworktime on##Specify TimeZone, NTP Server and enable network time
+top -o cpu -O time##Start top sorting processes first by CPU, then by running time
+top -o mem##Start top sorting processes by internal memory size (default order - process ID)
+top -user {{user-name}}##Start top displaying only processes owned by given user
+top##Start top, all options are available in the interface
+w -h##Show logged-in users info without a header
+w -i##Show info about logged-in users, sorted by their idle time
+w##Show logged-in users info
+wacaw --to-clipboard##Copy image just taken to clipboard
+wacaw --video {{filename}} -D {{duration_in_seconds}}##Record a video
+wacaw -L##List the devices available
+wacaw -x {{width}} -y {{height}} {{filename}}##Take a picture with custom resolution
+wacaw {{filename}}##Take a picture from webcam
+xctool -workspace {{YourWorkspace.xcworkspace}} -scheme {{YourScheme}} build##Build a project that is part of a workspace
+xctool -workspace {{YourWorkspace.xcworkspace}} -scheme {{YourScheme}} clean build test##Clean, build and execute all the tests
+xctool.sh -project {{YourProject.xcodeproj}} -scheme {{YourScheme}} build##Build a single project without any workspace
+xed -c {{filename1}}##Open file(s) in XCode, create if it doesn't exist
+xed -l 75 {{filename}}##Open a file in XCode and jump to line number 75
+xed {{file1}}##Open file in XCode
+xsltproc --output {{output.html}} --stringparam {{name}} {{value}} {{stylesheet.xslt}} {{xmlfile.xml}}##Pass a value to a parameter in the stylesheet
+xsltproc --output {{output.html}} {{stylesheet.xslt}} {{xmlfile.xml}}##Transform an XML file with a specific XSLT stylesheet

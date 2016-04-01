@@ -1,0 +1,1134 @@
+7za -v{{part_size}}{{[b|k|m|g]}} {{compressed.7z}} {{directory_or_file_to_compress}}##Create multipart 7zip file; `part_size` specifies part size in Bytes, Kilobytes, Megabytes or Gigabytes
+7za a -tzip {{compressed.zip}} {{directory_or_file_to_compress}}##Compress to zip format
+7za a {{compressed.7z}} {{directory_or_file_to_compress}}##Compress directory or file
+7za x {{compressed.7z}}##Decompress an existing 7z file with original directory structure
+AUTOSSH_DEBUG=1 AUTOSSH_LOGFILE={{log_file}} autossh -f -M {{monitor_port}} -v -E {{ssh_logfile}} {{ssh_command}}##Run autossh in the background with debug output logged to a file and ssh verbose output logged to a second file
+HandBrakeCLI --preset-list##List available presets
+HandBrakeCLI --preset="Android" -i {{input.ext}} -o {{output.mp4}}##Convert an AVI video to MP4 using the Android preset
+HandBrakeCLI -i {{input.avi}} -o {{output.mkv}} -e x264 -q 20 -B 160##Convert a video file to MKV (AAC 160kbit audio and x264 CRF20 video)
+HandBrakeCLI -i {{input.mp4}} -o {{output.mp4} -w 320 -l 240##Resize a video file to 320x240
+MP4Box -add {{input-subs.srt}}:lang=eng -add {{input.mp4}} {{output.mp4}}##Add an SRT subtitle file into an MP4 file
+MP4Box -add {{input1.mp4}}#audio -add {{input2.mp4}}#video {{output.mp4}##Combine audio from one file and video from another
+MP4Box -info {{filename}}##Display information about an existing MP4 file
+ab -n 100 -c 10 {{url}}##Execute 100 HTTP GET requests, processing up to 10 requests concurrently, to given URL
+ab -n 100 {{url}}##Execute 100 HTTP GET requests to given URL
+ack --ruby {{each_with_object}}##Find files in a specific language
+ack -ch {{foo}}##Count the total number of matches for the term "foo"
+ack -cl {{foo}}##Show the file names containing "foo" and number of matches in each file
+ack {{foo}}##Find files containing "foo"
+adb install -r {{apk.path}}##Push an Android application to an emulator/device
+adb kill-server##Terminate the adb server process
+adb shell##Start a remote shell in the target emulator/device instance
+adb start-server##Check whether the adb server process is running and start it
+ag '^ba(r|z)$'##Find files whose contents match a regular expression
+ag -g foo##Find files with a name matching "foo"
+ag -i FOO##Find files containing "FOO" case-insensitively
+ag foo -G bar##Find "foo" in files with a name matching "bar"
+ag foo##Find files containing "foo"
+alias -p##Full list of aliased words
+alias {{la}}="{{ls -a}}"##Override la as ls -a
+alias {{rm}}="{{rm -i}}"##Turn rm an interative command
+alias {{word}}="{{command}}"##Create a generic alias
+apm install {{package_name}}##Install packages from http://atom.io/packages and themes from http://atom.io/themes
+apm remove {{package_name}}##Remove packages/themes
+apm upgrade {{package_name}}##Upgrade packages/themes
+apropos -l {{regular_expression}}##Search without restricting output to terminal width
+apropos {{regular_expression}}##Search for keyword
+ar -r {{libfoo.a}} {{foo.o}} {{bar.o}} {{baz.o}}##Replace or add files to an archive
+ar -rs {{libfoo.a}} {{foo.o}} {{bar.o}} {{baz.o}}##Create an archive with files and an accompanying object file index
+ar -s {{libfoo.a}}##Insert an object file index (equivalent to using `ranlib`)
+ar -t {{libfoo.a}}##List the members of an archive
+ar -x {{libfoo.a}}##Extract all members from an archive
+aria2c --ftp-user={{username}} --ftp-passwd={{password}} {{url}}##FTP download with username and password
+aria2c -i {{filename}}##Download the URIs listed in a file
+aria2c -s {{connections_num}} {{url}}##Download with multiple connections
+aria2c {{url_1}} {{url_2}}##Download from multiple sources
+aria2c {{url}}##Download a URI to a file
+arp -a##Show current arp table
+arp -d {{address}}##Delete a specific entry
+arp -s {{address}} {{mac address}}##Create an entry
+atom -n {{path/to/file/or/folder}}##Open a file or folder in a new window
+atom {{path/to/file/or/folder}}##Open a file or folder
+autossh -M {{monitor_port}} -L {{local_port}}:localhost:{{remote_port}} {{user}}@{{host}}##Open an SSH session which forwards a local port to a remote one, restarting if necessary
+autossh -M {{monitor_port}} {{ssh_command}}##Open an SSH session, restarting when a monitoring port fails return data
+autossh -f -M 0 -N -o "ServerAliveInterval 10" -o "ServerAliveCountMax 3"  {{ssh_command}}##Run autossh in the background, with no monitoring port, instead relying on SSH keep-alives every 10 seconds to detect failure
+autossh -f -M 0 -N -o "ServerAliveInterval 10" -o "ServerAliveCountMax 3" -o ExitOnForwardFailure=yes -L {{local_port}}:localhost:{{remote_port}} {{user}}@{{host}}##Run autossh in the background, with no monitoring port, no remote shell, exiting if the port forward fails
+autossh -f -M {{monitor_port}} -N {{ssh_command}}##Fork before executing ssh (runs in the background) and don't open a remote shell
+awk '/{{something}}/ {print $2}' {{filename}}##Print the second column of the lines containing "something" in a space separated file
+awk '{print $5}' {{filename}}##Print the fifth column in a space separated file
+awk '{s+=$1; print $1} END {print "--------"; print s}' {{filename}}##Sum the values in the first column and pretty-print the values and then the total
+awk '{s+=$1} END {print s}' {{filename}}##Sum the values in the first column and print the total
+awk -F ',' '{print $3}' {{filename}}##Print the third column in a comma separated file
+axel -S {{mirrors_num}} {{url}}##Search for mirrors
+axel -n {{connections_num}} {{url}}##Download with multiple connections
+axel -s {{speed}} {{url}}##Limit download speed (bytes per second)
+axel {{url}} -o {{filename}}##Download and specify filename
+axel {{url}}##Download a URL to a file
+base32 -d {{filename}}##Decode a file
+base32 {{filename}}##Encode a file
+base64 -d {{filename}}##Decode a file
+base64 {{filename}}##Encode a file
+basename {{path/to/file}} {{suffix}}##Show only the file name from a path, with a suffix removed
+basename {{path/to/file}}##Show only the file name from a path
+bash -c {{command}}##Execute a command
+bash -s##Run commands from STDIN
+bash {{file.sh}}##Run commands from a file
+bash##Start interactive shell
+bc -i##Run calculator in interactive mode
+bc -l <<< "s(1) + c(1)"##Calculate expression with sine and cosine using mathlib
+bc <<< "(1 + 2) * 2 ^ 2"##Calculate the result of an expression
+bc <<< "scale=10; 5 / 3"##Calculate with the given precision
+bmaptool copy --bmap {{blockmap.bmap}} {{source.img.gz}} {{/dev/sdb}}##Copy a compressed image file into sdb
+bmaptool copy --bmap {{blockmap.bmap}} {{source.img}} {{/dev/sdb}}##Copy an image file into sdb
+bmaptool copy --nobmap {{source.img}} {{/dev/sdb}}##Copy an image file into sdb without using a blockmap
+bmaptool create -o {{blockmap.bmap}} {{source.img}}##Create a blockmap from image file
+bundle gem {{gemname}}##Create a new gem skeleton
+bundle install##Install all gems defined in the gemfile expected in the working directory
+bundle update --source {{gemname}}##Update one specific gem defined in the gemfile
+bundle update##Update all gems by the rules defined in the gemfile and regenerate gemfile.lock
+c99 -c {{file.c}}##Compile source file(s) and create object file(s)
+c99 -o {{executable_name}} {{file.c}}##Compile source file(s) and create an executable with a custom name
+c99 {{file.c}} {{file.o}}##Compile source file(s), link with object file(s), and create an executable
+c99 {{file.c}}##Compile source file(s) and create an executable
+cal -m {{month_number}}##Display a calendar for a specific month
+cal -y##Display a 12 month calendar for the current year
+cal 2016##Display a 12 month calendar for a specific year
+cal##Display a calendar for the current month
+calibre-server --port {{port}}##Start server on different port. Access at http://localhost:port
+calibre-server --username {{username}} --password {{password}}##Password protect the server
+calibre-server##Start a server to distribute ebooks. Access at http://localhost:8080
+calibredb add {{file1 file2 …}}##Add one or more ebooks to the library
+calibredb list --search {{search-term}}##Search for ebooks displaying additional information
+calibredb list##List ebooks in the library with additional information
+calibredb remove {{id1 id2 …}}##Remove one or more ebooks from the library. You need ebook-ids (see above)
+calibredb search {{search term}}##Search for just ids of ebooks
+cat -n {{file}}##Number all output lines
+cat data.txt | http PUT example.org##Specify raw request body via stdin
+cat somefile.txt | nc -l {{port}}##Serve a file
+cat {{/path/to/file}} | lwp-request -m POST {{http://example.com/some/path}}##Upload a file with a POST request
+cat {{bigfile.txt}} | parallel --pipe --block 1M {{command}}##Break stdin into ~1M blocks, feed each block to stdin of new command
+cat {{data.json}} | in2csv -f json > {{data.csv}}##Pipe a JSON file to in2csv
+cat {{file1}} {{file2}} > {{target-file}}##Concatenate several files into the target file
+cat {{file1}} {{file2}} >> {{target-file}}##Append several files into the target file
+cat {{file1}} | comm -12 - {{file2}}##Print only lines common to both files, read one file from stdin
+cat {{file_path}} | grep {{something}}##Use the standard input instead of a file
+cat {{file}}##Print the contents of a file to the standard output
+cd -##Go to the previously chosen directory
+cd ..##Go up to the parent of the current directory
+cd {{/path/to/directory}}##Go to the given directory
+cd##Go to home directory of current user
+chgrp --reference={{path/to/reference_file}} {{path/to/file}}##Change the owner group of a file/folder to match a reference file
+chgrp -R {{group}} {{path/to/folder}}##Recursively change the owner group of a folder and its contents
+chgrp -h {{user}} {{path/to/symlink}}##Change the owner group of a symbolic link
+chgrp {{group}} {{path/to/file}}##Change the owner group of a file/folder
+chmod a+rx {{file}}##Give (a)ll users rights to read and execute
+chmod g-x {{file}}##Remove executable rights from the (g)roup
+chmod o=g {{file}}##Give (o)thers (not in the file owner's group) the same rights as the group
+chmod u+rw {{file}}##Give the user rights to (r)ead and (w)rite to a file/directory
+chmod u+x {{file}}##Give the (u)ser who owns a file the right to e(x)ecute it
+chown --reference={{path/to/reference_file}} {{path/to/file}}##Change the owner of a file/folder to match a reference file
+chown -R {{user}} {{path/to/folder}}##Recursively change the owner of a folder and its contents
+chown -h {{user}} {{path/to/symlink}}##Change the owner of a symbolic link
+chown {{user}} {{path/to/file}}##Change the owner user of a file/folder
+chown {{user}}:{{group}} {{path/to/file}}##Change the owner user and group of a file/folder
+chsh -s {{path/to/shell_binary}} {{username}}##Change shell
+cksum {{filename}}##Display a 32 bit checksum, size in bytes and filename
+clang {{input_source.c}} -Wall -o {{output_executable}}##Activate output of all errors and warnings
+clang {{input_source.c}} -o {{output_executable}} -I{{header_path}} -L{{library_path}} -l{{library_name}}##Include libraries located at a different path than the source file
+clang {{input_source.c}} -o {{output_executable}}##Compile a source code file into an executable binary
+cmp -l {{file1}} {{file2}}##Find the byte number and differing bytes of every difference
+cmp {{file1}} {{file2}}##Find the byte number and line number of the first difference between the files
+comm -12 {{file1}} {{file2}}##Print only lines common to both files
+comm -13 {{file1}} {{file2}}##Print lines only found in second file
+comm -23 {{file1}} {{file2}}##Print lines only found in first file
+comm {{file1}} {{file2}}##Produce three tab-separated columns: lines only in first file, lines only in second file and common lines
+command1 | pv -s {{expected_amount_of_data_for_eta}} | command2##Measure the speed and amount of data flow between pipes (`-s` is optional)
+convert {{image.jpg}} {{image.png}}##Convert an image from JPG to PNG
+convert {{image.png}} -resize 50% {{image2.png}}##Scale an image 50% it's original size
+convert {{image.png}} -resize 640x480 {{image2.png}}##Scale an image keeping the original aspect ratio to a maximum dimension of 640x480
+convert {{image1.png}} {{image2.png}} {{image3.png}} +append {{image123.png}}##Horizontally append images
+convmv -f {{from_encoding}} -t {{to_encoding}} --notest {{input_file}}##Convert filename encoding and rename the file to the new enconding
+convmv -f {{from_encoding}} -t {{to_encoding}} {{input_file}}##Test filename encoding conversion (don't actually change the filename)
+cordova create {{path}} {{package.name}} {{project.name}}##Create a cordova project
+cordova info##Display the current workspace status
+cordova platform add {{platform}}##Add a cordova platform
+cordova platform remove {{platform}}##Remove a cordova platform
+cordova plugin add {{pluginid}}##Add a cordova plugin
+cordova plugin remove {{pluginid}}##Remove a cordova plugin
+cowsay "Hello world!"##Print an ASCII cow saying "Hello world!"
+cowthink -s "I'm just a cow, not a great thinker ..."##Print a stoned thinking ASCII cow
+cp -r {{/path/to/original}} {{/path/to/copy}}##Copy directories recursive using the option -r
+cp -vr {{/path/to/original}} {{/path/to/copy}}##Show files as they are copied
+cp {{/path/to/original}} ../{{path/to/copy}}##Copy a file to a parent directory
+cp {{/path/to/original}} {{/path/to/copy}}##Copy files in arbitrary locations
+cp {{file.html}}{,.backup}##Make a copy of a file, adding an extension
+cp {{file.}}{html,backup}##Make a copy of a file, changing the extension
+crontab -e##Edit the crontab file for the current user
+crontab -l##View a list of existing cron jobs for current user
+crontab -r##Remove all cron jobs for the current user
+csvclean -n {{bad.csv}}##List locations of syntax errors in a CSV file
+csvclean {{bad.csv}}##Clean a CSV file
+csvcut -C {{4}} {{data.csv}}##Extract all columns **except** the fourth one
+csvcut -c {{1,3}} {{data.csv}}##Extract the first and third columns
+csvcut -c {{id,"first name"}} {{data.csv}}##Extract the columns named "id" and "first name" (in that order)
+csvcut -n {{data.csv}}##Print indices and names of all columns
+csvformat -D "{{custom_character}}" {{data.csv}}##Convert delimiters to a custom character
+csvformat -M "{{\r\n}}" {{data.csv}}##Convert line endings to carriage return (^M) + line feed
+csvformat -T {{data.csv}}##Convert to a tab-delimited file (TSV)
+csvformat -U 0 {{data.csv}}##Minimize use of quote characters
+csvformat -U 1 {{data.csv}}##Maximize use of quote characters
+csvgrep -c {{1}} -m {{string_to_match}} {{data.csv}}##Find rows that have a certain string in column 1
+csvgrep -c {{3,4}} -r {{regex_pattern}} {{data.csv}}##Find rows in which columns 3 or 4 match a certain regex pattern
+csvgrep -i -c {{name}} -m {{"John Doe"}} {{data.csv}}##Find rows in which the "name" column does NOT include the string "John Doe"
+csvlook {{data.csv}}##View a CSV file
+csvpy --dict {{data.csv}}##Load a CSV file into a `CSVKitDictReader` object
+csvpy {{data.csv}}##Load a CSV file into a `CSVKitReader` object
+csvsort --no-inference -c {{columns}} {{data.csv}}##Sort a CSV file without inferring data types
+csvsort -c {{2,4}} {{data.csv}}##Sort a CSV file by column 2, then by column 4
+csvsort -c {{9}} {{data.csv}}##Sort a CSV file by column 9
+csvsort -r -c {{name}} {{data.csv}}##Sort a CSV file by the "name" column in descending order
+csvstat --sum {{data.csv}}##Show sums for all columns
+csvstat -c {{2,4}} {{data.csv}}##Show all stats for columns 2 and 4
+csvstat -c {{3}} --len {{data.csv}}##Show the max value length for column 3
+csvstat -c {{name}} --unique {{data.csv}}##Show the number of unique values in the "name" column
+csvstat {{data.csv}}##Show all stats for all columns
+curl "{{URL}}" -o {{filename}}##Download a URL to a file
+curl --data {{name=bob}} {{http://localhost/form}}##Send form-encoded data
+curl --head {{http://localhost}}##Head request
+curl -H "{{X-MyHeader: 123}}" {{http://localhost}}##Include an extra header
+curl -X POST -H "Content-Type: application/json" -d {{'{"name":"bob"}'}} {{http://localhost/login}}##Send JSON data
+curl -X {{DELETE}} {{http://localhost/item/123}}##Specify an HTTP method
+curl -u myusername:mypassword {{http://localhost}}##Pass a user name and password for server authentication
+cut -c {{1-16}} {{file}}##Cut out the first sixteen characters of each line of the given files
+cut -c {{1-16}}##Cut out the first sixteen characters of each line of STDIN
+cut -c{{3-}}##Cut out everything from the 3rd character to the end of each line
+cut -d'{{:}}' -f{{5,10}}##Cut out the fields five and 10, split on the colon character of each line
+cut -d'{{:}}' -f{{5-10}}##Cut out the fields five through 10, split on the colon character of each line
+cut -d'{{:}}' -f{{5}}##Cut out the fifth field, split on the colon character of each line
+date +"%c"##Display the date using the default locale
+date -u +"%Y-%m-%dT%H:%M:%SZ"##Display the date in UTC and ISO 8601 format
+deactivate##Stop the environment
+deluser -r {{name}}##Remove a user along with their home directory and mail spool
+deluser {{name}} {{group}}##Remove a user from a group
+deluser {{name}}##Remove a user
+df -h##Display all file systems and their disk usage in human readable form
+df##Display all file systems and their disk usage
+dhcpwn --interface {{network_interface}} flood --count {{number_of_requests}}##Flood the network with IP requests
+dhcpwn --interface {{network_interface}} sniff##Sniff local DHCP traffic
+diff -r {{directory1}} {{directory2}}##Compare directories recursively
+diff -rq {{directory1}} {{directory2}}##Compare directories, only showing the names of files that differ
+diff -w {{file1}} {{file2}}##Compare files, ignoring white spaces
+diff -y {{file1}} {{file2}}##Compare files, showing differences side by side
+diff {{file1}} {{file2}}##Compare files
+dig +short {{hostname.com}} MX##Lookup the mail server associated with a given domain name (MX record)
+dig +short {{hostname.com}}##Lookup the IP(s) associated with a hostname (A records)
+dig @8.8.8.8 {{hostname.com}}##Specify an alternate DNS server to query (8.8.8.8 is google's public DNS)
+dirs +{{N}}##Display only the nth entry in the directory stack, starting at 0
+dirs -c##Clear the directory stack
+dirs -p##Display the directory stack with one entry per line
+dirs##Display the directory stack with a space between each entry
+docker exec {{container}} {{command}}##Run a command inside of an already running container
+docker ps -a##List all docker containers (running and stopped)
+docker ps##List of running docker containers
+docker run -it {{image}} bash##Start a container from an image and get a shell inside of it
+docker start {{container}}##Start a container
+docker stop {{container}}##Stop a container
+dokku apps##List runinng apps
+dokku apps:create {{app_name}}##Create an app
+dokku apps:destroy {{app_name}}##Remove an app
+dokku plugin:install {{full_repo_url}}##Install plugin
+dokku {{db}}:link {{db_name}} {{app_name}}##Link database to an app
+drush cc all##Clear all caches
+drush cc css-js##Clear CSS and JavaScript caches
+drush dis {{foo}}##Disable module "foo"
+drush dl {{foo}}##Download module "foo"
+drush dl {{foo}}-7.x-2.1-beta1##Download version 7.x-2.1-beta1 of module "foo"
+drush en {{foo}}##Enable module "foo"
+ebook-convert {{source}} {{destination}}##Convert an ebook into another format
+echo "Hello!" | cowsay -f dragon##Print an ASCII dragon saying "Hello!"
+echo "example" | tee -a {{FILE}}##Append to the given FILEs, do not overwrite
+echo "example" | tee {{FILE}}##Copy standard input to each FILE, and also to standard output
+echo "test" | lp##Print the output of a command to the default printer (see `lpstat` command)
+echo "{{content}}" | mailx -s "{{subject}}" {{to_addr}}##Send mail with short content
+echo '{{query1}}; {{query2}}' | psql {{database}}##Run several queries against the given *database*. Note: useful in shell scripts
+echo {{"Hello World"}}##Print a text message. Note: quotes are optional
+echo {{"My path is $PATH"}}##Print a message with environment variables
+electrum -p socks5:{{127.0.0.1}}:9050 -s {{56ckl5obj37gypcu.onion}}:50001:t -1##Connect only to a specific electrum-server instance
+electrum -w {{new-wallet.dat}} create##Create a new wallet
+electrum -w {{recovery-wallet.dat}} restore -o##Restore an existing wallet from seed offline
+electrum listaddresses -a##Display all wallet receiving addresses
+electrum mktx {{recipient}} {{amount}} -f 0.0000001 -F {{from}} -o##Create a signed transaction offline
+electrum signmessage {{address}} {{message}}##Sign a message
+electrum verifymessage {{address}} {{signature}} {{message}}##Verify a message
+emacs -nw##Open emacs in console mode (without X window)
+emacs {{filename}}##Open a file in emacs
+enca -L {{language}} -x {{to_encoding}} < {{original_file}} > {{new_file}}##Save original_file as new_file and convert new_file to specified encoding
+enca -L {{language}} -x {{to_encoding}} {{file(s)}}##Convert file(s) to specified encoding
+enca -L {{language}} {{file(s)}}##Detect file(s) encoding; -L option tells enca the current language; language is in the POSIX/C locale format, e.g. zh_CN, en_US etc
+enca {{file(s)}}##Detect file(s) encoding according to your system's locale
+env -i {{program}}##Clear the environment and run a program
+env -u {{variable}} {{program}}##Remove variable from the environment and run a program
+env {{program}}##Run a program. Often used in scripts after the shebang (#!) for looking up the path to the program
+env {{variable}}={{value}} {{program}}##Set a variable and run a program
+env##Show the environment
+espeak "I like to ride my bike."##Speak a phrase aloud
+espeak -f {{filename}}##Speak a file aloud
+espeak -v {{voice}}##Use a different voice
+espeak -w {{filename.wav}} "It's GNU plus Linux"##Save output to a WAV audio file, rather than speaking it directly
+exiftool "-AllDates+=0:0:0 1:0:0" {{directory}}##Increase time photo taken by 1 hour in directory
+exiftool "-AllDates-=0:0:1 2:0:0" -ext jpg##Decrease time photo taken by 1 day and 2 hours on JPEGs only
+exiftool '-filename<DateTimeOriginal' -d %Y-%m-%d_%H-%M-%S%%lc.%%e {{directory}} -r -ext jpg##Rename all JPEGs according to a DateTimeOriginal recursively
+exiftool -All= {{file}}##Remove all EXIF metadata from the given files
+exiftool -DateTimeOriginal-=1.5 -overwrite_original##Change only DateTimeOriginal by -1.5 hours & do not keep backups
+fdupes -r {{directory}}##Search all directories recursively
+fdupes {{directory1}} -R {{directory2}}##Search multiple directories, one recursively
+fdupes {{directory1}} {{directory2}}##Search multiple directories
+fdupes {{directory}}##Search a single directory
+ffmpeg -f image2 -i {{image%d.jpg}} {{video.mpg}}##Combine numbered images (image1.jpg, image2.jpg, etc) into a video
+ffmpeg -i {{in.avi}} -acodec libfaac -ab 128k -vcodec mpeg4 -b 1250K {{out.mp4}}##Convert AVI video to MP4. AAC Audio @ 128kbit, Video @ 1250Kbit
+ffmpeg -i {{video-filename}} -vn -ar 44100 -ac 2 -ab 192 -f mp3 {{sound.mp3}}##Extract the sound from a video and save it as MP3
+ffmpeg -i {{video-filename}} {{image%d.png}}##Convert frames from a video into individual numbered images
+fg {{job_id}}##Bring a specific job to foreground
+fg##Bring most recently suspended background job to foreground
+file -k {{filename}}##Don't stop at first file type match; keep going until the end of the file
+file -s {{filename}}##Allow file to work with special or device files
+file -z {{foo.zip}}##Look inside a zipped file and determine the file type(s) inside
+file {{filename}}##Give a description of the type of the specified file.  Works fine for files with no file extension
+find . -name 'M*' | xargs rm##Delete all files that start with 'M'
+find {{path/to/search_files}} -type f | fzf -m > {{filename}}##Select mutliple files with `Shift-TAB` and write to a file
+find {{path/to/search}} -type f | fzf##Start finder on all files from arbitrary locations
+find {{root_path}} -empty##Find empty files or directories
+find {{root_path}} -name {{'*.py'}} -exec {{wc -l {} }}\;##Run a command for each file, use {} within the command to access the filename
+find {{root_path}} -name {{'*.py'}} -mtime {{-180d}} -delete##Delete files by name, older than a certain number of days
+find {{root_path}} -name {{'*.py'}} -mtime {{-1d}}##Find files modified since a certain time
+find {{root_path}} -name {{'*.py'}} -or -name {{'*.r'}}##Find files matching more than one search criteria
+find {{root_path}} -name {{'*.py'}}##Find files by extension
+find {{root_path}} -path {{'**/lib/**/*.py'}}##Find files matching path pattern
+find {{root_path}} -size +500k -size -10MB -iname {{'*.TaR.gZ'}}##Find files using case insensitive name matching, of a certain size
+for argument in 1 2 3; do {{command $argument}}; done##Perform a command with different arguments
+for d in *; do (cd $d; {{command}}); done##Perform a command in every directory
+fortune -f##List the available quotation database files
+fortune -l##Print a long quotation
+fortune -o##Print an offensive quotation
+fortune -s##Print a short quotation
+fortune {{filename}}##Print a quotation from one of the database files listed by `fortune -f`
+fortune##Print a quotation
+fswebcam --timestamp {{timestamp}} {{filename}}##Take a picture with timestamp(timestamp string is formatted by strftime)
+fswebcam -d {{device}} {{filename}}##Take a picture from selected device(Default is /dev/vidoe0)
+fswebcam -r {{width}}x{{height}} {{filename}}##Take a picture with custom resolution
+fswebcam {{filename}}##Take a picture
+fusermount -u {{mountpoint}}##Unmount remote directory
+fzf -q "!pyc 'travis"##Start finder on entries that not match pyc and match exactly travis
+fzf -q "^core go$ | rb$ | py$"##Start finder on entries that start with core and end with either go, rb, or py
+fzf -q "{{query}}"##Start finder with a given query
+g (start), G (end)##Go to start / end of file
+g {{bookmark_name}}##Go to a bookmarked folder
+gcc -S {{source.c}}##Compile source code into Assembler instructions
+gcc {{source.c}} -Wall -Og -o {{executable}}##Allow warnings, debug symbols in output
+gcc {{source.c}} -o {{executable}} -I{{header_path}} -L{{library_path}} -l{{library_name}}##Include libraries from a different path
+gcc {{source1.c}} {{source2.c}} -o {{executable}}##Compile multiple source files into executable
+gdb --args {{executable}} {{argument1}} {{argument2}}##Start gdb and pass arguments
+gdb -ex "{{commands}}" {{executable}}##Execute given GDB commands upon start
+gdb -p {{procID}}##Attach a process to gdb
+gdb {{executable}}##Debug an executable
+gem install {{gemname}} -v {{1.0.0}}##Install specific version of a gem
+gem install {{gemname}}##Install latest version of a gem
+gem list##List all gems
+gem uninstall {{gemname}}##Uninstall a gem
+gem update {{gemname}}##Update a gem
+get {{/path/remote_file}}##Transfer remote file to the local system
+gifsicle --delay={{10}} --loop *.gif > {{anim.gif}}##Make a GIF animation with gifsicle
+gifsicle -b {{anim.gif}} --replace '#0' {{new.gif}}##You can also edit animations by replacing, deleting, or inserting frames
+gifsicle {{anim.gif}} '#0' > {{firstframe.gif}}##Extract frames from an animation
+git --help##Call general help
+git --version##Check the Git version
+git add -f##Also add ignored files
+git add -p {{path/to/file}}##Add parts of a file interactively
+git add -u##Only add already tracked files
+git add .##Add all files (tracked and untracked)
+git add {{path/to/file}}##Add a file to the index
+git blame -e {{file}}##Print file with author email and commit hash on each line
+git blame {{file}}##Print file with author name and commit hash on each line
+git branch -a##List all local and remote branches
+git branch -d {{BRANCH-NAME}}##Delete a local branch
+git branch -m##Move/Rename a branch
+git branch {{BRANCH-NAME}}##Create new branch based on current branch
+git branch##List local branches. The current branch is highlighted by `*`
+git checkout -b {{BRANCH-NAME}}##Create and switch to a new branch
+git checkout .##Undo unstaged local modification
+git checkout {{BRANCH-NAME}}##Switch to another branch
+git clone --depth 10 {{REMOTE-REPOSITORY-LOCATION}}##Clone an existing repository, and truncate to the specified number of revisions, save your time mostly
+git clone -l##For cloning from the local machine
+git clone -q##Do it quietly
+git clone {{REMOTE-REPOSITORY-LOCATION}}##Clone an existing repository
+git commit --amend##Replace the last commit with currently staged changes
+git commit -m {{MESSAGE}}##Commit staged files to the repository with comment
+git config --global --unset alias.st##Remove option alias.st from ~/.gitconfig
+git config --global alias.ls "status"##Set option alias.ls=status in file ~/.gitconfig
+git config --list --global##Print global list of options, set in ~/.gitconfig
+git config --list --local##Print list of options for current repository
+git config --list##Get full list of options
+git config alias.st##Get value of alias.ls option
+git diff --name-only {{PATHSPEC}}##Show only names of changed files
+git diff --staged##Show staged (added, but not yet committed) changes only
+git diff --summary {{PATHSPEC}}##Output a condensed summary of extended header information
+git diff {{PATHSPEC}}##Show changes to tracked files
+git fetch --all##Fetch the latest changes from all remote git servers
+git fetch origin; git rebase -i origin/master##Rebase your local branch  interactively with the latest changes from upstream
+git fetch {{remote_name}}##Fetch new branches and update remote-tracking branches
+git help {{COMMAND}}##Call help on a command
+git init --bare##Initialize a barebones repository, suitable for use as a remote over ssh
+git init##Initialize a new local repository
+git log --oneline##Show only the first line of each commits
+git log -p {{path}}##Show the history of a particular file or directory, including differences
+git log##Show a history of commits
+git merge -e {{BRANCH-NAME}}##Edit the merge message
+git merge {{BRANCH-NAME}}##Merge a branch with your current branch
+git mv --force {{file}} {{target}}##Overwrite the file in the target path if it exists
+git mv {{filename}} {{new_filename}}##Rename file and add renaming to the next commit
+git mv {{path/to/file}} {{new/path/to/file}}##Move file inside the repo and add the movement to the next commit
+git pull --rebase##Download changes from default remote repository and use fast forward
+git pull {{remote_name}} {{branch}}##Download changes from given remote repository and branch, then merge them into HEAD
+git pull##Download changes from default remote repository and merge it
+git push --prune {{REMOTE-NAME}}##Remove remote branches which don't exist locally
+git push --tags##Publish tags
+git push {{REMOTE-NAME}} :{{REMOTE-BRANCH}}##Remove remote branch
+git push {{REMOTE-NAME}} {{LOCAL-BRANCH}}##Publish local changes on a remote branch
+git push {{REMOTE-NAME}} {{LOCAL-BRANCH}}:{{REMOTE-BRANCH}}##Publish local changes on a remote branch of different name
+git rebase --abort##Abort a rebase in-progress
+git rebase --continue##Handle an active rebase merge failure, after editing conflicting file(s)
+git rebase -i master##Rebase your local branch interactively with the latest changes in local master
+git remote -v##Show a list of existing remotes, their names and URL
+git remote add {{remote_name}} {{remote_url}}##Add a remote
+git remote remove {{remote_name}}##Remove a remote
+git remote rename {{old_name}} {{new_name}}##Rename a remote
+git remote set-url {{remote_name}} {{new_url}}##Change the URL of a remote
+git rm --cached {{file}}##Remove file from repository index but keep it untouched locally
+git rm -r {{directory}}##Remove directory
+git rm {{file}}##Remove file from repository index and filesystem
+git stash apply {{stash_name}}##Re-apply a stash by name
+git stash drop stash@{index}##Drop a stash by an index
+git stash list##List all stashes
+git stash pop##Re-apply the latest stash
+git stash save -u {{optional_stash_name}}##Include new files in the stash (leaves the index completely clean)
+git stash save {{optional_stash_name}}##Stash current changes (except new files)
+git status -s##Give output in short format
+git status##Show changed files which are not yet added for commit
+git svn clone {{http://example.com/my_subversion_repo}} {{local_dir}}##Clone an SVN repository
+git svn dcommit##Commit back to SVN repository
+git svn rebase##Update local clone from the upstream SVN repository
+git tag -d {{tag_name}}##Delete the tag with the given name
+git tag {{tag_name}} -m {{tag_message}}##Create an annotated tag with the given message
+git tag {{tag_name}}##Create a tag with the given name pointing to the current commit
+git tag##List all tags
+git {{COMMAND}}##Execute Git command
+glances -c {{hostname}}##Connect to a Glances server
+glances -s --password##Require a password in (web) server mode
+glances -s##Run in server mode to allow connections from other Glances clients
+glances -w##Run in web server mode to show results in browser
+glances##Run in terminal
+gpg --clearsign {{doc.txt}}##Sign doc.txt without encryption (writes output to doc.txt.asc)
+gpg --decrypt {{doc.txt.gpg}}##Decrypt doc.txt.gpg (output to STDOUT)
+gpg --encrypt --recipient {{alice@example.com}} {{doc.txt}}##Encrypt doc.txt for alice@example.com (output to doc.txt.gpg)
+gpg --import {{public.gpg}}##Import a public key
+gpg --symmetric {{doc.txt}}##Encrypt doc.txt with only a passphrase (output to doc.txt.gpg)
+gradle assembleRelease##Compile and Release package
+gradle build##Compile a package
+gradle clean##Clear the build folder
+grep -C 3 {{something}} {{file_path}}##See 3 lines of context
+grep -c {{something}} {{file_path}}##Print the count of matches instead of the matching text
+grep -e {{^regex$}} {{file_path}}##Use a regex
+grep -i {{something}} {{file_path}}##Search without case-sensitivity
+grep -n {{something}} {{file_path}}##Print line number for each match
+grep -r {{something}} .##Search recursively in current directory for an exact string
+grep -v {{something}}##Invert match for excluding specific strings
+grep {{something}} {{file_path}}##Search for an exact string
+gulp {{task}} {{othertask}}##Run individual tasks
+gulp##Run the default task
+gzip -9 -c {{file.ext}} > compressed-file.ext.gz##Specify the compression level. 1=Fastest (Worst), 9=Slowest (Best), Default level is 6
+gzip -c -d {{file.ext.gz}} > uncompressed-file.ext##Uncompress a gzipped file specifying the output filename
+gzip -c {{file.ext}} > compressed-file.ext.gz##Compress a file specifying the output filename
+gzip -d {{file.ext.gz}}##Decompress a file, replacing it with the original uncompressed version
+gzip {{file.ext}}##Compress a file, replacing it with a gzipped compressed version
+haxelib git {{libname}} {{GIT-URL}}##Install the development version of a library from a Git repository
+haxelib install {{libname}}##Install a Haxe library
+haxelib search {{keyword}}##Search for a Haxe library
+haxelib upgrade##Upgrade all installed Haxe libraries
+history -c##Clear the commands history list (only for current `bash` shell)
+history -w##Overwrite history file with history of current `bash` shell (often combined with `history -c` to purge history)
+history##Display the commands history list with line numbers
+hn --keep-open##View stories on Hacker News, and keep the list open after selecting a link
+hn --latest##View stories on Hacker News sorted by submission date
+hn --limit {{number}}##View _number_ of stories on Hacker News
+hn##View stories on Hacker News
+host -t {{field}} {{domain}}##Lookup a field (CNAME, TXT,...) of a domain
+host {{domain}}##Lookup A, AAAA, and MX records of a domain
+host {{ip_address}}##Reverse lookup an IP
+http -a {{username:password}} {{example.org}}##Pass a user name and password for server authentication
+http -d {{example.org}}##Download a URL to a file
+http -f {{example.org}} {{name='bob'}} {{profile-picture@'bob.png'}}##Send form-encoded data
+http {{HEAD}} {{example.org}}##Specify an HTTP method
+http {{example.org}} {{X-MyHeader:123}}##Include an extra header
+http {{example.org}} {{name='bob'}}##Send JSON object
+hub browse -- issues##Open the current project's issues page
+hub clone {{github_username}}/{{repo_name}}##Clone another user repository
+hub clone {{repo_name}}##Clone a repository you own
+iconv -f {{from_encoding}} -t {{to_encoding}} {{input_file}}##Convert file and print to stdout
+iconv -f {{from_encoding}} {{input_file}} > {{output_file}}##Convert file to current locale
+iconv -l##List supported encodings
+if {{condition}}; then echo "true"; else echo "false"; fi##Full if syntax
+ifconfig -a##Display details of all interfaces, including disabled interfaces
+ifconfig eth0 down##Disable eth0 interface
+ifconfig eth0 up##Enable eth0 interface
+ifconfig eth0 {{ip_address}}##Assign IP address to eth0 interface
+ifconfig eth0##View network settings of an ethernet adapter
+in2csv --sheet={{sheet_name}} {{data.xlsx}}##Convert a specific sheet from an XLSX file to CSV
+in2csv {{data.dbf}} > {{data.csv}}##Convert a DBF file to a CSV file
+in2csv {{data.xls}}##Convert an XLS file to CSV
+inkscape {{filename.svg}} --export-pdf=={{filename.pdf}} --export-text-to-path##Export an SVG document to PDF, converting all texts to paths
+inkscape {{filename.svg}} --select=path1555 --verb=EditDuplicate --verb=ObjectRotate90 --verb=FileSave --verb=FileClose##Duplicate the object with id="path1555", rotate the duplicate 90 degrees, save the SVG, and quit
+inkscape {{filename.svg}} -e {{filename.png}} -w {{600}} -h {{400}}##Export an SVG file into a bitmap of 600x400 pixels (aspect ratio distortion may occur)
+inkscape {{filename.svg}} -e {{filename.png}}##Export an SVG file into a bitmap with the default format (PNG) and the default resolution (90 DPI)
+inkscape {{filename.svg}} -i {{id}} -e {{object.png}}##Export a single object, given its ID, into a bitmap
+inkscape {{filename.svg}}##Open an SVG file in the Inkscape GUI
+ionice -c {{scheduling_class}} -n {{priority}} {{command}}##Run a command with custom I/O scheduling class and priority
+ionice -c {{scheduling_class}} -p {{pid}}##Set I/O scheduling class of a running process
+ionice -p {{pid}}##Print the I/O scheduling class and priority of a running process
+ioping -R /dev/sda##Measure disk seek rate on /dev/sda
+ioping -RL /dev/sda##Measure disk sequential speed on /dev/sda
+ioping -c 10 -s 1M /tmp##Measure latency on /tmp using 10 requests of 1 megabyte each
+ioping .##Show disk I/O latency using the default values and the current directory
+ipcs -a##General information about all the IPC
+ipcs -qi 32768##Specific information about the Message Queue which has the id 32768
+j --purge##Remove non-existing directories from the autojump database
+j -s##Show the entries in the autojump database
+j {{pattern}}##Jump to a directory that contains the given pattern
+jar -xvf *.jar##Unzip .jar/.war file to the current directory
+java -jar {{filename.jar}}##Execute a .jar program
+java -version##Display JDK, JRE and HotSpot versions
+java {{filename}}##Execute a java .class file that contains a main method by using just the class name
+javac -d {{path/to/some/directory}} {{filename.java}}##Compile a .java file and place the resulting class file in a specific directory
+javac {{*.java}}##Compile all .java files in current directory
+javac {{filename.java}}##Compile a .java file
+javac {{filename1.java}} {{filename2.java}} {{filename3.java}}##Compile several .java files
+jc {{pattern}}##Jump to a sub-directory (child) of the current directory that contains the given pattern
+jhat -J-mx8G {{dump_file.bin}}##Analyze a dump letting jhat use up to 8GB RAM (2-4x dump size recommended)
+jhat -p {{port}} {{dump_file.bin}}##Analyze a heap dump, specifying an alternate port for the http server
+jhat {{dump_file.bin}}##Analyze a heap dump (from jmap), view via http on port 7000
+jmap -dump:format=b,file={{filename}} {{java_pid}}##Dump contents of the heap into a binary file for analysis with jhat
+jmap -heap {{filename.jar}} {{java_pid}}##Print heap summary information
+jmap -histo {{java_pid}}##Print histogram of heap usage by type
+jmap {{java_pid}}##Print shared object mappings for a java process (output like pmap)
+jobs -l##Show status and process IDs of all jobs
+jobs -p##Show process IDs of all jobs
+jobs {{job_id}}##Show status of a particular job
+jobs##Show status of all jobs
+jstack -m {{java_pid}}##Print mixed mode (java/c++) stack traces for all threads in a java process
+jstack {{/usr/bin/java}} {{file.core}}##Print stack traces from java core dump
+jstack {{java_pid}}##Print java stack traces for all threads in a java process
+kill -l##List signal names
+kill {{process_id}}##Kill the process
+last -F##View full login times and dates
+last -n {{login_count}}##Specify how many of the last logins to show
+last reboot##View the last reboot (last login of the pseudo user reboot)
+last shutdown##View the last shutdown (last login of the pseudo user shutdown)
+last {{user_name}}##View the last login by a specific user
+last##View last logins, their duration  and other information as read from /var/log/wtmp
+latexmk -C##Clean up temporary tex and output files
+latexmk -c {{source.tex}}##Clean up temporary tex files created for a specific tex file
+latexmk -c##Clean up all temporary tex files in the folder
+latexmk -pdf {{source.tex}}##Compile a pdf document
+latexmk {{source.tex}}##Compile a dvi document from a specific source file
+latexmk##Compile a dvi (DeVice Independent file) document from every source
+less {{source_file}}##Open a file
+license --name {{author}} --year {{release_year}} {{license_name}}##Create a license with explicitly-set name and year
+license -o {{filename.txt}} {{license_name}}##Create a license with custom filename
+license ls##List all locally available licenses
+license {{license_name}}##Create a license
+lls##Get list of files on local machine
+ln -s {{path/to/file}} {{path/to/symlink}}##Create a symbolic link to a file (or folder)
+ln -sf {{path/to/new/file}} {{path/to/symlink}}##Overwrite an existing symbolic to point to a different file
+ln {{path/to/file}} {{path/to/hardlink}}##Create a hard link to a file
+lp -P 1,3-5,16 {{path/to/filename}}##Print only certain pages to the default printer (print pages 1, 3-5, and 16)
+lp -d {{printer_name}} {{path/to/filename}}##Print a file to a named printer (see `lpstat` command)
+lp -n {{N}} {{path/to/filename}}##Print N copies of file to default printer (replace N with desired number of copies)
+lp {{path/to/filename}}##Print a file to the default printer
+lpstat -d##Show the default printer
+lpstat -p##List printers present on the machine and whether they are enabled for printing
+lpstat -t##Display all available status information
+lpstat -u {{user}}##Show a list of print jobs queued by the specified user
+ls *.txt | parallel -j4 gzip##Read arguments from stdin, run 4 jobs at once
+ls -1##List files one per line
+ls -a##List all files, including hidden files
+ls -lS##Long format list sorted by size (descending)
+ls -la##Long format list (permissions, ownership, size and modification date) of all files
+ls -lh##Long format list with size displayed using human readable units (KB, MB, GB)
+ls -ltr##Long format list of all files, sorted by modification date (oldest first)
+ls##Get list of files on remote machine
+lsof -c {{process_or_command_name}}##List files opened by the given command or process
+lsof -i :{{port}}##Find the process that opened a local internet port
+lsof -t {{/path/to/file}}##Only output the process PID
+lsof -u {{username}}##List files opened by the given user
+lsof {{/path/to/file}}##Find the processes that have a given file open
+lwp-request -C {{username}}:{{password}} -m {{METHOD}} {{http://example.com/some/path}}##Make a request with HTTP authentication
+lwp-request -E -m {{METHOD}} {{http://example.com/some/path}}##Make a request and print response headers and status chain
+lwp-request -H 'User-Agent: {{user_agent}} -m {{METHOD}} {{http://example.com/some/path}}##Make a request with a custom user agent
+lwp-request -U -m {{METHOD}} {{http://example.com/some/path}}##Make a request and print request headers
+lwp-request -m GET {{http://example.com/some/path}}##Make a simple GET request
+mailx -a {{file}} -s "{{subject}}" {{to_addr}}##Send mail with an attachment
+mailx -s "{{subject}}" -c {{cc_addr}} {{to_addr}}##Send mail to a recipient and CC to another address
+mailx -s "{{subject}}" -r {{from_addr}} {{to_addr}}##Send mail and set sender address
+mailx -s "{{subject}}" {{to_addr}} < {{content.txt}}##Send mail with content which written in a file
+mailx -s "{{subject}}" {{to_addr}}##To send mail, the content is typed after the command and ended with Control-D
+make -C {{directory}}##Execute make from another directory
+make -f {{file}}##Use specific Makefile
+make {{rule}}##Call a specific rule
+make##Call the all rule
+man --path##Display path searched for manpages
+man -k {{keyword}}##Do a keyword search for manpages containing a search string
+man -w {{command}}##Display location of a manpage rather than the manpage itself
+man {{command}}##Display man page for a command
+mitmdump -nc {{filename}}##Replay a saved traffic file
+mitmdump -nr {{input_filename}} -w {{output_filename}} {{"~m post"}}##Filter a saved traffic file to just POST requests
+mitmdump -w {{filename}}##Start a proxy and save all output to a file
+mitmproxy -b {{ip_address}} -p {{port}}##Start mitmproxy bound to custom address and port
+mitmproxy##Start mitmproxy with default settings
+mkdir -p {{path}}##Create directories recursively (useful for creating nested dirs)
+mkdir {{directory}}##Create a directory in current folder or given path
+mkfifo {{path/to/pipe}}##Create a named pipe at a given path
+mmv "*{{.old_extension}}" "#1{{.new_extension}}"##Rename all files with a certain extension to a different extension
+mmv -a {{"*.txt"}} {{"all.txt"}}##Append all .txt files into one file
+mmv -c {{"report*part*.txt"}} {{"./french/rapport#1partie#2.txt"}}##Copy report6part4.txt to ./french/rapport6partie4.txt along with all similarly named files
+mmv {{"[0-1][0-9]-[0-3][0-9]-[0-9][0-9][0-9][0-9].txt"}} {{"#3#4-#1#2-#5#6#7#8.txt"}}##Convert dates in filenames from "M-D-Y" format to "D-M-Y" format
+mocha --grep {{^regex$}}##Run tests that match a specific grep pattern
+mocha --reporter {{reporter}}##Run tests with a specific reporter
+mocha --watch##Run tests on changes to JavaScript files in the current directory and once initially
+mocha {{folder/with/tests}}##Run tests contained at a specific location
+mocha##Run tests with default configuration or as configured in `mocha.opts`
+montage {{image1.png}} {{image2.jpg}} {{imageN.png}} -geometry +0+0 -resize 640x480^ -gravity center -crop 640x480+0+0 montage.jpg##Resize and crop images to completely fill their grid cells before tiling
+montage {{image1.png}} {{image2.jpg}} {{imageN.png}} -geometry +0+0 -tile 2x3 montage_%d.jpg##Limit the number of rows and columns in the grid, causing input images to overflow into multiple output montages
+montage {{image1.png}} {{image2.jpg}} {{imageN.png}} -geometry +0+0 montage.jpg##Tile images into a grid, automatically calculating the grid cell size from the largest image
+montage {{image1.png}} {{image2.jpg}} {{imageN.png}} -geometry 640x480+0+0 montage.jpg##Set the grid cell size and resize images to fit it before tiling
+montage {{image1.png}} {{image2.jpg}} {{imageN.png}} montage.jpg##Tile images into a grid, automatically resizing images larger than the grid cell size
+more {{source_file}}##Open a file
+mount -a##Mount all the filesystem defined in /etc/fstab
+mount -t {{filesystem_type}} {{path_to_device_file}} {{directory_to_mount_to}}##Mount a device
+mount -t {{iso9660}} -o ro {{/dev/cdrom}} {{/cdrom}}##Mount a CD-ROM device (with the filetype ISO9660) to /cdrom (readonly)
+mount {{/my_drive}}##Mount a specific filesystem described in /etc/fstab (e.g. "/dev/sda1 /my_drive ext2 defaults 0 2")
+mount##Show all mounted filesystems
+mtr -4 {{host}}##Force IP IPv4 or IPV6
+mtr -n {{host}}##Disable IP address and host name mapping
+mtr -w {{host}}##Generate output after pinging each hop 10 times
+mtr {{host}}##Traceroute to a host and continuously ping all intermediary hops
+mv -f {{source}} {{target}}##Do not prompt for confirmation before overwriting existing files
+mv -fi {{source}} {{target}}##Do not prompt for confirmation before overwriting existing files but write to standard error before overriding
+mv -v {{source}} {{target}}##Move files in verbose mode, showing files after they are moved
+mv {{source}} {{target}}##Move files in abitrary locations
+mysql -h {{database_host}} {{database_name}}##Connect to a database on another host
+mysql -u {{user}} --password {{database_name}} < {{filename.sql}}##Restore a backup, user will be prompted for a password
+mysql -u {{user}} --password {{database_name}}##Connect to a database, user will be prompted for a password
+mysql {{database_name}} < {{script.sql}}##Execute SQL statements in a script file (batch file)
+mysql {{database_name}}##Connect to a database
+mysqldump -u {{user}} --password {{database_name}} > {{filename.sql}}##Create a backup, user will be prompted for a password
+nano -S {{filename}}##Enable smooth scrolling
+nano -i {{filename}}##Indent new lines to the previous lines' indentation
+nano {{filename}}##Start nano in terminal with {filename}
+nc  -l {{port}}##Listen on a specified port
+nc -k -l {{port}}##Server stay up after client detach
+nc -q {{timeout}} {{ip_address}}##Client stay up after EOF
+nc -w {{timeout_in_seconds}} {{ipaddress}} {{port}}##Set a timeout
+nc {{ip_address}} {{port}} > somefile.txt##Receive a file
+nc {{ip_address}} {{port}}##Connect to a certain port (you can then write to this port)
+ncal -e {{year}}##Display date of Easter (western churches)
+nginx -c {{config_file}} -p {{prefix/for/relative/paths}}##Start server with a prefix for all relative paths in config file
+nginx -c {{config_file}}##Start server with custom config file
+nginx -s reload##Reload configuration by sending a signal with no downtime
+nginx -t##Test configuration without affecting the running server
+nginx##Start server with default config
+nice -n {{niceness_value}} {{command}}##Launch a program with altered priority
+nix-env -e {{pkg_name}}##Uninstall package
+nix-env -i {{pkg_name}}##Install package
+nix-env -qa {{pkg_name}}##Show available package with name or without name
+nix-env -qas##Show the status of available packages
+nix-env -u {{pkg_name}}##Upgrade one package
+nix-env -u##Upgrade all packages
+nmap -A {{address_or_addresses}}##Also enable scripts, service detection, OS fingerprinting and traceroute
+nmap -T4 {{address_or_addresses}}##Assume good network connection and speed up execution
+nmap -p {{port1,port2,...,portN}} {{address_or_addresses}}##Scan a specific list of ports (use -p- for all ports 1-65535)
+nmap -sSU {{address_or_addresses}}##Perform TCP and UDP scanning (use -sU for UDP only, -sZ for SCTP, -sO for IP)
+nmap -sn {{ip_or_hostname}} {{optional_another_address}}##Try to determine whether the specified hosts are up and what are their names
+nmap {{ip_or_hostname}} {{optional_another_address}}##Like above, but also run a default 1000-port TCP scan if host seems up
+node -e "{{code}}"##Evaluate JavaScript by passing it in the command
+node {{file}}.js##Run a JavaScript file
+node##Start a REPL (interactive shell)
+nohup {{command options}}##Run process that can live beyond the terminal
+npm init##Interactively create a package.json file
+npm install -g {{module_name}}##Download and install a module globally
+npm install {{module_name}}@{{version}} --save##Download a given dependency, and add it to the package.json
+npm install##Download all dependencies referenced in package.json
+npm list##List a tree of installed modules
+npm uninstall {{module_name}}##Uninstall a module
+nvm alias default {{node_version}}##Set the default NodeJS version
+nvm exec {{node_version}} node {{app.js}}##Run app in a specific version of NodeJS
+nvm install {{node_version}}##Install a specific version of NodeJS
+nvm list##List all available NodeJS versions and print the default one
+nvm run {{node_version}} --version##Run a specific version NodeJS REPL
+nvm use {{node_version}}##Use a specific version NodeJS in the current shell
+openssl genrsa -out {{filename.key}} 2048##Generate a 2048bit RSA private key and save it to a file
+openssl req -new -sha256 -key {{filename.key}} -out {{filename.csr}}##Generate a certificate signing request to be sent to a certificate authority
+openssl s_client -connect {{host}}:443 -showcerts </dev/null##Display the complete certificate chain of an HTTPS server
+openssl s_client -connect {{host}}:{{port}} </dev/null##Display the certificate presented by an SSL/TLS server
+openssl x509 -req -days {{days}} -in {{filename.csr}} -signkey {{filename.key}} -out {{filename.crt}}##Generate a self-signed certificate from a certificate signing request valid for some number of days
+optipng -i {{1}} {{file.png}}##Compress a PNG and add interlacing
+optipng -o{{0}} {{file.png}}##Compress a PNG with fastest compression
+optipng -o{{7}} {{file.png}}##Compress a PNG with best compression
+optipng -strip all {{file.png}}##Compress a PNG and remove all metadata
+optipng {{file.png}}##Compress a PNG with default settings
+p {{bookmark_name}}##Print a bookmarked folder's contents
+pandoc {{input.md}} -o {{output.pdf}}##Convert file to pdf (the output format is automatically determined from the output file's extension)
+parallel -S {{machine1}},{{machine2}} {{command}} ::: {{arg1}} {{arg2}}##Run on multiple machines via SSH
+parallel convert {} {.}.png ::: *.jpg##Convert JPG images to PNG using replacement strings
+parallel gzip ::: {{file1}} {{file2}} {{file3}}##Gzip several files at once, using all cores
+pass -c {{path/to/data}}##Copy a password (first line of the data file) to the clipboard
+pass generate -c {{path/to/data}} {{num}}##Generate a new random password with a given length, and copy it to the clipboard
+pass git {{git-arguments}}##Run any git command against the underlying store repository
+pass init {{gpg_id}}##Initialize the storage using a gpg-id for encryption
+pass insert {{path/to/data}}##Save a new password (prompts you for the value without echoing it)
+pass##List the whole store tree
+passwd -S##Get the current statuts of the user
+passwd -d##Make the password of the account blank (it will set the named account passwordless)
+passwd {{new password}}##Change the password of the current user
+passwd {{username}} {{new password}}##Change the password of the specified user
+paste -d '\n' {{file1}} {{file2}}##Merge two files, with lines added alternatively
+paste -d {{delimiter}} {{file1}} {{file2}}##Merge two files side by side, each in its column, using the specified delimiter
+paste -s -d {{delimiter}} {{file}}##Join all the lines into a single line, using the specified delimiter
+paste -s {{file}}##Join all the lines into a single line, using TAB as delimiter
+paste {{file1}} {{file2}}##Merge two files side by side, each in its column, using TAB as delimiter
+patch -R < {{patchfile}}.diff##Apply the reverse of a patch
+patch -p1 < {{patchfile}}.diff##Apply a patch to current directory
+patch < {{patchfile}}.diff##Apply a patch
+pdflatex -halt-on-error {{source.tex}}##Compile a pdf document, halting on each error
+pdflatex {{source.tex}}##Compile a pdf document
+pg_dump -Fc {{db_name}} > {{output_file.dump}}##Dump a database into a custom-format archive file
+pg_dump -U {{username}} {{db_name}} > {{output_file.sql}}##Same as above, customize username
+pg_dump -h {{host}} -p {{port}} {{db_name}} > {{output_file.sql}}##Same as above, customize host and port
+pg_dump {{db_name}} > {{output_file.sql}}##Dump database into a SQL-script file
+pg_restore --clean -d {{db_name}} {{archive_file.dump}}##Clean database objects before creating them
+pg_restore -U {{username}} -d {{db_name}} {{archive_file.dump}}##Same as above, customize username
+pg_restore -d {{db_name}} {{archive_file.dump}}##Restore an archive into an existing database
+pg_restore -h {{host}} -p {{port}} -d {{db_name}} {{archive_file.dump}}##Same as above, customize host and port
+pg_restore -j {{2}} -d {{db_name}} {{archive_file.dump}}##Use multiple jobs to do the restoring
+pgrep -f "{{process_name}} {{parameter}}"##Search full command line with parameters instead of just the process name
+pgrep -u root {{process_name}}##Search for process run by a specific user
+pgrep {{process_name}}##Return PIDs of any running processes with a matching command string
+php -S {{host:port}}##Start a PHP built-in web server in the current directory
+php -a##Run PHP interactively
+php -l {{file}}##Check syntax (lint)
+php -r "{{code}}"##Run PHP code. Notes: a) Don't use <? ?> tags; b) Escape double quotes with backslash
+php {{file}}##Parse and execute a file
+phpize --clean##Delete files previously created by phpize
+phpize##Prepare the PHP extension in the current directory for compiling
+phpunit --coverage-html {{directory}}##Run tests and generate a coverage report in HTML
+phpunit --group {{name}}##Run tests annotated with the given group
+phpunit {{path/to/TestFile.php}}##Run tests in a specific file
+phpunit##Run tests in the current direcotry. Note: Expects you to have a 'phpunit.xml'
+pigz -0 -p{{4}} {{filename}}##Compress a file using no compression and 4 processors
+pigz -9 {{filename}}##Compress a file using the best compression method
+pigz -d {{archive.gz}}##Decompress a file
+pigz -l {{archive.tar.gz}}##List the contents of an archive
+pigz {{filename}}##Compress a file with default options
+ping -c {{count}} {{host}}##Ping a host only a specific number of times
+ping -i {{seconds}} {{host}}##Ping host, specifying the interval in seconds between requests (default is 1 second)
+ping -n {{host}}##Ping host without trying to lookup symbolic names for addresses
+ping {{host}}##Ping host
+pip freeze > {{requirements.txt}}##Save installed packages to file
+pip install -U {{package_name}}##Upgrade a package
+pip install -r {{requirements.txt}}##Install packages from file
+pip install {{package_name}}##Install a package
+pip install {{package_name}}=={{package_version}}##Install a specific version of a package
+pip uninstall {{package_name}}##Uninstall a package
+pkill -9 -f "{{command_name}}"##Kill all processes which match their full command instead of just the process name
+pkill -9 {{process_name}}##Kill all processes which match
+pkill -USR1 {{process_name}}##Send SIGUSR1 signal to processes which match
+play {{audiofile1}} {{audiofile2}}##Play the given audio files
+play {{audiofile}} reverse##Play the given audio in reverse
+play {{audiofile}} speed 2.0##Play the given audio at twice the speed
+play {{audiofile}}##Play the given audio file
+pngcrush -d {{path/to/output}} *.png##Compress all PNGs and output to directory
+pngcrush -rem allb -brute -reduce {{in.png}} {{out.png}}##Compress PNG file with all 114 available algorithms and pick the best result
+pngcrush {{in.png}} {{out.png}}##Compress a PNG file
+printf -v {{myvar}} {{"This is %s = %d\n" "a year" 2016}}##Store a formatted message in a variable (does not work on zsh)
+printf {{"%s\n"}} {{"Hello world"}}##Print a text message
+printf {{"\e[1;34m%.3d\e[0m\n"}} {{42}}##Print an integer in bold blue
+printf {{"\u20AC %.2f\n"}} {{123.4}}##Print a float number with the unicode Euro sign
+printf {{"var1: %s\tvar2: %s\n"}} {{"$VAR1"}} {{"$VAR2"}}##Print a text message composed with environment variables
+ps aux | grep {{string}}##Search for a process that matches a string
+ps aux##List all running processes
+ps auxww##List all running processes including the full command string
+ps axu | fzf##Start finder on running processes
+psql -c '{{query}}' {{database}}##Run single *query* against the given *database*. Note: useful in shell scripts
+psql -h {{host}} -p {{port}} -U {{username}} -W {{database}}##Connect to *database*, user will be prompted for password
+psql -h {{host}} -p {{port}} -U {{username}} {{database}}##Connect to *database* on given server *host* running on given *port* with *username* given, no password prompt
+psql {{database}}##Connect to *database*. It connects to localhost using default port *5432* with default user
+pushd +4##Rotate stack by making the 5th element the top of the stack
+pushd < {{directory}}##Switch to directory and push it on the stack
+pushd##Switch first and second directories on the stack
+put {{/path/local_file}}##Transfer local file to the remote system
+pv -EE {{path_to_faulty_media}} > image.img##Read an erroneous file, skip errors as `dd conv=sync,noerror` would
+pv -L 1K -S {{maximum_file_size_to_be_read}}##Stop reading after reading specified amount of data, rate limit to 1K/s
+pv -cN in {{big_text_file}} | grep {{pattern}} | pv -cN out > {{filtered_file}}##Filter a file, see both progress and amount of output data
+pv -d {{PID}}##Attach to an already running process and see its file reading progress
+pv {{file}}##Print the contents of the file and display a progress bar
+pwd -P##Print the current directory, and resolve all symlinks (i.e. show the "physical" path)
+pwd##Print the current directory
+python -c {{command}}##Execute Python language single command
+python -m {{module}} {{arguments}}##Run library module as a script (terminates option list)
+python {{script.py}}##Execute script in a given Python file
+python##Call a Python interactive shell (REPL)
+read -a {{array}}##Store each of the next lines you enter as values of an array
+read -d {{new_delimiter}} {{variable}}##Use a specific character as a delimiter instead of a new line
+read -e {{variable}}##Enable backspace and GNU readline hotkeys when entering input with read
+read -n {{character_count}} {{variable}}##Specify the number of maximum characters to be read
+read {{variable}}##Store data that you type from the keyboard
+readlink -f {{filename}}##Get the absolute path to a file
+readlink {{filename}}##Get the actual file to which the symlink points
+redis-cli -a {{password}}##Specify a password
+redis-cli -h {{host}} -p {{port}}##Connect to a remote server specifying a port number
+redis-cli -h {{host}}##Connect to a remote server on the default port (6379)
+redis-cli {{redis command}}##Execute Redis command
+redis-cli##Connect to the local server
+redshift -O {{temperature}}##Turn on Redshift with a constant unchanging color temperature
+redshift -b {{0.7}}:{{0.4}}##Turn on Redshift with 70% screen brightness during day and 40% brightness at night
+redshift -g {{red}}:{{green}}:{{blue}}##Turn on Redshift with custom gamma levels (between 0 and 1)
+redshift -l {{latitude}}:{{longitude}}##Turn on Redshift with a manually-specified custom location
+redshift -t {{5700}}:{{3600}}##Turn on Redshift with 5700K temperature during day and 3600K at night
+rename 's/\s+/_/g' {{\*}}##Replace whitespace with underscores
+rename 'y/A-Z/a-z/' {{\*}}##Convert filenames to lower case
+rename -n {{'s/foo/bar/'}} {{\*}}##Dry-run - display which renames would occur without performing them
+rename {{'s/foo/bar/'}} {{\*}}##Rename files using a Perl Common Regular Expression (substitute 'foo' with 'bar' wherever found)
+renice -n {{niceness_value}} -g {{group}}##Change priority of all processes that belongs to a group
+renice -n {{niceness_value}} -p {{pid}}##Change priority of a running process
+renice -n {{niceness_value}} -u {{user}}##Change priority of all processes owned by a user
+rm -i {{\*}}##Prompt before every removal
+rm -r {{/path/to/folder}}##Remove recursively a directory and all its subdirectories
+rm -rf {{/path/to/folder}}##Remove directory without prompt
+rm {{/path/to/file}} {{/otherpath/to/file2}}##Remove files from arbitrary locations
+rmdir -p {{path}}##Remove directories recursively (useful for nested dirs)
+rmdir {{directory}}##Remove directory, provided it is empty. Use `rm` to remove not empty directories
+route -n##Display the information of route table
+rsync -az {{path/to/file}} {{remote_host_name}}:{{remote_host_location}}##Transfer file in archive (to preserve attributes) and compressed (zipped) mode
+rsync -e ssh --progress {{remote_host_name}}:{{remote_file}} {{local_file}}##Transfer file over SSH and show progress
+rsync -r {{remote_host_name}}:{{remote_folder_location}} {{local_folder_location}}##Transfer a directory and all its children from a remote to local
+rsync -ru {{remote_host_name}}:{{remote_folder_location}} {{local_folder_location}}##Transfer only updated files from remote host
+rsync {{path/to/file}} {{remote_host_name}}:{{remote_host_location}}##Transfer file from local to remote host
+rsync {{remote_host_name}}:{{remote_file_location}} {{local_file_location}}##Transfer file from remote host to local
+sails generate controller {{name}}##Generate Sails Controller
+sails generate model {{name}}##Generate Sails Model
+sails generate {{name}}##Generate Sails API
+sails lift##Start Sails
+sails new {{projectName}}##Create new Sails project
+salt '*' state.highstate##Execute a highstate on all connected minions
+salt '*' test.ping##List connected minions
+salt '*.domain.com' pkg.upgrade##Upgrade packages using the OS package manager (apt, yum, brew) on a subset of minions
+salt '{{minion_id}}' cmd.run "ls "##Execute an arbitrary command on a particular minion
+salt-call -l debug state.highstate##Perform a highstate with verbose debugging output
+salt-call grains.items##List this minion's grains
+salt-call state.highstate test=true##Perform a highstate dry-run, compute all changes but don't actually perform them
+salt-call state.highstate##Perform a highstate on this minion
+salt-key -F##Print fingerprints of all public keys
+salt-key -L##List all accepted, unaccepted and rejected minion keys
+salt-key -a {{MINION_ID}}##Accept a minion key by name
+salt-key -r {{MINION_ID}}##Reject a minion key by name
+salt-run manage.status##Show status of all minions
+salt-run manage.up##Show all minions which are disconnected
+sass --watch {{inputfile.(scss|sass)}}##Watch SCSS or Sass file for changes and output or update CSS file with same filename
+sass --watch {{inputfile.(scss|sass)}}:{{outputfile.css}}##Watch SCSS or Sass file for changes and output or update CSS file with specified filename
+sass {{inputfile.(scss|sass)}} {{outputfile.css}}##Immediately convert SCSS or Sass file to CSS to specified output file
+sass {{inputfile.(scss|sass)}}##Output converted file to stdout
+scp -3 {{host1}}:{{/path/remote_file.ext}} {{host2}}:{{/path/remote_dir}}##Copy a file between two remote hosts transferring through the local host
+scp -i {{~/.ssh/id_rsa}} {{local_file}} {{remote_host}}:{{/path/remote_file}}##Use a specific ssh private key for authentication with the remote host
+scp -r {{/path/local_dir}} {{remote_host}}:{{/path/remote_dir}}##Recursively copy the contents of a directory on a remote host to a local directory
+scp {{local_file}} {{remote_host}}:{{/path/remote_file}}##Copy a local file to a remote host
+scp {{local_file}} {{remote_username}}@{{remote_host}}:{{/remote/path}}##Use a specific username when connecting to the remote host
+scp {{remote_host}}:{{/path/remote_file}} {{/path/local_dir}}##Copy a file from a remote host to a local folder
+screen -S {{name}}##Start a new named screen session
+screen -X -S {{screen id}} quit##Kill a detached screen
+screen -ls##Show open screen sessions
+screen -r {{screen id}}##Reattach to an open screen
+screen##Start a new screen session
+sed '/{{line_pattern}}/s/{{find}}/{{replace}}/'##Replace only on lines matching the line pattern
+sed 's/{{find}}/{{replace}}/' {{filename}}##Replace the first occurrence of a string in a file, and print the result
+sed -e 's/{{find}}/{{replace}}/' -e 's/{{find}}/{{replace}}/' {{filename}}##Apply multiple find-replace expressions to a file
+sed -i 's/{{find}}/{{replace}}/g' {{filename}}##Replace all occurrences of a string in a file, overwriting the file (i.e. in-place)
+sed -r 's/{{regex}}/{{replace}}/g' {{filename}}##Replace all occurrences of an extended regular expression in a file
+seq -s " " 5 3 20##Separate the output with a space instead of a newline
+seq 10##Sequence from 1 to 10
+seq 5 3 20##Every 3rd number from 5 to 20
+sftp -P {{remote_port}} {{remote_user}}@{{remote_host}}##Connect using an alternate port
+sftp {{remote_user}}@{{remote_host}}##Connect to a remote server and enter an interactive command mode
+sh -c {{command}}##Execute a command
+sh -s##Run commands from STDIN
+sh {{file.sh}}##Run commands from a file
+sh##Start interactive shell
+shred --remove {{file}}##Overwrite a file and remove it
+shred --zero {{file}}##Overwrite a file, leaving zeroes instead of random data
+shred -n25 {{file}}##Overwrite a file 25 times
+shred {{file}}##Overwrite a file
+skicka download {{path/to/remote}} {{path/to/local}}##Download a file/folder from Google Drive
+skicka du {{path/to/parent/folder}}##Show amount of space used by children folders
+skicka ls {{path/to/folder}}##List files
+skicka mkdir {{path/to/folder}}##Create a folder
+skicka rm {{path/to/file}}##Delete a file
+skicka upload {{path/to/local}} {{path/to/remote}}##Upload a file/folder to Google Drive
+sl -F##Let the train fly
+sl -a##The train burns, people scream
+sl##Let a steam locomotive run through your terminal
+slackcat --channel {{channel_name}} --filename={{filename}} {{path/to/file}}##Post a file to Slack with a custom filename
+slackcat --channel {{channel_name}} {{path/to/file}}##Post a file to Slack
+sleep {{hours}}h##Delay in hours
+sleep {{minutes}}m##Delay in minutes
+sleep {{seconds}}##Delay in seconds
+socat - TCP-LISTEN:8080,fork##Listen to a port, wait for an incoming connection and transfer data to STDIO
+socat - TCP4:www.domain.com:80##Create a connection to a host and port, transfer data in STDIO to connected host
+socat TCP-LISTEN:80,fork TCP4:www.domain.com:80##Forward incoming data of a local port to another host and port
+sort -r {{filename}}##Sort a file in descending order
+sort -t: -k 3n /etc/passwd##Sort passwd file by the 3rd field
+sort {{filename}}##Sort a file in ascending order
+source {{path/to/venv}}/bin/activate##Start (select) the environment
+sox --norm {{input_audiofile}} {{output_audiofile}}##Normalize an audio file (adjust volume to the maximum peak level, without clipping)
+sox -m {{input_audiofile1}} {{input_audiofile2}} {{output_audiofile}}##Merge two audio files into one
+sox {{input_audiofile}} -n stat##Print statistical data of an audio file
+sox {{input_audiofile}} {{output_audiofile}} reverse##Reverse and save an audio file
+sox {{input_audiofile}} {{output_audiofile}} trim {{start}} {{end}}##Trim an audio file to the specified times
+split -C 512 {{filename}}##Split a file with at most 512 bytes of lines in each split
+split -l 10 {{filename}}##Split a file, each split having 10 lines (except the last split)
+split -n 5 {{filename}}##Split a file into 5 files. File is split such that each split has same size (except the last split)
+srm -i {{\*}}##Prompt before every removal
+srm -m {{/path/to/file}}##Remove a file after seven passes of overwriting with random data
+srm -r -s {{/path/to/folder}}##Recursively remove a directory and its contents overwriting each file with a single-pass of random data
+srm -s {{/path/to/file}}##Remove a file after a single-pass overwriting with random data
+ssh -A {{username}}@{{remote_host}}##SSH enable agent forward
+ssh -D {{9999}} -C {{username}}@{{remote_host}}##SSH tunneling: Dynamic port forwarding (SOCKS proxy on localhost:9999)
+ssh -L {{9999}}:slashdot.org:80 {{username}}@{{remote_host}}##SSH tunneling: Forward a specific port (localhost:9999 to slashdot.org:80)
+ssh -i {{/path/to/key_file}} {{username}}@{{remote_host}}##Connect to a remote server with a specific identity (private key)
+ssh {{remote_host}} {{command -with -flags}}##Run a command on a remote server
+ssh {{username}}@{{remote_host}} -p {{2222}}##Connect to a remote server using a specific port
+ssh {{username}}@{{remote_host}}##Connect to a remote server
+ssh-keygen -f ~/.ssh/{{filename}}##Specify file in which to save the key
+ssh-keygen -l -F {{remote_host}}##Retrieve the key fingerprint from a host (useful for confirming the authenticity of the host when first connecting to it via SSH)
+ssh-keygen -t dsa##Generate a DSA 2048 bit (default) key
+ssh-keygen -t rsa -b 4096 -C "{{email}}"##Generate an RSA 4096 bit key with your email as a comment
+ssh-keygen##Generate a key interactively
+sshfs {{username}}@{{remote_host}}:{{remote_directory}} -C##Use compression
+sshfs {{username}}@{{remote_host}}:{{remote_directory}} -p {{2222}}##Mount remote directory from server with specific port
+sshfs {{username}}@{{remote_host}}:{{remote_directory}} {{mountpoint}}##Mount remote directory
+strings -n {{length}} {{file}}##Limit results to strings at least *length* characters long
+strings -t d {{file}}##Prefix each result with its offset within the file
+strings -t x {{file}}##Prefix each result with its offset within the file in hexadecimal
+strings {{file}}##Print all strings in a binary
+su - {{username}}##Switch to user {{username}} and simulate a full login shell
+su {{username}}##Switch to user {{username}} (password required)
+su##Switch to superuser (admin password required)
+sudo -u {{www}} {{vi}} {{/var/www/index.html}}##To edit a file as user www
+sudo arp -a -d##Clear the entire cache
+sudo route add -net {{ip_address}} netmask {{netmask_address}} gw {{gw_address}}##Add route rule
+sudo route del -net {{ip_address}} netmask {{netmask_address}} dev {{gw_address}}##Delete route rule
+sudo visudo -c##Check sudoers file for errors
+sudo visudo##Edit sudoers file
+sudo {{!!}}##To repeat the last command as sudo
+sudo {{ls}} {{/usr/local/scrt}}##List of an unreadable directory
+sudo {{shutdown}} -r +10 {{"Cya soon!"}}##To shutdown the machine
+sum --sysv {{file}}##Compute a checksum with System V-compatible algorithm and 512-byte blocks
+sum {{file}}##Compute a checksum with BSD-compatible algorithm and 1024-byte blocks
+svn add PATH...##Put files and directories under version control, scheduling them for addition to repository. They will be added in next commit
+svn ci -m {{commit log message}} {{[PATH...]}}##Send changes from your working copy to the repository
+svn co {{url/to/repository}}##Check out a working copy from a repository
+svn help##Show detailed help
+svn up##Bring changes from the repository into the working copy
+tabula --format JSON -o {{file.json}} {{file.pdf}}##Extract all tables from a PDF to a JSON file
+tabula --guess --pages {{1}} {{file.pdf}}##Extract tables from page 1 of a PDF, guessing which portion of the page to examine
+tabula --no-spreadsheet {{file.pdf}}##Extract all tables from a PDF, using blank space to determine cell boundaries
+tabula --pages {{1-3,6}} {{file.pdf}}##Extract tables from pages 1, 2, 3, and 6 of a PDF
+tabula --spreadsheet {{file.pdf}}##Extract all tables from a PDF, using ruling lines to determine cell boundaries
+tabula -o {{file.csv}} {{file.pdf}}##Extract all tables from a PDF to a CSV file
+tac {{file1}} {{file2}} > {{target-file}}##Concatenate several files reversed into the target file
+tac {{file1}}##Print the contents of *file1* reversed to the standard output
+tail -c {{num}} {{file}}##Show last 'num' bytes in file
+tail -f {{file}}##Keep reading file until ctrl-c
+tail -n +{{num}} {{file}}##Show all file since line 'num'
+tail -n {{num}} {{file}}##Show last 'num' lines in file
+tar caf {{target.tar.xz}} {{file1 file2 file3}}##Create a compressed archive, using archive suffix to determine the compression program
+tar cf {{target.tar}} {{file1 file2 file3}}##Create an archive from files
+tar czf {{target.tar.gz}} {{file1 file2 file3}}##Create a gzipped archive
+tar tvf {{source.tar}}##List the contents of a tar file
+tar xf {{source.tar}} -C {{folder}}##Extract an archive in a target folder
+tar xjf {{source.tar.bz2}}##Extract a bzipped archive in the current directory
+tar xzf {{source.tar.gz}}##Extract a gzipped archive in the current directory
+tcpdump -A tcp##Capture all TCP traffic showing contents (ASCII) in console
+tcpdump -i {{eth0}} src {{192.168.1.1}} and dst {{192.168.1.2}} and dst port 80##Capture the traffic from a specific interface, source, destination and destination port
+tcpdump -i {{eth0}}##Capture the traffic of a specific interface
+tcpdump -w dumpfile.pcap not port 22##Capture all traffic except traffic over port 22 and save to a dump file
+tcpdump host {{www.example.com}}##Capture the traffic from or to a host
+tcpdump net {{192.168.1.0/24}}##Capture the traffic of a network
+telnet  {{ip_address}} {{port}}##Telnet to a certain port
+telnet -e x {{ip_address}} {{port}}##Specify an escape character (x is the escape character)
+test ! -d {{path/to/directory}}##Test if directory not exists
+test $MY_VAR == '/bin/zsh'##Test if given variable is equal to given string
+test -e {{filename}}##Test if file exists
+test -z $GIT_BRANCH##Test if given variable is empty
+test {{condition}} && echo "true" || echo "false"##If-else statement
+time ls##Time "ls"
+tldr --update##Update the local cache of tldr pages
+tldr {{command}}##Get typical usages of a command (hint: this is how you got here!)
+tldrl -f {{page.md}}##Format a specific page to stdout
+tldrl -fi {{pages_directory}}##Format all pages in place
+tldrl {{pages_directory}}##Lint all pages
+tmux a -t {{name}}##Attach to a named session
+tmux a##Attach to a session
+tmux kill-session -t {{name}}##Kill session
+tmux ls##List sessions
+tmux new -s {{name}}##Start a new named tmux session
+tmux##Start a new tmux session
+touch -r {{filename}} {{filename2}}##Use the times from a file to set the times on a second file
+touch -t {{YYYYMMDDHHMM.SS}} {{filename}}##Set the times on a file to a specific date and time
+touch {{filename}}##Create a new empty file(s) or change the times for existing file(s) to current time
+tput bel##Ring the terminal bell
+tput cup {{y_coordinate}} {{x_coordinate}}##Move the cursor to a screen location
+tput sgr0##Reset all terminal attributes
+tput {{cols|lines|colors}}##Show number of columns, lines, or colors
+tput {{setaf|setab}} {{ansi_color_code}}##Set foreground (af) or background (ab) color
+tr "[:lower:]" "[:upper:]" < {{filename}}##Translate the contents of the file to upper-case and print result
+tr 'abcd' 'jkmn' < {{filename}}##Map each character of the first set to the corresponding character of the second set
+tr -cd "[:print:]" < {{filename}}##Strip out non-printable characters from the file and print result
+tr -d '{{input_characters}}'##Delete all occurances of the specified set of characters from the input
+tr -s '\n'##Compress a series of identical characters to a single character
+tr {{find_characters}} {{replace_characters}} < {{filename}}##Replace all occurrences of a character in a file, and print the result
+traceroute -n {{host}}##Disable IP address and host name mapping
+traceroute -q 5 {{host}}##Specify number of queries per hop
+traceroute -w 0.5 {{host}}##Specify wait time for response
+traceroute {{host}}##Traceroute to a host
+transcode -J stabilize -i {{inputfile}}##Create stabilisation file to be able to remove camera shakes
+transcode -J transform -i {{inputfile}} -y xvid -o {{outputfile}}##Remove camera shakes after creating stabilisation file, transform video using xvid
+transcode -Z 640x480 -i {{inputfile}} -y xvid -o {{outputfile}}##Resize the video to 640x480 pixels and convert to MPEG4 codec using xvid
+tree -L {{num}}##Show files and directories with a depth of 'num'
+tree -a##Show hidden files too
+tree -d##Show directories only
+tree -f##Print the full path for each file
+tree -h##Print human readable size of files
+tree -i##Print the tree without lines and indentation. Useful when used with -f
+tty##Print the file name of this terminal
+ufraw-batch --embedded-image {{input-file(s)}}##Extract the preview image from the raw file
+ufraw-batch --out-type=jpg {{input-file(s)}}##Simply convert RAW files to jpg
+ufraw-batch --out-type=png {{input-file(s)}}##Simply convert RAW files to png
+ufraw-batch --size=MAX1,MAX2 {{input-file(s)}}##Save the file with size up to the given maximums MAX1 and MAX2
+umount -a##Unmount all mounted filesystems (dangerous!)
+umount {{path_to_device_file}}##Unmount a filesystem
+umount {{path_to_mounted_directory}}##OR
+unalias {{word}}##Remove an aliased command
+uname -a##Print all available system information (hardware, software, nodename)
+uname -mp##Print hardware-related information: machine and processor
+uname -n##Print the nodename (hostname) of the system
+uname -srv##Print software-related information: operating system, release number, and version
+uniq -c {{file}}##Display number of occurences of each line along with that line
+uniq -d {{file}}##Display only duplicate lines
+uniq -u {{file}}##Display only unique lines
+uniq {{file}}##Display each line once
+unrar e {{compressed.rar}}##Extract files into current directory, losing directory structure in the archive
+unrar l {{compressed.rar}}##List files inside the archive file without decompressing it
+unrar t {{compressed.rar}}##Test integrity of each file inside the archive file
+unrar x {{compressed.rar}}##Extract files with original directory structure
+unzip -l {{file}}##List the contents of a zip file without extracting
+unzip {{file(s)}}##Extract zip file(s) (for multiple files, seperate file paths by spaces)
+unzip {{files(s)}} -d {{/path/to/put/extracted/files}}##Extract zip files(s) to given path
+uptime##Print current time, uptime, number of logged-in users and other information
+vagrant init ubuntu/trusty32##Create Vagrantfile with the Ubuntu 14.04 (Trusty Tahr) box from HashiCorp Atlas
+vagrant init##Create Vagrantfile in current folder with the base Vagrant box
+vagrant ssh##Connect to machine via SSH
+vagrant suspend##Suspend the machine
+vagrant up##Start and provision the vagrant environment
+view {{file}}##Open a file in read-only mode
+vim -p {{file1}} {{file2}} {{file3}}##Open multiple files at once, each file in it's own tab page
+vim {{file}} +{{linenumber}}##Open a file with cursor at the given line number
+vimtutor {{language}}##Launch the vim tutor using the given language (en, fr, de, ...)
+virtualenv {{path/to/venv}}##Create a new environment
+w -h##Show logged-in users info without a header
+w##Show logged-in users info
+watch -d {{ls -l}}##Monitor the contents of a directory, highlighting differences as they appear
+watch -n {{60}} {{command}}##Re-run a command every 60 seconds
+watch {{command}}##Repeatedly run a command and show the result
+wc -c {{file}}##Count characters (bytes) in file
+wc -l {{file}}##Count lines in file
+wc -m {{file}}##Count characters in file (taking multi-byte character sets into account)
+wc -w {{file}}##Count words in file
+wget --ftp-user={{username}} --ftp-password={{password}} {{url}}##FTP download with username and password
+wget --limit-rate={{200k}} {{url}}##Limit download speed
+wget --mirror -p --convert-links -P {{target_folder}} {{url}}##Download a full website
+wget -O filename "{{url}}"##Download a URL to a file
+wget -c {{url}}##Continue an incomplete download
+which -a {{executable}}##If there are multiple executables which match, display all
+which {{executable}}##Search the PATH environment variable and display the location of any matching executables
+while :; do {{command}}; sleep 1; done##Execute a command forever once every second
+while read line; do echo "$line"; done##Read stdin and perform an action on every line
+who -a -H##Display all available information with table headers
+who -a##Display all available information
+who am i##Display information only for the current terminal session
+who##Display the username, line, and time of all currently logged-in sessions
+whoami##Display currently logged user name
+x_x --delimiter={{';'}} --quotechar={{'|'}} {{file.csv}}##View a CSV file with unconventional delimiters
+x_x -h {{0}} {{file.ext}}##View an XLSX or CSV file, using the first row as table headers
+x_x {{file.ext}}##View an XLSX or CSV file
+xcv c {{input_file}}##Copy a file
+xcv l##List files available for pasting
+xcv v {{output_file}}##Paste a file
+xcv x {{input_file}}##Cut a file
+xz -0 {{file}}##Compress a file using the fastest compression
+xz -9 {{file}}##Compress a file using the best compression
+xz -d {{file.xz}}##Decompress a file
+xz -dc {{file.xz}}##Decompress a file and write to stdout
+xz -k {{file}}##Compress a file, but don't delete the original
+xz {{file}}##Compress a file
+yes {{message}}##Repeatedly output "message"
+yes##Repeatedly output "y"
+youtube-dl --format {{mp4}} --output {{"%(title) by %(uploader) on %(upload_date) in %(playlist).%(ext)"}} {{url}}##Download video(s) as MP4 files with custom filenames
+youtube-dl --match-title {{"let's play"}} --age-limit {{7}} --reject-title {{"nsfw"}} {{playlist_url}}##From a playlist, download all "Let's Play" videos that aren't marked "NSFW" or age-restricted for 7 year-olds
+youtube-dl --write-description --write-info-json --write-annotations --write-sub --write-thumbnail {{url}}##Download a video and save its description, metadata, annotations, subtitles, and thumbnail
+youtube-dl -x --audio-format {{mp3}} {{url}}##Download the audio from a video and convert it to an MP3
+youtube-dl {{https://www.youtube.com/watch?v=oHg5SJYRHA0}}##Download a video or playlist
+zbarimg {{image file}}##Process an image file
+zcat {{file.txt.gz}}##Print the uncompressed contents of a gzipped file to the standard output
+zdb -C {{poolname}}##Show detailed configuration for a specific ZFS pool
+zdb -b {{poolname}}##Show statistics about number, size and deduplication of blocks
+zdb##Show detailed configuration of all mounted ZFS zpools
+zfs create {{pool_name/filesystem_name}}##Create a new ZFS filesystem
+zfs destroy {{pool_name/filesystem_name}}##Delete a ZFS filesystem
+zfs list##List all available zfs filesystems
+zfs set compression=on {{pool_name/filesystem_name}}##Enable compression on a filesystem
+zfs set mountpoint={{/my/mount/path}} {{pool_name/filesystem_name}}##Change mountpoint for a filesytem
+zfs snapshot {{pool_name/filesystem_name}}@{{snapshot_name}}##Create a Snapshot of a ZFS filesystem
+zip -d {{compressed.zip}} "{{foo/*.tmp}}"##Remove unwanted files from an existing zip file
+zip -r {{compressed.zip}} {{/path/to/dir1 /path/to/dir2 /path/to/file}}##Package and compress multiple directories and files
+zip -r {{compressed.zip}} {{path/to/dir}} -x \*.git\* \*node_modules\* ...##Exclude unwanted files from being added to the compressed archive
+zip {{compressed.zip}} {{path/to/file}}##Add files to an existing zip file
+zless {{file.txt.gz}}##Page through a compressed archive with `less`
+zpool create {{pool_name}} mirror {{disk1}} {{disk2}} mirror {{disk3}} {{disk4}}##Create a mirrored pool
+zpool export {{pool_name}}##Export a zpool (unmount all filesystems)
+zpool histrory {{pool_name}}##Show the history of all pool operations
+zpool import {{pool_name}}##Import a zpool
+zpool import##List zpools available for import
+zpool scrub {{pool_name}}##Check a ZFS pool for errors (verifies the checksum of EVERY block). Very CPU and disk intensive
+zpool status##Show the configuration and status of all ZFS zpools
+zsh -c {{command}}##Execute command passed as parameter
+zsh -x {{file}}##Run commands from file and print them as they are executed
+zsh {{file}}##Run commands from file (script)
+zsh##Start interactive command line interpreter
+{{args}} | parallel -X {{command}}##Parallel xargs, cram as many args as possible onto one command
+{{arguments_null_terminated}} | xargs -0 {{command}}##Handle whitespace in arguments
+{{arguments}} | xargs -I piped_arguments {{command}} piped_arguments {{rest_of_arguments}}##Insert arguments at chosen position
+{{arguments}} | xargs {{command}}##Main use
+{{command}} && echo "success" || echo "failure"##Echo a different thing depending on a command's success
+{{command}} | slackcat --channel {{channel_name}} --filename={{snippet_name}}##Pipe command output to Slack as a text snippet
+{{command}} | slackcat --channel {{channel_name}} --stream##Stream command output to Slack continuously
+{{somecommand}} | base32 -d##Decode from stdin
+{{somecommand}} | base32##Encode from stdin
+{{somecommand}} | base64 -d##Decode from stdin
+{{somecommand}} | base64##Encode from stdin

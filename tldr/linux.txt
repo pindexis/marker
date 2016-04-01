@@ -1,0 +1,354 @@
+apt-cache depends {{package}}##Show dependencies for a package
+apt-cache policy {{package}}##Show whether a package is installed and up to date
+apt-cache rdepends {{package}}##Show packages that depend on a particular package
+apt-cache search {{query}}##Search for a package in your current sources
+apt-cache show {{package}}##Show information about a package
+apt-get dist-upgrade##Upgrade installed packages (like "upgrade"), but remove obsolete packages and install additional packages to meet new dependencies
+apt-get install {{package}}##Install a new package
+apt-get remove {{package}}##Remove a package
+apt-get update##Synchronize list of packages and versions available. This should be run first, before running subsequent apt-get commands
+apt-get upgrade##Upgrade installed packages to newest available versions
+apt-key add {{public_key_file.asc}}##Add a key to the trusted keystore
+apt-key del {{key_id}}##Delete a key from the trusted keystore
+apt-key list##List trusted keys
+aptitude full-upgrade##Upgrade installed packages (like `aptitude upgrade`) including removing obsolete packages and installing additional packages to meet new package dependencies
+aptitude install {{package}}##Install a new package and its dependencies
+aptitude purge {{package}}##Do an `aptitude remove {{package}}` and remove all config files
+aptitude remove {{package}}##Remove a package and all packages depending on it
+aptitude search {{package}}##Search for a package
+aptitude update##Synchronize list of packages and versions available. This should be run first, before running subsequent aptitude commands
+aptitude upgrade##Upgrade installed packages to newest available versions
+archey##Show system information
+chattr +i {{path}}##Make a file or folder immutable to changes and deletion, even by superuser
+chattr -R +i {{folder}}##Recursively make an entire folder and contents immutable
+chattr -i {{path}}##Make a file or folder mutable
+chroot {{/path/to/new/root}} {{command}}##Run command as new root directory
+chroot --userspec={{user:group}}##Specify user and group (ID or name) to use
+compose {{filename}}##Compose action can be used to compose any existing file or new  on default mailcap edit tool
+dd if=/dev/urandom of={{random_file}} bs=100 count=1##Generate a file of 100 random bytes by using kernel random driver
+dd if=/dev/zero of={{file_1GB}} bs=1024 count=1000000##Benchmark the write performance of a disk
+dd if=/dev/{{source_drive}} of=/dev/{{dest_drive}} bs=4M conv=noerror##Clone a drive to another drive with 4MB block and ignore error
+dd if={{file.iso}} of=/dev/{{usb_drive}}##Make a bootable usb drive from an isohybrid file (such like archlinux-xxx.iso)
+dnf -y install {{package}}##Install a new package and assume yes to all questions
+dnf install {{package}}##Install a new package
+dnf remove {{package}}##Remove a package
+dnf update##Synchronize list of packages and versions available. This should be run first, before running subsequent dnf commands
+dnf upgrade##Upgrade installed packages to newest available versions
+dpkg -L {{package_name}}##List package contents
+dpkg -i {{/path/to/file}}##Install a package
+dpkg -l {{pattern}}##List installed packages
+dpkg -r {{package_name}}##Remove a package
+dpkg-query -L {{package_name}}##List all files installed by a package
+dpkg-query -l '{{pattern}}'##List installed packages matching a pattern
+dpkg-query -l##List all installed packages
+dpkg-query -s {{package_name}}##Show information about a package
+du --max-depth=N##List the KB sizes of directories for N levels below the specified directory
+du -ah {{directory}}##Get recursively, individual file/folder sizes in human readable form
+du -k {{file_or_directory}}##List file sizes of a directory and any subdirectories in KB
+du -m {{file_or_directory}}##List file sizes of a directory and any subdirectories in MB
+du -sh {{file_or_directory}}##Get a sum of the total size of a file/folder in human readable units
+echo "{{message}}" | wall##Send a message
+echo 123 | xclip -i##Copy output to clipboard
+edit {{filename}}##Edit action can be used to view any file on default mailcap explorer
+emerge --resume --skipfirst##Resume a failed updated, skipping the failing package
+emerge --sync##Synchronize all packages
+emerge -Cav {{package-name}}##Remove a package, with confirmation
+emerge -S {{keyword}}##Search the package database for a keyword
+emerge -av {{package-name}}##Install a new package, with confirmation
+emerge -avc##Remove orphaned packages (that were installed only as dependencies)
+emerge -uDNav @world##Update all packages, including dependencies
+fc-match -s '{{Font Name}}'##Return a sorted list of best matching fonts
+fc-pattern -d '{{Font Name}}'##Display default infomation about a font
+findmnt -t {{ext4}}##Find filesystems in specific type
+findmnt LABEL={{BigStorage}}##Find filesystems with specific label
+findmnt {{/dev/sdb1}}##Search for a device
+findmnt {{/}}##Search for a mountpoint
+findmnt##List all mounted filesystems
+firewall-cmd --get-active-zones##View the available firewall zones
+firewall-cmd --list-all##View the rules which are currently applied
+firewall-cmd --permanent --zone={{public}} --add-service={{https}}##Permanently open the port for a service in the specified zone (like port `443` when in the `public` zone)
+firewall-cmd --permanent --zone={{public}} --remove-service={{http}}##Permanently close the port for a service in the specified zone (like port `80` when in the `public` zone)
+firewall-cmd --reload##Reload firewalld to force rule changes to take effect
+free -h##Display memory in human readable units
+free -s {{X}}##Continuous monitor memory (refresh every X seconds)
+free {{-b/-k/-m/-g}}##Display memory in Bytes/KB/MB/GB
+free##Display system memory
+fuser -n tcp {{port}}##Identify process using a TCP socket
+getenet group {{group_name}}##See the members of a group
+getent group##Get list of all groups
+getent hosts {{host}}##Perform a reverse DNS lookup
+getent passwd 1000##Find a username by UID
+getent services##Get list of all services
+head -c -{{size_in_bytes}} {{filename}}##Output everything but the last few bytes of a file
+head -c {{size_in_bytes}} {{filename}}##Output the first few bytes of a file
+head -n -{{count_of_lines}} {{filename}}##Output everything but the last few lines of a file
+head -n {{count_of_lines}} {{filename}}##Output the first few lines of a file
+hostname --fqdn##Show the FQDN (Fully Qualified Domain Name)
+hostname -I##Show all network addresses of the host
+hostname -i##Show the network address of the host name
+hostname {{new_hostname}}##Set current host name
+hostname##Show current host name
+iostat -Nh##Display disk statistics with disk names (including LVM) in human readable format
+iostat -c##Display CPU statistics
+iostat -h##Display disk statistics with disk IDs in human readable format
+iostat -xN##Display extended disk statistics with disk names
+ip a##List interfaces with detailed info
+ip addr add/del {{ip}}/{{mask}} dev {{interface}}##Add/Delete an ip address to an interface
+ip link set {{interface}} up/down##Make an interface up/down
+ip r##Display the routing table
+ip route add default via {{ip}} dev {{interface}}##Add an default route
+jobs -l##List jobs and their process ids
+jobs -n##Display information about jobs with changed status
+jobs -p##Display process id of process group leader
+jobs -r##Display running processes
+jobs -s##Display stopped processes
+jobs##View jobs spawned by the current shell
+journalctl -b -1##Show all messages from last boot
+journalctl -b##Show all messages from this boot
+journalctl -f##Follow new messages (like `tail -f` for traditional syslog)
+journalctl -u {{unit}}##Show all messages by a specific unit
+journalctl _PID={{pid}}##Show all messages by a specific process
+journalctl {{/path/to/executable}}##Show all messages by a specific executable
+locate {{pattern}}##Look for pattern in the database. Note: the database is recomputed periodically (usually weekly or daily)
+lsattr -R##List file attributes recursively in the current and subsequent directories
+lsattr -a##Show attributes of all the files in the current directory, including hidden ones
+lsattr -d##Display attributes of directories in the current directory
+lsattr {{path}}##List the attributes of files in a particular path
+lsattr##Display the attributes of the files in the current directory
+lsb_release -a##Print all available information
+lsb_release -d##Print a description (usually the full name) of the operating system
+lsb_release -i -s##Print only the operating system name (ID), suppressing the field name
+lsb_release -rcs##Print the release number and codename of the distribution, suppressing the field names
+lsblk -a##Also list empty devices
+lsblk -b##Print the SIZE column in bytes rather than in a human-readable format
+lsblk -f##Output info about filesystems
+lsblk -i##Use ASCII characters for tree formatting
+lsblk -t##Output info about block-device topology
+lsblk##List all storage devices in a tree-like format
+ltrace -c {{/path/to/program}}##Count library calls. Print a handy summary at the bottom
+ltrace -e malloc+free-@libc.so* {{/path/to/program}}##Trace calls to malloc and free, omit those done by libc
+ltrace -o {{file}} {{/path/to/program}}##Write to file instead of terminal
+ltrace ./{{program}}##Print (trace) library calls of a program binary
+md5sum -c {{filename.md5}}##Read a file of MD5SUMs and verify all files have matching checksums
+md5sum {{filename1}} {{filename2}}##Calculate MD5 checksums for multiple files
+md5sum {{filename1}}##Calculate the MD5 checksum for a file
+mdadm --create {{/path/to/raid_device_file}} --level {{ raid level }} --raid-devices {{ number of disks}} {{/path/to/disk_device_file}}##Create array
+mdadm -D {{/path/to/raid_device_file}}##Show RAID info
+mdadm -S {{/path/to/raid_device_file}}##Stop array
+mdadm {{/path/to/raid_device_file}} -a {{/path/to/disk_device_file}}##Add disk to array
+mdadm {{/path/to/raid_device_file}} -f {{/path/to/disk_device_file}}##Mark disk as failed
+mdadm {{/path/to/raid_device_file}} -r {{/path/to/disk_device_file}}##Remove disk
+mkfs.cramfs -n {{volume-name}} {{/dev/sdb1}}##Create a ROM filesystem with a volume-name
+mkfs.cramfs {{/dev/sdb1}}##Create a ROM filesystem inside partition 1 on device b (`sdb1`)
+mkfs.exfat -i {{volume-id}} {{/dev/sdb1}}##Create filesystem with a volume-id
+mkfs.exfat -n {{volume-name}} {{/dev/sdb1}}##Create filesystem with a volume-name
+mkfs.exfat {{/dev/sdb1}}##Create an exfat  filesystem inside partition 1 on device b (`sdb1`)
+mkfs.ext2 {{/dev/sdb1}}##Create an ext2 filesystem in partition 1 of device b (`sdb1`)
+mkfs.ext3 {{/dev/sdb1}}##Create an ext3 filesystem in partition 1 of device b (`sdb1`)
+mkfs.fat -f 5 {{/dev/sdb1}}##Use 5 instead of 2 file allocation tables
+mkfs.fat -i {{volume-id}} {{/dev/sdb1}}##Create filesystem with a volume-id
+mkfs.fat -n {{volume-name}} {{/dev/sdb1}}##Create filesystem with a volume-name
+mkfs.fat {{/dev/sdb1}}##Create a fat filesystem inside partition 1 on device b (`sdb1`)
+mkfs.minix {{/dev/sdb1}}##Create a Minix filesystem inside partition 1 on device b (`sdb1`)
+mkfs.ntfs -L {{volume-label}} {{/dev/sdb1}}##Create filesystem with a volume-label
+mkfs.ntfs -U {{UUID}} {{/dev/sdb1}}##Create filesystem with specific UUID
+mkfs.ntfs {{/dev/sdb1}}##Create a NTFS filesystem inside partition 1 on device b (`sdb1`)
+mkfs.vfat -f 5 {{/dev/sdb1}}##Use 5 instead of 2 file allocation tables
+mkfs.vfat -i {{volume-id}} {{/dev/sdb1}}##Create filesystem with a volume-id
+mkfs.vfat -n {{volume-name}} {{/dev/sdb1}}##Create filesystem with a volume-name
+mkfs.vfat {{/dev/sdb1}}##Create a.vfat filesystem inside partition 1 on device b (`sdb1`)
+netstat -a##List all ports
+netstat -c##List information continuously
+netstat -l##List all listening ports
+netstat -lepunt##List listening TCP and UDP ports (+ user and process if you're root)
+netstat -p##Display PID and program names
+netstat -rn##List routes and do not resolve IP to hostname
+netstat -t##List listening TCP ports
+nm --demangle {{file.o}}##Demangle C++ symbols (make them readable)
+nm -a {{file.o}}##List all symbols, even debugging symbols
+nm -g {{file.o}}##List global (extern) functions in a file (prefixed with T)
+nm -u {{file.o}}##List only undefined symbols in a file
+notify-send -i {{icon.png}} {{"Test"}} {{"This is a test"}}##Show a notification with a custom icon
+notify-send -t 5000 {{"Test"}} {{"This is a test"}}##Show a notification for 5 seconds
+notify-send {{"Test"}} {{"This is a test"}}##Show a notification with the title "Test" and the content "This is a test"
+pacman -Q##List installed packages and versions
+pacman -Qe##List only the explicitly installed packages and versions
+pacman -Qo filename##Find which package owns a certain file
+pacman -Rs package-name##Remove a package and its dependencies
+pacman -S package-name##Install a new package
+pacman -Scc##Empty package cache to free up space
+pacman -Ss icon theme##Search the package database for a keyword
+pacman -Syu##Synchronize and update all packages
+pkgadd -u {{package-name}}##Update an already installed package from a local package
+pkgadd {{package-name}}##Install a local software package
+pkginfo -f {{file}}##Print the footprint of a file
+pkginfo -i##List installed packages and their versions
+pkginfo -l {{package-name}}##List files owned by a package
+pkginfo -o {{pattern}}##List the owner(s) of files matching a pattern
+pkgmk -d -i##Install the package after making it
+pkgmk -d -if##Ignore the footprint when making a package
+pkgmk -d -im##Ignore the MD5 sum when making a package
+pkgmk -d -u##Upgrade the package after making it
+pkgmk -d##Make and download a package
+pkgmk -uf##Update the package's footprint
+pkgrm {{package-name}}##Remove an installed package
+ports -d##Check the differences between installed packages and the ports tree
+ports -l##List the ports in the current tree
+ports -u##Update the ports tree
+print {{filename}}##Print action can be used to print any file on default run-mailcap tool
+prt-get depinst {{package-name}}##Install a package with dependency handling
+prt-get fsearch {{file}}##Search for a file in a package
+prt-get install {{package-name}}##Install a package
+prt-get remove {{package-name}}##Remove a package
+prt-get search {{package-name}}##Search the ports tree
+prt-get sysup##Upgrade the system from the local ports tree
+prt-get upgrade {{package-name}}##Update a package manually
+pwgen -c {{length}}##Generate password with at least one capital letter in them
+pwgen -s {{length}}##Generate hard-to-memorize passwords
+pwgen -y {{length}}##Generate random password with symbols
+reboot -f##Reboot immediately without gracefully shutdown
+reboot##Reboot immediately
+rpm -Va '{{php-*}}'##Show changed, missing and/or incorrectly installed files of matching packages
+rpm -q {{httpd}}##Show version of httpd package
+rpm -qa '{{mariadb*}}'##List versions of all matching packages
+rpm -qf {{/etc/postfix/main.cf}}##Identify owner of a file and show version of the package
+rpm -ql {{kernel}}##List package-owned files
+rpm -qp --scripts {{some.rpm}}##Show scriptlets from an RPM file
+run-mailcap  --action=ACTION --debug {{filename}}##Turn on extra information
+run-mailcap --action=ACTION --nopager {{filename}}##Ignore any "copiousoutput" directive and forward output to STD‐OUT
+run-mailcap --action=ACTION --norun {{filename}}##Display the found command without actually executing it
+run-mailcap --action=ACTION [--option[=value]]##Individual actions/programs on run-mailcap can be invoked with action flag
+run-mailcap --action=ACTION {{filename}}##In simple language
+run-mailcap --action=compose {{filename}}##With `run-mailcap`
+run-mailcap --action=edit {{filename}}##With `run-mailcap`
+run-mailcap --action=print {{filename}}##With `run-mailcap`
+run-mailcap --action=view {{filename}}##Using with `run-mailcap`
+screenfetch -A '{{distribution_name}}'##Specify distribution logo
+screenfetch -D '{{distribution_name}}'##Specify distribution logo and text
+screenfetch -N##Strip all color
+screenfetch -s##Take a screenshot (requires 'scrot')
+screenfetch##Start screenfetch
+see {{filename}}##See action can be used to view any file (usually image) on default mailcap explorer
+sha1sum -c {{filename.sha1}}##Read a file of SHA1 sums and verify all files have matching checksums
+sha1sum {{filename1}} {{filename2}}##Calculate SHA1 checksums for multiple files
+sha1sum {{filename1}}##Calculate the SHA1 checksum for a file
+sha224sum -c {{filename.sha224}}##Read a file of SHA224 sums and verify all files have matching checksums
+sha224sum {{filename1}} {{filename2}}##Calculate SHA224 checksums for multiple files
+sha224sum {{filename1}}##Calculate the SHA224 checksum for a file
+sha256sum -c {{filename.sha256}}##Read a file of SHA256 sums and verify all files have matching checksums
+sha256sum {{filename1}} {{filename2}}##Calculate SHA224 checksums for multiple files
+sha256sum {{filename1}}##Calculate the SHA256 checksum for a file
+sha384sum -c {{filename.sha384}}##Read a file of SHA384 sums and verify all files have matching checksums
+sha384sum {{filename1}} {{filename2}}##Calculate SHA384 checksums for multiple files
+sha384sum {{filename1}}##Calculate the SHA384 checksum for a file
+sha512sum -c {{filename.sha512}}##Read a file of SHA512 sums and verify all files have matching checksums
+sha512sum {{filename1}} {{filename2}}##Calculate SHA384 checksums for multiple files
+sha512sum {{filename1}}##Calculate the SHA384 checksum for a file
+shuf -i {{low}}-{{high}}##Generate random numbers in range
+shuf -n {{n}} {{filename}}##Only output the first n entries of the result
+shuf -o {{another_filename}} {{filename}}##Write output to another file
+shuf {{filename}}##Randomize the order of lines in a file and output the result
+shutdown -c##Cancel a pending shutdown/reboot operation
+shutdown -h 13:00##Shutdown at 1:00 pm (Uses 24h clock)
+shutdown -h now##Power off (halt) immediately
+shutdown -r +{{5}} &##Reboot in 5 minutes
+shutdown -r now##Reboot immediately
+ss -4t src {{192.168/16}}##Show all TCP IPv4 sockets locally connected on the subnet 192.168.0.0/16
+ss -a {{-t|-u|-w|-x}}##Show all TCP/UDP/RAW/UNIX sockets
+ss -pt dst :{{ssh}}##Show all TCP sockets along with processes connected to a remote ssh port
+ss -t src :{{443}}##Show all TCP sockets connected to the local HTTPS port (443)
+ss -u 'sport == :{{source_port}} and dport == :{{destination_port}}'##Show all UDP sockets connected on specific source and destination ports
+ss {{state/exclude}} {{bucket/big/connected/synchronized/...}}##Filter TCP sockets by states, only/exclude
+ssh-copy-id -i {{path/to/certificate}} -p {{port}} {{username}}@{{remote_host}}##Copy the given public key to the remote with specific port
+ssh-copy-id -i {{path/to/certificate}} {{username}}@{{remote_host}}##Copy the given public key to the remote
+strace -p {{pid}} -T##Show the time spent in every system call
+strace -p {{pid}} -c##Count time, calls, and errors for each system call and report a summary on program exit
+strace -p {{pid}} -e {{system call name}}##Trace a process and filter output by system call
+strace -p {{pid}}##Start tracing a specific process by its PID
+sudo iptables -A {{chain}} -s {{ip}} -j {{rule}}##Append rule to chain policy for IP
+sudo iptables -A {{chain}} -s {{ip}} -p {{protocol}} --dport {{port}} -j {{rule}}##Append rule to chain policy for IP considering protocol and port
+sudo iptables -D {{chain}} {{rule_line_number}}##Delete chain rule
+sudo iptables -p {{chain}} {{rule}}##Set chain policy rule
+sudo iptables -t {{table_name}} -vnL##See chains and rules for specific table
+sudo iptables-save > {{path_to_iptables_file}}##Savin iptables configuration
+sudo nethogs -t {{seconds}}##Specify refresh rate
+sudo nethogs {{device1}} {{device2}}##Monitor bandwidth on multiple devices
+sudo nethogs {{device}}##Monitor bandwidth on specific device
+sudo nethogs##Start nethogs as root (default device is eth0)
+sudo updatedb##Recompute the database. You need to do it if you want to find recently added files
+sysctl -a##Show all available variables and their values
+sysctl -p##Apply changes from /etc/sysctl.conf
+sysctl -w {{section.tunable}}={{value}}##Set a changeable kernel state variable
+sysctl fs.file-max##Get limit for simultaneous open files
+sysctl fs.file-nr##Get currently open file handlers
+systemctl --failed##List failed units
+systemctl daemon-reload##Reload systemd, scanning for new or changed units
+systemctl enable/disable {{unit}}##Enable/Disable a unit to be started on bootup
+systemctl start/stop/restart {{unit}}##Start/Stop/Restart a service
+systemctl status {{unit}}##Show the status of a unit
+tcpflow -c -i {{eth0}} port {{80}}##Show all data on the given interface and port
+timedatectl list-timezones##To list available timezones
+timedatectl set-time {{"yyyy-MM-dd hh:mm:ss"}}##To set the local time of the system clock directly
+timedatectl set-timezone {{timezone}}##To change timezones
+timedatectl##To check the current system clock time
+top -i##Start top ignoring any idle or zombie processes
+top -u {{user-name}}##Start top displaying only processes owned by given user
+top##Start top
+ufw allow {{port}} {{service_name}}##Add ufw allow rule
+ufw deny {{port}} {{service_name}}##Add ufw deny rule
+ufw disable##Disable ufw
+ufw enable##Enable ufw
+ufw status##Show ufw rules
+ulimit -H -n##Get hard limit for the number of simultaneously opened files
+ulimit -S -n##Get soft limit for the number of simultaneously opened files
+ulimit -a##Get the properties of all the user limits
+ulimit -u 30##Set max per-user process limit
+useradd -G {{group1,group2}} {{name}}##Create new user with supplementary groups (mind the lack of whitespace)
+useradd -m {{name}}##Create new user with a default home directory
+useradd -s {{/path/to/shell}} {{name}}##Create new user with specified shell
+useradd {{name}}##Create new user
+userdel -r {{name}}##Remove a user and their home directory
+usermod -a -G {{group1,group2}} {{user}}##Add user to supplementary groups (mind the whitespace)
+usermod -l {{newname}} {{user}}##Change a user's name
+usermod -m -d {{/path/to/home}} {{user}}##Create a new home directory for a user and move their files to it
+wall -t {{seconds}} {{file}}##Send a message with timeout (default 300)
+wall {{file}}##Send a message from a file
+watch -d {{df}}##Monitor disk space and highlight the changes
+watch -n {{3}} "{{ps aux | grep node}}"##Monitor "node" processes, refreshing every 3 seconds
+watch {{ls}}##Monitor files in the current folder
+wget -qO - {{https://host.tld/filename.key}} | apt-key add -##Add a remote key to the trusted keystore
+wpa_cli add_network {{number}}##Add a network
+wpa_cli enable_network {{number}}##Enable network
+wpa_cli save_config##Save config
+wpa_cli scan##Scan for available networks
+wpa_cli scan_results##Show scan results
+wpa_cli set_network {{number}} ssid "{{SSID}}"##Set a network's SSID
+xclip -o > file.txt##Paste clipboard
+xinput float {{id}} {{master_id}}##Reattach an input as slave to a master
+xinput float {{id}}##Disconnect an input from its master
+xinput list##List all input devices
+xrandr --auto##Disable disconnected outputs and enable connected ones with default settings
+xrandr --output {{DP1}} --mode {{1920x1080}} --rate {{60}}##Change the resolution and update frequency of DisplayPort 1 to 1920x1080, 60Hz
+xrandr --output {{HDMI2}} --mode {{1280x1024}} --right-of {{DP1}}##Set the resolution of HDMI2 to 1280x1024 and put it on the right of DP1
+xrandr --output {{VGA1}} --off##Disable the VGA1 output
+xrandr --query##Display the current state of the system (known screens, resolutions, ...)
+xsetwacom list##List all the available wacom devices. The device name is in the first column
+xsetwacom set "{{device name}}" MapToOutput {{screen}}##Set Wacom area to specific screen. Get name of the screen with `xrandr`
+xsetwacom set "{{device name}}" Mode "{{Relative|Absolute}}"##Set mode to relative (like a mouse) or absolute (like a pen) mode
+xsetwacom set "{{device name}}" Rotate {{none|half|cw|ccw}}##Rotate the input (useful for tablet-PC when rotating screen) by 0|90|180|270 degrees from "natural" rotation
+xsetwacom set "{{device name}}" TabletPCButton "on"##Set button to only work when the tip of the pen is touching the tablet
+yaourt -Q##List installed packages, versions, and repositories (AUR packages will be listed under the repository name 'local')
+yaourt -Rs package-name##Remove a package and its dependencies (includes AUR packages)
+yaourt -S package-name##Install a new package (includes AUR)
+yaourt -Ss package-name##Search the package database for a keyword (including AUR)
+yaourt -Syua##Synchronize and update all packages (including AUR)
+yum -y install {{package}}##Install a new package and assume yes to all questions (also works with update, great for automated updates)
+yum install {{package}}##Install a new package
+yum remove {{package}}##Remove a package
+yum update##Synchronize list of packages and versions available. This should be run first, before running subsequent yum commands
+yum upgrade##Upgrade installed packages to newest available versions
+zypper install {{package}}##Install a new package
+zypper refresh##Synchronize list of packages and versions available
+zypper remove {{package}}##Remove a package
+zypper search {{keyword}}##Search package via keyword
+zypper update##Upgrade installed packages to newest available versions
