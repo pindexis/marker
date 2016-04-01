@@ -3,7 +3,7 @@
 ![marker](https://cloud.githubusercontent.com/assets/2557967/14209204/d99db934-f81a-11e5-910c-9d34ac155d18.gif)
 
 Marker is a command palette for the terminal. It let you bookmark commands (or commands templates) and easily retreive them with the help of a real-time fuzzy matcher.
-It's also shipped with many commands common usage(Thanks to tldr).
+It's also shipped with many commands common usage(Thanks to [tldr](https://github.com/tldr-pages/tldr)).
   
 ## Features:
 - A UI selector that lets you easily select the desired command if more than one command is matched.
