@@ -1,4 +1,4 @@
-import string_score
+from . import string_score
 import re
 
 def filter_commands(marks, search_string):

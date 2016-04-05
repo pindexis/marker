@@ -1,5 +1,5 @@
 import os
-import ansi
+from . import ansi
 import re
 import math
 import sys
@@ -10,6 +10,12 @@ def _get_terminal_columns():
     rows, columns = os.popen('stty size', 'r').read().split()
     # the -1 is to keep the command prompt displayed
     return int(rows) - 1, int(columns)
+
+def unicode_length(string):
+    if sys.version_info[0] == 2:
+        return len(string.decode('utf-8'))
+    else:
+        return len(string)
 
 def erase():
     ''' the commandline cursor is always at the first line (Marker prompt)
@@ -38,7 +44,7 @@ def _construct_output(state):
     ansi_escape = re.compile(r'\x1b[^m]*m')
     def number_of_rows(line):
         line = ansi_escape.sub('', line)
-        return int(math.ceil(float(len(line.decode('utf-8')))/columns))
+        return int(math.ceil(float(unicode_length(line))/columns))
     displayed_lines = []
     # Number of terminal rows spanned by the output, used to determine how many lines we need to go up(to place the cursor after the prompt) after displaying the output
     num_rows = 0
