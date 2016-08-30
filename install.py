@@ -46,7 +46,7 @@ def show_post_installation_message(config_dir_rel):
     else:
         rcfile = '.%src' % get_shell()
 
-    print("\nPlease add he following line has to to your ~/%s:" % rcfile)
+    print("\nPlease add the following line to your ~/%s:" % rcfile)
     print('\n' + source_msg)
     print('\n')
     print("\nPlease restart the terminal after doing that(or re-source your *.rc).")
