@@ -1,6 +1,7 @@
 # App logic
 from __future__ import print_function
 import os
+import fnmatch
 from . import keys
 from . import readchar
 from . import command
@@ -14,23 +15,16 @@ if version_info[0] == 2:
 else:
     keyboard_input = input
 
-def get_os():
-    if platform == 'Darwin':
-        return 'osx'
-    elif platform.startswith('linux'):
-        return 'linux'
-    else:
-        # throw is better
-        return 'unknown'
-
-def get_user_marks_path():
-    return os.path.join(os.getenv('MARKER_DATA_HOME'), 'user_commands.txt')
-def get_tldr_os_marks_path():
-    return os.path.join(os.getenv('MARKER_HOME'), 'tldr', get_os()+'.txt')
-def get_tldr_common_marks_path():
-    return os.path.join(os.getenv('MARKER_HOME'), 'tldr', 'common.txt')
-
-
+def get_user_commands_path():
+    return os.path.join(os.getenv('MARKER_DATA_HOME'), 'bookmarked_commands.txt')
+#def get_tldr_os_marks_path():
+#    return os.path.join(os.getenv('MARKER_HOME'), 'tldr', get_os()+'.txt')
+def get_all_commands_path():
+    return [os.path.join(dirpath, f)
+    for dirpath, dirnames, files in os.walk(os.getenv('MARKER_DATA_HOME'))
+            for f in fnmatch.filter(files, '*.txt')]
+    #return os.path.join(os.getenv('MARKER_HOME'), 'tldr', 'common.txt')
+ 
 def mark_command(cmd_string, alias):
     ''' Adding a new Mark '''
     if cmd_string:
@@ -50,16 +44,19 @@ def mark_command(cmd_string, alias):
         # ## isn't allowed since it's used as seperator
         print ("command can't contain ##(it's used as command alias seperator)")
         return        
-    commands = command.load(get_user_marks_path())
+    commands = command.load(get_user_commands_path())
     command.add(commands, command.Command(cmd_string, alias))
-    command.save(commands, get_user_marks_path())
+    command.save(commands, (get_user_commands_path()))
 
 def get_selected_command_or_input(search):
     ''' Display an interactive UI interface where the user can type and select commands
         this function returns the selected command if there is matches or the written characters in the prompt line if no matches are present
     '''
-    commands = command.load(get_user_marks_path()) + command.load(get_tldr_os_marks_path()) + command.load(get_tldr_common_marks_path())
-    state = State(commands, search)
+    user_commands = command.load(get_user_commands_path()) 
+    get_commands = []
+    for files in get_all_commands_path():
+        get_commands.extend (command.load(files))
+    state = State(get_commands, search)
     # draw the screen (prompt + matchd marks)
     renderer.refresh(state)
     # wait for user input(returns selected mark)
@@ -70,10 +67,10 @@ def get_selected_command_or_input(search):
         return state.input
     return output.cmd
 
-
 def remove_command(search):
     ''' Remove a command interactively '''
-    commands = command.load(get_user_marks_path())
+    user_commands = command.load(get_user_commands_path()) 
+    #commands = command.load(get_user_marks_path())
     state = State(commands, search)
     renderer.refresh(state)
     selected_mark = read_line(state)
