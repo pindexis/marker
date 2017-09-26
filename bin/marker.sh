@@ -6,6 +6,7 @@ alias marker="${MARKER_HOME}/bin/marker"
 marker_key_mark="${MARKER_KEY_MARK:-\C-k}"
 marker_key_get="${MARKER_KEY_GET:-\C-@}"
 marker_key_next_placeholder="${MARKER_KEY_NEXT_PLACEHOLDER:-\C-t}"
+marker_key_copy="${MARKER_KEY_COPY:-\C-g}"
 
 function get_cursor_position(){
   # based on a script from http://invisible-island.net/xterm/xterm.faq.html
@@ -90,13 +91,13 @@ if [[ -n "$ZSH_VERSION" ]]; then
     }
     # move the cursor the next placeholder 
     function _move_cursor_to_next_placeholder {
-        match=$(echo "$BUFFER" | perl -nle 'print $& if m{{{.+?}}}' | head -n 1)
+        match=$(echo "$BUFFER" | perl -nle 'print $& if m{{.+?}}' | head -n 1)
         if [[ ! -z "$match" ]]; then
             len=${#match}
             match=$(echo "$match" | sed 's/"/\\"/g')
             placeholder_offset=$(echo "$BUFFER" | python -c 'import sys;keyboard_input = raw_input if sys.version_info[0] == 2 else input; print(keyboard_input().index("'$match'"))')
             CURSOR="$placeholder_offset"
-            BUFFER="${BUFFER[1,$placeholder_offset]}${BUFFER[$placeholder_offset+1+$len,-1]}"
+            BUFFER="${BUFFER[1,$placeholder_offset]}${BUFFER[$placeholder_offset+2+$len,-1]}"
         fi        
     }
 
@@ -110,12 +111,13 @@ if [[ -n "$ZSH_VERSION" ]]; then
     zle -N _marker_mark_2 
     bindkey '\emm2' _marker_mark_2
     bindkey -s "$marker_key_mark" '\emm1\emm2'
+    bindkey -s "$marker_key_copy" '^Uecho "^Y" | perl -pe 'chomp' | xsel -i -b \r'
 
 elif [[ -n "$BASH" ]]; then
 
     # move the cursor the next placeholder '%%'
     function _move_cursor_to_next_placeholder {
-        match=$(echo "$READLINE_LINE" | perl -nle 'print $& if m{{{.+?}}}' | head -n 1)
+        match=$(echo "$READLINE_LINE" | perl -nle 'print $& if m{{.+?}}' | head -n 1)
         if [[ ! -z "$match" ]]; then
             len=${#match}
             match=$(echo "$match" | sed 's/"/\\"/g')

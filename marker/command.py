@@ -25,7 +25,7 @@ def remove(commands, command):
         pass
 
 class Command(object):
-    '''A Command is composed of the shell command string and an optionnal alias'''
+    '''A Command is composed of the shell command string and an optional alias'''
     def __init__(self, cmd, alias):
         if not cmd:
             raise "empty command argument"
