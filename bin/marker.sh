@@ -4,7 +4,7 @@ alias marker="${MARKER_HOME}/bin/marker"
 
 # default key bindings
 marker_key_mark="${MARKER_KEY_MARK:-\C-k}"
-marker_key_get="${MARKER_KEY_GET:-\C-l}"
+marker_key_get="${MARKER_KEY_GET:-\C-@}"
 marker_key_next_placeholder="${MARKER_KEY_NEXT_PLACEHOLDER:-\C-t}"
 
 function get_cursor_position(){
