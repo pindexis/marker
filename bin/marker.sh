@@ -90,7 +90,7 @@ if [[ -n "$ZSH_VERSION" ]]; then
     }
     # move the cursor the next placeholder 
     function _move_cursor_to_next_placeholder {
-        match=$(echo "$BUFFER" | perl -nle 'print $& if m{{{.+?}}}' | head -n 1)
+        match=$(echo "$BUFFER" | perl -nle 'print $& if m{\{\{.+?\}\}}' | head -n 1)
         if [[ ! -z "$match" ]]; then
             len=${#match}
             match=$(echo "$match" | sed 's/"/\\"/g')
