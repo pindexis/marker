@@ -160,13 +160,15 @@ elif [[ -n "$BASH" ]]; then
         READLINE_POINT="${#READLINE_LINE}"
     }   
 
-    # bind -x somehow doesn't support ctrl+space directly
-    bind -x '"\emg1":"_marker_get"'
-    bind '"'"$marker_key_get"'":"\emg1"'
+    if [[ $- =~ .*i.* ]]; then
+        # bind -x somehow doesn't support ctrl+space directly
+        bind -x '"\emg1":"_marker_get"'
+        bind '"'"$marker_key_get"'":"\emg1"'
 
-    bind -x '"\emm1":"_marker_mark_1"'
-    bind -x '"\emm2":"_marker_mark_2"'
-    bind '"'"$marker_key_mark"'":"\emm1\n\emm2"'   
+        bind -x '"\emm1":"_marker_mark_1"'
+        bind -x '"\emm2":"_marker_mark_2"'
+        bind '"'"$marker_key_mark"'":"\emm1\n\emm2"'   
 
-    bind -x '"'"$marker_key_next_placeholder"'":"_move_cursor_to_next_placeholder"'
+        bind -x '"'"$marker_key_next_placeholder"'":"_move_cursor_to_next_placeholder"'
+    fi
 fi
