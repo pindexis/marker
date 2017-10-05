@@ -45,12 +45,16 @@ def show_post_installation_message(config_dir_rel):
         rcfile = '.bash_profile'
     else:
         rcfile = '.%src' % get_shell()
-
-    print("\nPlease add the following line to your ~/%s:" % rcfile)
+    print("\nThe following line needed to be added to your ~/%s:" % rcfile)
     print('\n' + source_msg)
     print('\n')
-    print("\nPlease restart the terminal after doing that(or re-source your *.rc).")
-
+    autoAdd = raw_input('Add automagically to your RC file? [Y/n]: ')
+    if autoAdd == '' or autoAdd.lower() == 'y':
+        with open(os.path.expanduser('~') + '/' + rcfile, 'a') as File:
+            File.write(source_msg)
+        print("\nPlease `source ~/%s`."%rcfile)
+    else:
+        print("\nAdd manually and `source ~/%s`."%rcfile)
 
 def verify_requirements():
     if not get_shell() in SUPPORTED_SHELLS:
@@ -85,7 +89,7 @@ def main():
     install_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)))
 
     mkdir(config_dir_abosulte_path)
-    
+
     write_to_file(
         os.path.join(config_dir_abosulte_path, 'marker.sh'),
         generate_marker_sh(config_dir_abosulte_path, install_dir))
