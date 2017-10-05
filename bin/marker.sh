@@ -12,7 +12,7 @@ function get_cursor_position(){
   # based on a script from http://invisible-island.net/xterm/xterm.faq.html
   exec < /dev/tty
   oldstty=$(stty -g)
-  stty raw -echo min 0
+  #stty raw -echo min 0
   # on my system, the following line can be replaced by the line below it
   echo -en "\033[6n" > /dev/tty
   # tput u7 > /dev/tty    # when TERM=xterm (and relatives)
