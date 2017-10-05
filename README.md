@@ -36,7 +36,7 @@ In OSX, it seems like Bash 3.x is the default shell which is not supported. you 
 
 ## Installation
 - `mkdir ~/.marker && cd ~/.marker` or go wherever you want to install Marker
-- `git clone https://github.com/pindexis/marker .`
+- `git clone` the repistory to the current working directory
 - `./install.py`
 - `apt-get install xsel` to install xsel, in order to use the `Ctrl-g` feature
 - `mv ./tldr ~/.local/share/marker/` to copy the commands within the tldr folder into the marker home folder where all the commands need to be added
