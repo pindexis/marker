@@ -14,7 +14,7 @@ It's also shipped with many commands common usage(Thanks to [tldr](https://githu
 
 ## Usage
 - `Ctrl-space`: search for commands that match the current written string in the command-line.
-- `Ctrl-k` (or `marker add`): Bookmark a command.
+- `Ctrl-k` (or `marker mark`): Bookmark a command.
 - `Ctrl-t`: place the cursor at the next placeholder, identified by '{{anything}}'
 - `marker remove`: remove a bookmark
 
