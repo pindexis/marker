@@ -1063,7 +1063,7 @@ wc -w {{file}}##Count words in file
 wget --ftp-user={{username}} --ftp-password={{password}} {{url}}##FTP download with username and password
 wget --limit-rate={{200k}} {{url}}##Limit download speed
 wget --mirror -p --convert-links -P {{target_folder}} {{url}}##Download a full website
-wget -O filename "{{url}}"##Download a URL to a file
+wget -O {{filename}} "{{url}}"##Download a URL to a file
 wget -c {{url}}##Continue an incomplete download
 which -a {{executable}}##If there are multiple executables which match, display all
 which {{executable}}##Search the PATH environment variable and display the location of any matching executables
