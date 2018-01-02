@@ -15,9 +15,9 @@ else:
     keyboard_input = input
 
 def get_os():
-    if platform == 'Darwin':
+    if platform.lower() == 'darwin':
         return 'osx'
-    elif platform.startswith('linux'):
+    elif platform.lower().startswith('linux'):
         return 'linux'
     else:
         # throw is better
