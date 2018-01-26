@@ -91,7 +91,7 @@ if [[ -n "$ZSH_VERSION" ]]; then
     }
     # move the cursor the next placeholder 
     function _move_cursor_to_next_placeholder {
-        match=$(echo "$BUFFER" | perl -nle 'print $& if m{{.+?}}' | head -n 1)
+        match=$(echo "$BUFFER" | perl -nle 'print $& if m{\{\{.+?\}\}}' | head -n 1)
         if [[ ! -z "$match" ]]; then
             len=${#match}
             match=$(echo "$match" | sed 's/"/\\"/g')
@@ -117,7 +117,7 @@ elif [[ -n "$BASH" ]]; then
 
     # move the cursor the next placeholder '%%'
     function _move_cursor_to_next_placeholder {
-        match=$(echo "$READLINE_LINE" | perl -nle 'print $& if m{{.+?}}' | head -n 1)
+        match=$(echo "$READLINE_LINE" | perl -nle 'print $& if m{\{\{.+?\}\}}' | head -n 1)
         if [[ ! -z "$match" ]]; then
             len=${#match}
             match=$(echo "$match" | sed 's/"/\\"/g')
@@ -171,4 +171,5 @@ elif [[ -n "$BASH" ]]; then
     bind '"'"$marker_key_mark"'":"\emm1\n\emm2"'   
 
     bind -x '"'"$marker_key_next_placeholder"'":"_move_cursor_to_next_placeholder"'
+    bind '"'"$marker_key_copy"'":"\C-uecho \C-y | perl -pe 'chomp' | xsel -i -b \r"'
 fi
