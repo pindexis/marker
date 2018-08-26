@@ -29,9 +29,8 @@ You can customize key binding using environment variables, respectively with ```
 In OSX, it seems like Bash 3.x is the default shell which is not supported. you have to [update your Bash to 4.3+](http://apple.stackexchange.com/a/24635) or [change your shell to zshell](http://stackoverflow.com/a/1822126/1117720) in order to use Marker.
 
 ## Installation
-- `mkdir ~/.marker && cd ~/.marker` or go wherever you want to install Marker
-- `git clone https://github.com/pindexis/marker .`
-- `./install.py`
+
+`git clone --depth=1 https://github.com/pindexis/marker ~/.marker && ~/.marker/install.py`
 
 ## License
 [MIT](LICENSE)
