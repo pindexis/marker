@@ -58,7 +58,7 @@ def verify_requirements():
         sys.exit(1)
     if get_shell() == "bash":
         version_text = subprocess.Popen("bash --version | head -1", shell=True, stdout=subprocess.PIPE).stdout.read()
-        m = re.search('(\d).(\d)', version_text)
+        m = re.search(b'(\d).(\d)', version_text)
         if m:
             major_version = int(m.group(1))
             minor_version = int(m.group(2))
