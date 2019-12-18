@@ -16,6 +16,7 @@ It's also shipped with many commands common usage(Thanks to [tldr](https://githu
 - `Ctrl-space`: search for commands that match the current written string in the command-line.
 - `Ctrl-k` (or `marker mark`): Bookmark a command.
 - `Ctrl-t`: place the cursor at the next placeholder, identified by '{{anything}}'
+- `Ctrl-x Ctrl-t`: use the next placeholder, identified by '{{anything}}'
 - `marker remove`: remove a bookmark
 
 You can customize key binding using environment variables, respectively with ```MARKER_KEY_GET```, ```MARKER_KEY_MARK``` and ```MARKER_KEY_NEXT_PLACEHOLDER```.
