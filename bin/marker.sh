@@ -6,6 +6,7 @@ alias marker="${MARKER_HOME}/bin/marker"
 marker_key_mark="${MARKER_KEY_MARK:-\C-k}"
 marker_key_get="${MARKER_KEY_GET:-\C-@}"
 marker_key_next_placeholder="${MARKER_KEY_NEXT_PLACEHOLDER:-\C-t}"
+marker_key_use_next_placeholder="${MARKER_KEY_USE_NEXT_PLACEHOLDER:-\C-x\C-t}"
 
 function get_cursor_position(){
   # based on a script from http://invisible-island.net/xterm/xterm.faq.html
@@ -83,6 +84,17 @@ if [[ -n "$ZSH_VERSION" ]]; then
         BUFFER="$TMP_MARKER"
         zle end-of-line
     }
+    # use the next placeholder
+    function _use_next_placeholder {
+        match=$(echo "$BUFFER" | perl -nle 'print $& if m{\{\{.+?\}\}}' | head -n 1)
+        if [[ ! -z "$match" ]]; then
+            len=${#match}
+            match=$(echo "$match" | sed 's/"/\\"/g')
+            placeholder_offset=$(echo "$BUFFER" | python -c 'import sys;keyboard_input = raw_input if sys.version_info[0] == 2 else input; print(keyboard_input().index("'$match'"))')
+            CURSOR=$(($placeholder_offset + $len - 4))
+            BUFFER="${BUFFER[1,$placeholder_offset]}${BUFFER[$placeholder_offset+3,$placeholder_offset+$len-2]}${BUFFER[$placeholder_offset+1+$len,-1]}"
+        fi
+    }
     # move the cursor the next placeholder 
     function _move_cursor_to_next_placeholder {
         match=$(echo "$BUFFER" | perl -nle 'print $& if m{\{\{.+?\}\}}' | head -n 1)
@@ -97,8 +109,10 @@ if [[ -n "$ZSH_VERSION" ]]; then
 
     zle -N _marker_get
     zle -N _move_cursor_to_next_placeholder
+    zle -N _use_next_placeholder
     bindkey "$marker_key_get" _marker_get 
     bindkey "$marker_key_next_placeholder" _move_cursor_to_next_placeholder
+    bindkey "$marker_key_use_next_placeholder" _use_next_placeholder
 
     zle -N _marker_mark_1
     bindkey '\emm1' _marker_mark_1
@@ -108,6 +122,17 @@ if [[ -n "$ZSH_VERSION" ]]; then
 
 elif [[ -n "$BASH" ]]; then
 
+    # use the next placeholder
+    function _use_next_placeholder {
+        match=$(echo "$READLINE_LINE" | perl -nle 'print $& if m{\{\{.+?\}\}}' | head -n 1)
+        if [[ ! -z "$match" ]]; then
+            len=${#match}
+            match=$(echo "$match" | sed 's/"/\\"/g')
+            placeholder_offset=$(echo "$READLINE_LINE" | python -c 'import sys;keyboard_input = raw_input if sys.version_info[0] == 2 else input; print(keyboard_input().index("'$match'"))')
+            READLINE_POINT=$(($placeholder_offset + $len - 4))
+            READLINE_LINE="${READLINE_LINE:0:$placeholder_offset}${READLINE_LINE:$placeholder_offset+2:$len-4}${READLINE_LINE:$placeholder_offset+$len}"
+        fi
+    }
     # move the cursor the next placeholder '%%'
     function _move_cursor_to_next_placeholder {
         match=$(echo "$READLINE_LINE" | perl -nle 'print $& if m{\{\{.+?\}\}}' | head -n 1)
@@ -162,4 +187,5 @@ elif [[ -n "$BASH" ]]; then
     bind '"'"$marker_key_mark"'":"\em1\n\em2"'   
 
     bind -x '"'"$marker_key_next_placeholder"'":"_move_cursor_to_next_placeholder"'
+    bind -x '"'"$marker_key_use_next_placeholder"'":"_use_next_placeholder"'
 fi
