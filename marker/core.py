@@ -100,9 +100,9 @@ def read_line(state):
             state.clear_input()
         elif c == keys.BACKSPACE:
             state.set_input(state.input[0:-1])
-        elif c == keys.UP:
+        elif c == keys.UP or c == keys.CTRL_K:
             state.select_previous()
-        elif c == keys.DOWN or c == keys.TAB:
+        elif c == keys.DOWN or c == keys.TAB or c == keys.CTRL_J:
             state.select_next()
         elif c <= 126 and c >= 32:
             state.set_input(state.input + chr(c))

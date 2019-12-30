@@ -1,6 +1,8 @@
 CTRL_C = 3         # Ctrl-c
 ENTER = 13         # Enter
 CTRL_U = 21        # Ctrl+u
+CTRL_J = 10        # Ctrl+j
+CTRL_K = 11        # Ctrl+k
 ESC = 27           # Escape
 BACKSPACE =  127   # Backspace
 TAB = 9            # Tab
