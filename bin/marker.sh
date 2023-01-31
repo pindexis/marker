@@ -34,7 +34,7 @@ function run_marker(){
     tmp_file=$(mktemp -t marker.XXXX)
     </dev/tty ${MARKER_HOME}/bin/marker get --search="$1" --stdout="$tmp_file"
     result=$(<$tmp_file)
-    rm -f $tmp_file
+    \rm -f $tmp_file
 }
 
 if [[ -n "$ZSH_VERSION" ]]; then
